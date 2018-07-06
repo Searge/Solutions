@@ -3,10 +3,11 @@
 
 Відносно непогана книга «[Старого Лева](https://starylev.com.ua/python-dlya-ditey)»
 
-Найзручніше дивитися юпітерівські файли через їхній сайт:
+Найзручніший спосіб читати юпітерівські файли:
 
 - [Розділ №3](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-3_lists_tuples_dicts.ipynb)
 - [Розділ №5](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-5_If_that_then_that.ipynb)
 - [Розділ №6](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-6_For%26While_loops.ipynb)
 - [Розділ №7](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-7_functions%26modules.ipynb)
 - [Розділ №8](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-8_Classes&Objects.ipynb)
+- [Розділ №9](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/CChapter-9_Built-in_Functions.ipynb)
