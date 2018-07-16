@@ -6,11 +6,16 @@ l = s.split()
 
 for x in range(0, len(l), 2):
     print(l[x])
-    
-# Але практичніший — наступний, 
+
+# Але практичніший — наступний,
 # в ньому ми одразу отримуємо ту ж
 # стрічку, тільки „розшифровану“.
 
 print(' '.join(l[::2]))
 
 # s — string; l — list
+
+
+def two_words():
+    x = str(input()).split()
+    print(' '.join(x[::int(input())]))
