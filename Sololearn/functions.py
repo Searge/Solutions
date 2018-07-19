@@ -1,7 +1,4 @@
-```
-Functional programming is a style of programming that (as the name suggests) is based around functions. 
-A key part of functional programming is higher-order functions. We have seen this idea briefly in the previous lesson on functions as objects. Higher-order functions take other functions as arguments, or return them as results
-```
+# Functional Programming
 
 
 def apply_twice(func, arg):
@@ -13,3 +10,35 @@ def add_five(x):
 
 
 print(apply_twice(add_five, 10))
+
+# The function apply_twice takes another function as its argument, and calls it twice inside its body.
+
+
+def test(func, arg):
+  return func(func(arg))
+
+
+def mult(x):
+  return x * x
+
+
+print(test(mult, 2))
+
+
+### Pure function:
+
+
+def pure_function(x, y):
+  temp = x + 2*y
+  return temp / (2*x + y)
+
+
+### Impure function:
+
+some_list = []
+
+
+def impure(arg):
+  some_list.append(arg)
+
+# The function above is not pure, because it changed the state of some_list.
