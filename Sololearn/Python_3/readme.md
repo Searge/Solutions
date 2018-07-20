@@ -34,7 +34,7 @@ This approach is most commonly used when passing a simple function as an argumen
 Lambda functions aren't as powerful as named functions. 
 They can only do things that require a single expression - usually equivalent to a single line of code.
 
-[**Example:**](lambdas.py)
+[**Example**](lambdas.py)
 
 # <mark>map</mark>
 
@@ -54,3 +54,28 @@ Unlike lists, they don't allow indexing with arbitrary indices, but they can sti
 They can be created using functions and the `yield` statement.
 
 [**Example**](Generators.py)
+
+# Decorators
+
+**Decorators** provide a way to modify functions using other functions. 
+This is ideal when you need to extend the functionality of functions that you don't want to modify.
+
+
+We defined a function named `decor` that has a single parameter `func`. Inside `decor`, we defined a nested function named `wrap`. The `wrap` function will print a string, then call `func()`, and print another string. The `decor` function returns the `wrap` function as its result.
+We could say that the *variable* **decorated** is a decorated version of **print_text** - it's **print_text** plus something. 
+In fact, if we wrote a useful *decorator* we might want to replace **print_text** with the decorated version altogether so we always got our "plus something" version of **print_text**. 
+This is done by re-assigning the *variable* that contains our *function*:
+
+[**Example**](Decorators.py)
+
+# Recursion
+
+Recursion is a very important concept in functional programming. 
+The fundamental part of recursion is self-reference - functions calling themselves. It is used to solve problems that can be broken up into easier sub-problems of the same type.
+
+A classic example of a function that is implemented recursively is the **factorial** function, which finds the product of all positive integers below a specified number. 
+For example, 5! (5 factorial) is 5 * 4 * 3 * 2 * 1 (120). To implement this recursively, notice that 5! = 5 * 4!, 4! = 4 * 3!, 3! = 3 * 2!, and so on. Generally, n! = n * (n-1)!. 
+Furthermore, 1! = 1. This is known as the **base case**, as it can be calculated without performing any more factorials. 
+Below is a recursive implementation of the factorial function.
+
+[**Example**](Recursion.py)
