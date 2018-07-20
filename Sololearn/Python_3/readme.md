@@ -35,3 +35,22 @@ Lambda functions aren't as powerful as named functions.
 They can only do things that require a single expression - usually equivalent to a single line of code.
 
 [**Example:**](lambdas.py)
+
+# <mark>map</mark>
+
+The built-in functions map and filter are very useful higher-order functions that operate on lists (or similar objects called iterables). 
+The function map takes a function and an iterable as arguments, and returns a new iterable with the function applied to each argument. 
+
+[**Example**](map_n_filter.py)
+
+# <mark>**filter**</mark>
+
+The function filter filters an iterable by removing items that don't match a predicate (a function that returns a Boolean). 
+
+# Generators
+
+Generators are a type of iterable, like lists or tuples. 
+Unlike lists, they don't allow indexing with arbitrary indices, but they can still be iterated through with for loops. 
+They can be created using functions and the `yield` statement.
+
+[**Example**](Generators.py)
