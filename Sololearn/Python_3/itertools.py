@@ -14,3 +14,28 @@ for i in count(3):
   print(i)
   if i >=11:
     break
+
+'''
+>>>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+'''
+
+from itertools import accumulate, takewhile
+
+nums = list(accumulate(range(8)))
+print(nums)
+print(list(takewhile(lambda x: x <= 6, nums)))
+
+'''
+>>>
+[0, 1, 3, 6, 10, 15, 21, 28]
+[0, 1, 3, 6]
+'''

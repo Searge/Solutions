@@ -92,10 +92,10 @@ Instead of using **append** to add to a set, use **add**.
 The method remove **removes** a specific element from a set; **pop** removes an arbitrary element.
 
 Sets can be combined using mathematical operations.
-The **union** operator `|` combines two sets to form a new one containing items in either. 
-The **intersection** operator `&` gets items only in both. 
-The **difference** operator `-` gets items in the first set but not in the second. 
-The **symmetric difference** operator `^` gets items in either set, but not both.
+* The **union** operator `|` combines two sets to form a new one containing items in either. 
+* The **intersection** operator `&` gets items only in both. 
+* The **difference** operator `-` gets items in the first set but not in the second. 
+* The **symmetric difference** operator `^` gets items in either set, but not both.
 
 [**Example**](Sets.py)
 
@@ -114,3 +114,19 @@ As we have seen in the previous lessons, Python supports the following data stru
 - Use **tuples** when your data cannot change. 
 
 > Many times, a tuple is used in combination with a dictionary, for example, a tuple might represent a key, because it's immutable.
+
+## <mark>itertools</mark>>
+
+The module `itertools` is a standard library that contains several functions that are useful in functional programming. 
+One type of function it produces is infinite iterators. 
+* The function `count` counts up infinitely from a value.
+* The function `cycle` infinitely iterates through an iterable (for instance a list or string). 
+* The function `repeat` repeats an object, either infinitely or a specific number of times.
+
+There are many functions in `itertools` that operate on iterables, in a similar way to map and filter. 
+Some examples:
+* `takewhile` - takes items from an iterable while a predicate function remains true;
+* `chain` - combines several iterables into one long one; 
+* `accumulate` - returns a running total of values in an iterable.
+
+[**Example**](itertools.py)
