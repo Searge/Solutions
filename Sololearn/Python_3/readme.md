@@ -129,4 +129,7 @@ Some examples:
 * `chain` - combines several iterables into one long one; 
 * `accumulate` - returns a running total of values in an iterable.
 
+There are also several combinatoric functions in `itertool`, such as `product` and `permutation`.
+These are used when you want to accomplish a task with all possible combinations of some items.
+
 [**Example**](itertools.py)

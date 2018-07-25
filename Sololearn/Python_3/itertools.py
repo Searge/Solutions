@@ -39,3 +39,33 @@ print(list(takewhile(lambda x: x <= 6, nums)))
 [0, 1, 3, 6, 10, 15, 21, 28]
 [0, 1, 3, 6]
 '''
+
+# Fill in the blanks to take the numbers from the list while they are even, using the takewhile function
+
+from itertools import takewhile
+nums = [2, 4, 6, 7, 9, 8]
+a = takewhile(lambda x: x % 2 == 0, nums)
+print(list(a))
+
+
+from itertools import product, permutations
+
+letters = ("A", "B")
+print(list(product(letters, range(2))))
+print(list(permutations(letters)))
+
+'''
+>>>
+[('A', 0), ('A', 1), ('B', 0), ('B', 1)]
+[('A', 'B'), ('B', 'A')]
+'''
+
+
+# What is the output of this code?
+from itertools import product
+a = {1, 2}
+print(len(list(product(range(3), a))))
+
+'''
+>>> 6
+'''
