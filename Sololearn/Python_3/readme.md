@@ -133,3 +133,7 @@ There are also several combinatoric functions in `itertool`, such as `product` a
 These are used when you want to accomplish a task with all possible combinations of some items.
 
 [**Example**](itertools.py)
+
+## Module 6 Quiz
+
+[Quiz Solutions](Quiz_Solutions.py)
