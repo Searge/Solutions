@@ -7,7 +7,7 @@ A key part of functional programming is **higher-order functions**. We have seen
 
 [**Example**](functions.py)
 
-# Pure Functions
+## Pure Functions
 
 Functional programming seeks to use **pure functions**. Pure functions have no side effects, and return a value that depends **only** on their arguments.
 This is how functions in math work: for example, The cos(x) will, for the same value of x, always return the same result.
@@ -22,7 +22,7 @@ Pure functions are:
 > The main disadvantage of using only pure functions is that they majorly complicate the otherwise simple task of I/O, since this appears to inherently require side effects. 
 > They can also be more difficult to write in some situations.
 
-# Lambdas
+## Lambdas
 
 Creating a function normally (using def) assigns it to a variable automatically. 
 This is different from the creation of other objects - such as strings and integers - which can be created on the fly, without assigning them to a variable. 
@@ -36,18 +36,18 @@ They can only do things that require a single expression - usually equivalent to
 
 [**Example**](lambdas.py)
 
-# <mark>map</mark>
+## <mark>map</mark>
 
 The built-in functions map and filter are very useful higher-order functions that operate on lists (or similar objects called iterables). 
 The function map takes a function and an iterable as arguments, and returns a new iterable with the function applied to each argument. 
 
 [**Example**](map_n_filter.py)
 
-# <mark>**filter**</mark>
+## <mark>**filter**</mark>
 
 The function filter filters an iterable by removing items that don't match a predicate (a function that returns a Boolean). 
 
-# Generators
+## Generators
 
 Generators are a type of iterable, like lists or tuples. 
 Unlike lists, they don't allow indexing with arbitrary indices, but they can still be iterated through with for loops. 
@@ -55,7 +55,7 @@ They can be created using functions and the `yield` statement.
 
 [**Example**](Generators.py)
 
-# Decorators
+## Decorators
 
 **Decorators** provide a way to modify functions using other functions. 
 This is ideal when you need to extend the functionality of functions that you don't want to modify.
@@ -68,7 +68,7 @@ This is done by re-assigning the *variable* that contains our *function*:
 
 [**Example**](Decorators.py)
 
-# Recursion
+## Recursion
 
 Recursion is a very important concept in functional programming. 
 The fundamental part of recursion is self-reference - functions calling themselves. It is used to solve problems that can be broken up into easier sub-problems of the same type.
@@ -80,7 +80,7 @@ Below is a recursive implementation of the factorial function.
 
 [**Example**](Recursion.py)
 
-# Sets
+## Sets
 
 **Sets** are data structures, similar to lists or dictionaries. They are created using curly braces, or the **set** function. They share some functionality with lists, such as the use of in to check whether they contain a particular item.
 
@@ -99,7 +99,7 @@ The **symmetric difference** operator `^` gets items in either set, but not both
 
 [**Example**](Sets.py)
 
-## Data Structures
+### Data Structures
 
 As we have seen in the previous lessons, Python supports the following data structures: **lists, dictionaries, tuples, sets**.
 
