@@ -11,5 +11,5 @@
 - [Розділ - №7](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-7_functions%26modules.ipynb)
 - [Розділ - №8](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-8_Classes&Objects.ipynb)
 - [Розділ - №9](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-9_Built-in_Functions.ipynb)
-
+- [Розділ - №10](https://nbviewer.jupyter.org/github/Searge/Solutions/blob/master/PythonKids/Chapter-10_Useful_Modules.ipynb)
 
