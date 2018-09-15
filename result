@@ -1,0 +1,16 @@
+$ echo 'hello' > result
+hello
+
+~/Code/Solutions master
+❯ echo 'hello' > result
+
+~/Code/Solutions master*
+❯ echo "$ echo 'hello' > result" > result
+
+~/Code/Solutions master*
+❯ echo 'hello' >> result
+
+~/Code/Solutions master*
+❯ cat result
+$ echo 'hello' > result
+hello
