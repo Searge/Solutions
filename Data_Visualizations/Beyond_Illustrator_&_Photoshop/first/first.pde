@@ -1,0 +1,11 @@
+size(500, 500);
+point(100, 250);
+point(101, 250);
+point(102, 250);
+point(103, 250);
+point(104, 250);
+point(105, 250);
+line(50, 50, 400, 200);
+ellipse(56, 46, 55, 55);
+rectMode(CENTER);
+rect(56, 46, 50, 50);
