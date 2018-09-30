@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="strava.com iPhone" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+ <metadata>
+  <time>2016-10-21T09:16:58Z</time>
+ </metadata>
+ <trk>
+  <name>Frognerseteren to Sentrum</name>
+  <trkseg>
+   <trkpt lat="59.9790650" lon="10.6760300">
+    <ele>455.8</ele>
+    <time>2016-10-21T09:16:58Z</time>
+   </trkpt>
+   <trkpt lat="59.9789850" lon="10.6766290">
+    <ele>455.1</ele>
+    <time>2016-10-21T09:17:06Z</time>
+   </trkpt>
+   <trkpt lat="59.9789900" lon="10.6766990">
+    <ele>455.4</ele>
+    <time>2016-10-21T09:17:08Z</time>
+   </trkpt>
+   <trkpt lat="59.9790090" lon="10.6768110">
+    <ele>456.0</ele>
+    <time>2016-10-21T09:17:11Z</time>
+   </trkpt>
+   <trkpt lat="59.9790370" lon="10.6768670">
+    <ele>456.8</ele>
+    <time>2016-10-21T09:17:13Z</time>
+   </trkpt>
+   <trkpt lat="59.9790450" lon="10.6769220">
+    <ele>457.1</ele>
+    <time>2016-10-21T09:17:15Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>

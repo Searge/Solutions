@@ -1,0 +1,66 @@
+[{
+  "segments": [
+    {
+      "startTime": "20130704T142044Z",
+      "place": {
+        "id": 976633,
+        "location": {
+          "lon": -73.96489794653029,
+          "lat": 40.69698504932668
+        },
+        "name": "20 Grand Ave",
+        "foursquareId": "506af060e4b0750b8615e88b",
+        "type": "foursquare"
+      },
+      "endTime": "20130704T170924Z",
+      "type": "place"
+    },
+    {
+      "startTime": "20130704T171711Z",
+      "place": {
+        "id": 65842375,
+        "location": {
+          "lon": -73.96362947177806,
+          "lat": 40.69366285830186
+        },
+        "name": "Bergen Bagels",
+        "foursquareId": "4a7d9084f964a520d2ee1fe3",
+        "type": "foursquare"
+      },
+      "endTime": "20130704T172051Z",
+      "type": "place"
+    },
+    {
+      "startTime": "20130704T172640Z",
+      "place": {
+        "id": 976633,
+        "location": {
+          "lon": -73.96489794653029,
+          "lat": 40.69698504932668
+        },
+        "name": "20 Grand Ave",
+        "foursquareId": "506af060e4b0750b8615e88b",
+        "type": "foursquare"
+      },
+      "endTime": "20130704T214705Z",
+      "type": "place"
+    },
+    {
+      "startTime": "20130705T022213Z",
+      "place": {
+        "id": 67224222,
+        "location": {
+          "lon": -73.965779,
+          "lat": 40.710579
+        },
+        "name": "Marlow & Sons",
+        "foursquareId": "4176fc00f964a520b21d1fe3",
+        "type": "foursquare"
+      },
+      "endTime": "20130705T035947Z",
+      "type": "place"
+    }
+  ],
+  "date": "20130704",
+  "caloriesIdle": 1685
+}]
