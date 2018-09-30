@@ -1,6 +1,0 @@
-
-
-// LIBRARIES
-import processing.pdf.*;
-
-
