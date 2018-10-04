@@ -1,5 +1,5 @@
 # Data Science and Machine Learning with Python - Hands On!
-## Frank Kane[^*] [course on Skillshare 🔗](https://skl.sh/2Nlwbqh)
+## Frank Kane[^[sundog-education.com](https://sundog-education.com)] [course on Skillshare 🔗](https://skl.sh/2Nlwbqh)
 
 ### About This Class
 
@@ -35,5 +35,5 @@ If you're new to Python, don't worry - the course starts with a crash course. If
 If you’re a programmer looking to switch into an exciting new career track, or a data analyst looking to make the transition into the tech industry – this course will teach you the basic techniques used by real-world industry data scientists. I think you'll enjoy it!
 
 *** 
-[^*][sundog-education.com](https://sundog-education.com)
+[sundog-education.com](https://sundog-education.com)
 
