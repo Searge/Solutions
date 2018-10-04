@@ -1,5 +1,5 @@
 # Data Science and Machine Learning with Python - Hands On!
-## Frank Kane[^[sundog-education.com](https://sundog-education.com)] [course on Skillshare 🔗](https://skl.sh/2Nlwbqh)
+## Frank Kane [course on Skillshare 🔗](https://skl.sh/2Nlwbqh)
 
 ### About This Class
 
