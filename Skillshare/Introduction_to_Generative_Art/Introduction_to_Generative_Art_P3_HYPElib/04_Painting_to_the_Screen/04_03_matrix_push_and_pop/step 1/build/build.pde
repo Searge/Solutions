@@ -1,7 +1,5 @@
-
-void setup(){
-
-	size(600,600);
+void setup() {
+	size(600, 600);
 
 	pushMatrix();
 		rotate(radians(45));
@@ -27,6 +25,8 @@ void setup(){
 		rotate(radians(45));
 		rect(500, 100, 50, 50);
 	popMatrix();
-	
 }
 
+void draw() {
+	
+}
