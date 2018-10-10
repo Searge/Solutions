@@ -8,7 +8,7 @@ color clrBG = #ECECEC;
 
 HRect d1,d2,d3,d4,d5;
 
-// *************************************************************************************************************
+// **********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -19,7 +19,10 @@ void setup(){
 
 	d1 = new HRect();
 	d1.size(50).rotation(45).anchorAt(H.CENTER).loc(100, myStageH/2);
-	HRotate r1 = new HRotate().target(d1).speed(1);
+	HRotate r1 = new HRotate().target(d1).speed(-1);
+	// DOESN'T NEED `void draw(){}` with HRotate for rotation
+	// .target() for whom we want to rotate
+	// speend with minus for counterc clockwise
 	H.add(d1);
 
 	d2 = new HRect();
@@ -45,6 +48,8 @@ void setup(){
 
 void draw() {
 	H.drawStage();
+	// inside of draw the loop is firing
+	// H.drawStage over & over again
 
 	line(0, myStageH/2, myStageW, myStageH/2);
 

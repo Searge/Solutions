@@ -8,7 +8,7 @@ color clrBG = #ECECEC;
 
 HRect d1,d2,d3,d4,d5;
 
-// *************************************************************************************************************
+// ****************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -18,7 +18,10 @@ void setup(){
 	H.init(this).background(clrBG);
 
 	d1 = new HRect();
-	d1.size(50).rotation(45).anchor(5,5).loc(100, myStageH/2);
+	d1.size(50).rotation(45).anchor(5, 5).loc(100, myStageH/2);
+			// ANCHOR always has a constant
+			// like H.CENTRE; H.UP; H.LEFT…
+			// able to change for X axis & Y axis
 	HRotate r1 = new HRotate().target(d1).speed(1);
 	H.add(d1);
 

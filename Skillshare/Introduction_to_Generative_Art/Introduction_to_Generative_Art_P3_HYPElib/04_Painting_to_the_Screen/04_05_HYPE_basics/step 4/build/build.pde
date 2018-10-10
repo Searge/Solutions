@@ -4,11 +4,11 @@ import hype.extended.behavior.HRotate;
 int myStageW = 600;
 int myStageH = 600;
 
-color clrBG = #ECECEC;
+color clrBG = #666666;
 
 HRect d1,d2,d3,d4,d5;
 
-// *************************************************************************************************************
+// *******************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -16,7 +16,7 @@ void settings() {
 
 void setup(){
 	H.init(this).background(clrBG).autoClear(true);
-
+								// ↑ wiping background
 	d1 = new HRect();
 	d1.size(50).rotation(45).anchor(5,5).loc(100, myStageH/2);
 	d1.fill( color(random(255),random(255),random(255)) );
