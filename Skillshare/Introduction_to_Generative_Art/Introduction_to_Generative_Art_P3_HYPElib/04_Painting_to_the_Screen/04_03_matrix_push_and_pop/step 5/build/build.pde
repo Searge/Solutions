@@ -3,6 +3,10 @@ void setup(){
 
 	size(600,600);
 	rectMode(CENTER);
+	// what that meant was is
+	// that whatever a rectangle that you make,
+	// the ANCHOR POINT is actualy in the CENTER
+	// of whatever width and height specified
 
 	pushMatrix();
 		translate(100,height/2);

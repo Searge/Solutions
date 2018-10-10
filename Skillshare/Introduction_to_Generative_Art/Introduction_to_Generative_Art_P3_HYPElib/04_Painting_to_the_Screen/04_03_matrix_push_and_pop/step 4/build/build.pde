@@ -5,6 +5,10 @@ void setup(){
 
 	pushMatrix();
 		translate(100,height/2 - (70.711/2) );
+		// Height devided by 2 and substract
+		// in parentheses -> THAT WOULD BE
+		        // the middle of the width & 
+		        // the middle of the height
 		rotate(radians(45));
 		rect(0, 0, 50, 50);
 	popMatrix();
