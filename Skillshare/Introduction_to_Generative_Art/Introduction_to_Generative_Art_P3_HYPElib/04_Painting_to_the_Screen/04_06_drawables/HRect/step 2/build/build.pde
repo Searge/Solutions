@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HRect d;
 
-// *************************************************************************************************************
+// *****************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -18,10 +18,12 @@ void setup(){
 
 	for (int i = 0; i<100; i++){
 		d = new HRect().rounding(10);
+					// round corners
 		d
 			.strokeWeight(1)
 			.stroke(#FF3300)
 			.fill(#111111, 200)
+					// Alpha ↑
 			.size( (int)random(25,125) )
 			.rotate( (int)random(360) )
 			.loc( (int)random(myStageW), (int)random(myStageH) )

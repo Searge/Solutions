@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HRect d;
 
-// *************************************************************************************************************
+// **************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -23,6 +23,7 @@ void setup(){
 			.stroke(#FF3300)
 			.fill(#111111)
 			.size( (int)random(25,75), (int)random(50,150) )
+				// Random Rectangles instead of Squares
 			.rotate( (int)random(360) )
 			.loc( (int)random(myStageW), (int)random(myStageH) )
 			.anchorAt(H.CENTER)

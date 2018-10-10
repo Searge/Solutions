@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HBox d;
 
-// *************************************************************************************************************
+// **********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -25,6 +25,7 @@ void setup(){
 			.strokeWeight(1)
 			.stroke(#FF3300)
 			.fill(#111111, 150)
+					// Alpha ↑
 			.rotationX( (int)random(360) )
 			.rotationY( (int)random(360) )
 			.rotationZ( (int)random(360) )
