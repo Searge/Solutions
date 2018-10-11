@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HPath d;
 
-// *************************************************************************************************************
+// ******************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -20,6 +20,7 @@ void setup() {
 		d = new HPath();
 		d
 			.triangle( H.ISOCELES, H.TOP )
+			// MISSpelling ↑ Isosceles Triangle
 			.strokeWeight(1)
 			.stroke(#FF3300)
 			.fill(#111111)

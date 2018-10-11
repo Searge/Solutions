@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HShape d;
 
-// *************************************************************************************************************
+// *********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -18,6 +18,7 @@ void setup(){
 
 	for (int i = 0; i<25; i++){
 		d = new HShape("vectors.svg");
+		// DON'T MAKE/START COMPLECS VECTORS
 		d
 			.enableStyle(false)
 			.strokeWeight(2)

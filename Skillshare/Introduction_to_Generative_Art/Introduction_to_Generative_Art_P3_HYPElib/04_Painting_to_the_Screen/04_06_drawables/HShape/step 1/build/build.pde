@@ -7,7 +7,7 @@ color clrBG = #202020;
 
 HShape d;
 
-// *************************************************************************************************************
+// *********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -18,8 +18,11 @@ void setup(){
 
 	for (int i = 0; i<100; i++){
 		d = new HShape("vectors.svg");
+		// d for Drawable
 		d
 			.enableStyle(false)
+			// don't use the styling
+			// that I used in Illustrator
 			.strokeWeight(1)
 			.stroke(#FF3300)
 			.fill(#111111)

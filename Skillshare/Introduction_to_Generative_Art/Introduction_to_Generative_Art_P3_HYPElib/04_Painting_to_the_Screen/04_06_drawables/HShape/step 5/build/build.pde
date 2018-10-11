@@ -9,7 +9,7 @@ color clrBG = #FFFFFF;
 HShape d;
 HColorPool colors;
 
-// *************************************************************************************************************
+// *********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -33,6 +33,7 @@ void setup(){
 			.anchorAt(H.CENTER)
 		;
 		d.randomColors( colors.fillOnly() );
+		// Random Colors from HColorPool
 		H.add(d);
 	}
 
