@@ -8,8 +8,9 @@ color clrBG = #202020;
 
 HRect d;
 HColorPool colors;
+// init HColorPool
 
-// *************************************************************************************************************
+// *******************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -26,6 +27,8 @@ void setup(){
 			.strokeWeight(1)
 			.stroke(#000000)
 			.fill( colors.getColor() )
+			// goes to set the fill with randomly pick one of those
+			// `colors` & add it to the fill color
 			.size( (int)random(25,125) )
 			.rotate( (int)random(360) )
 			.loc( (int)random(myStageW), (int)random(myStageH) )

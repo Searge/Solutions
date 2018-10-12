@@ -9,7 +9,7 @@ color clrBG = #202020;
 HRect d;
 HColorPool colors;
 
-// *************************************************************************************************************
+// **********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -17,15 +17,18 @@ void settings() {
 
 void setup(){
 	H.init(this).background(clrBG);
-
+	// what we want do: is add this idea of color waiting
+	// dow to you add weight to specific colors more then others?
 	colors = new HColorPool()
-		.add(#FFFFFF,9)
+		// adding colors manually & telling
+		// how many of them we want to store
+		.add(#FFFFFF)
 		.add(#ECECEC,9)
 		.add(#CCCCCC,9)
 		.add(#333333,3)
 		.add(#0095a8,2)
 		.add(#00616f,2)
-		.add(#FF3300)
+		.add(#FF3300,6)
 		.add(#FF6600)
 	;
 
