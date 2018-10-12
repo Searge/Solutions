@@ -9,7 +9,7 @@ color clrBG = #202020;
 HRect d;
 HPixelColorist colors;
 
-// *************************************************************************************************************
+// ********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -17,6 +17,9 @@ void settings() {
 
 void setup(){
 	H.init(this).background(clrBG);
+
+	// H.add(new HImage("kelp.jpg"));
+	// removing bg image ↑
 
 	colors = new HPixelColorist("kelp.jpg").fillOnly();
 
