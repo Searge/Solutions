@@ -29,7 +29,11 @@ void setup(){
 			.strokeWeight(3)
 			.stroke( colors.getColor( d.x(), d.y() ) )
 			.fill( colors.getColor( d.x(), d.y() ), 100 )
-			// This is only used if you are looking to apply color to both the Stroke and the Fill, but have an alpha of 100 applied to the Fill assets only. Please notice that when using d.x() and d.y() that .loc() would need to be moved above any d.x() and d.y() calls or it will return 0 for both values every time.
+			// This is only used if you are looking to apply color to both the Stroke and
+			// the Fill, but have an alpha of 100 applied to the Fill assets only. 
+			// PLEASE NOTICE that when using d.x() and d.y() that .loc() 
+			// would need to be moved ABOVE ↑ any d.x() and d.y() calls 
+			// OR it will return 0 for both values every time.
 			.size( (int)random(25,125) )
 			.rotate( (int)random(360) )
 			.anchorAt(H.CENTER)
