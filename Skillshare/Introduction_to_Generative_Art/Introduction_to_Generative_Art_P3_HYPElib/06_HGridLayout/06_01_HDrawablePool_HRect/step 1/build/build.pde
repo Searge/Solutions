@@ -29,10 +29,22 @@ void setup(){
 
 	pool = new HDrawablePool(100);
 	pool.autoAddToStage()
+		// 3 fundamental things we're working with
+		// when we're saying `autoAddToStage()`
 		.add(new HRect(), 20)
+		// 1: who're we painting with?
 		.add(new HRect().rounding(10))
 		.onCreate(
+			// 3: Now, when requestAll fires & it's going to fire 100 times
+			// it's this ↑ onCreate
+			// that's what happens to eaach individual thing
+			// getting drawn on screen
+			// so think that onCreate is going run a 100 times
+			// in the onCreate I want to specify basically this code here
 			new HCallback() {
+				// this Callback creates an instance of our drawable called `d`
+				// `d` is equal drawable obj that you've specified on line 34:
+					// `new HRect()`
 				public void run(Object obj) {
 					HDrawable d = (HDrawable) obj;
 					d
@@ -48,6 +60,8 @@ void setup(){
 			}
 		)
 		.requestAll()
+		// 2: requestAll basically says: give me all 100 of them (in HDrawablePool(100))
+		// just like `for loop` does
 	;
 
 	H.drawStage();
