@@ -9,7 +9,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -20,7 +20,7 @@ void setup(){
 
 	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
 
-	pool = new HDrawablePool(50);
+	pool = new HDrawablePool(42);
 	pool.autoAddToStage()
 		.add(new HShape("mongo1.svg"))
 		.add(new HShape("mongo2.svg"))
