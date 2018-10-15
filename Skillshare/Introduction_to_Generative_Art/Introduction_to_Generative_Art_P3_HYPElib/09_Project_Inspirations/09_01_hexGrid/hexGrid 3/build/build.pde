@@ -8,9 +8,9 @@ int myStageH = 600;
 color clrBG = #FFFFFF;
 
 HDrawablePool dp1, dp2, dp3;
-HPixelColorist cp1;
+HPixelColorist cp1; // we want to steal color from actually a gradient jpg
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -43,6 +43,8 @@ void setup(){
 	dp3.autoAddToStage()
 		.add (new HShape("hexagon.svg"))
 		.layout (new HGridLayout().startX(66).startY(65).spacing(78,51).cols(7))
+		// on top of second grid but using each pixel colorist
+		// to transition from white up at the top towards black bottom
 		.onCreate (new HCallback() {public void run(Object obj) {
 			HShape d = (HShape) obj;
 			d.enableStyle(false).size(40).noStroke().anchorAt(H.CENTER);
