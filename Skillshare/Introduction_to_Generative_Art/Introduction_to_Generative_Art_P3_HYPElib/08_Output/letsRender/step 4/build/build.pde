@@ -48,11 +48,11 @@ void setup(){
 						.strokeJoin(ROUND)
 						.strokeCap(ROUND)
 						.strokeWeight(1) // stroke scaling with size scaling
-						// in Illustartor:
-								// select all strokes;
-								// ⌘H -> hide selection
-								// dublicate stroke, make 3 px & oppasity for 20 %
-								// for best print result
+							// in Illustartor:
+									// select all strokes;
+									// ⌘H -> hide selection
+									// dublicate stroke, make 3 px & oppasity for 20 %
+									// for best print result
 						.stroke(#000000)
 						// .anchorAt(H.CENTER)
 						.rotate( (int)random(4) * 90 )
