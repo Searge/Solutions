@@ -8,7 +8,7 @@ color clrBG = #202020;
 
 HRect r1;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -30,6 +30,8 @@ void setup(){
 	 
 	HRotate hr1 = new HRotate();
 	hr1.target(r1).speedRad(-TWO_PI/90);
+	// the only difference in exmp 2 that `speedRad`
+	// going to give you rotation in radians
 }
 
 void draw() {
