@@ -14,7 +14,7 @@ HColorPool colors;
 boolean paused = false;
 boolean record = false;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -46,8 +46,12 @@ void setup(){
 	.onCreate(
 		new HCallback() {
 			public void run(Object obj) {
-
+				// using scale as opposite to size
+				// scale is percentage, so 0.5 is 50% smaller
+				// & 2 would be 200% bigger
 				float ranScale = 1 + ( (int)random(16)*0.3 );
+				// at base it should be 1, then pick random 16 number
+				// & jump in increments of 0.3
 
 				HShape d = (HShape) obj;
 				d
@@ -57,6 +61,9 @@ void setup(){
 					.scale( ranScale )
 					.noFill()
 					.strokeWeight(10 * (1/ranScale) )
+					// as the artwork scales up
+					// it scales strokeWeight down
+					// so stroke same weight no matter what the size
 					.strokeJoin(ROUND)
 					.strokeCap(ROUND)
 				;

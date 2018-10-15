@@ -15,7 +15,7 @@ HColorPool colors;
 boolean paused = false;
 boolean record = false;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -64,16 +64,21 @@ void setup(){
 				;
 				d.randomColors(colors.strokeOnly());
 
-				// oscillation
+				//    ____            _ ____      __  _           
+				//   / __ \__________(_) / /___ _/ /_(_)___  ____ 
+				//  / / / / ___/ ___/ / / / __ `/ __/ / __ \/ __ \
+				// / /_/ (__  ) /__/ / / / /_/ / /_/ / /_/ / / / /
+				// \____/____/\___/_/_/_/\__,_/\__/_/\____/_/ /_/ 
+				                                               
 
 				int i = pool.currentIndex();
 
-				new HOscillator()
+				new HOscillator() // drawing with wave function
 					.target(d)
 					.property(H.ROTATION)
-					.range(-180, 180)
+					.range(-180, 180) // Oscillate from negative to positive
 					.speed(0.5)
-					.freq(1)
+					.freq(1) // FREQUENCY of the wave
 					.currentStep(i)
 				;
 			}

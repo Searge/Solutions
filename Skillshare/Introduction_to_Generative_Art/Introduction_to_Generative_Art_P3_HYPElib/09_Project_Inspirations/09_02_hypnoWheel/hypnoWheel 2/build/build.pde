@@ -14,7 +14,7 @@ HColorPool colors;
 boolean paused = false;
 boolean record = false;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -59,6 +59,7 @@ void setup(){
 					.strokeWeight(10 * (1/ranScale) )
 					.strokeJoin(SQUARE)
 					.strokeCap(SQUARE)
+					// SQUARING caps, not rounding
 				;
 				d.randomColors(colors.strokeOnly());
 
