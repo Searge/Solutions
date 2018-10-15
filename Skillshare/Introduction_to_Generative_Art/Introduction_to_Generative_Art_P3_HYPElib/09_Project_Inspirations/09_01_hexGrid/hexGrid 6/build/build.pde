@@ -12,7 +12,7 @@ HDrawablePool dp1, dp2, dp3, dp4, dp5, dp6;
 HPixelColorist cp1;
 HColorPool cp2;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -72,14 +72,16 @@ void setup(){
 			cp2.applyColor(d);
 		}}).requestAll();
 
-	dp6 = new HDrawablePool(88);
+	dp6 = new HDrawablePool(88); // Copy of dp5
 	dp6.autoAddToStage()
 		.add (new HShape("hexagon.svg"))
 		.layout (new HGridLayout().startX(27).startY(40).spacing(78,51).cols(8))
 		.onCreate (new HCallback() {public void run(Object obj) {
 			HShape d = (HShape) obj;
 			d.enableStyle(false).size(25).noStroke().anchorAt(H.CENTER);
+			// size to 25
 			cp1.applyColor(d);
+			// using gradient from PixelColorist
 		}}).requestAll();
 
 	H.drawStage();

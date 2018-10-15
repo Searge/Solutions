@@ -10,9 +10,9 @@ color clrBG = #FFFFFF;
 
 HDrawablePool dp1, dp2, dp3, dp4;
 HPixelColorist cp1;
-HColorPool cp2;
+HColorPool cp2; // adding ColorPool from previous examples ↓
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -59,7 +59,9 @@ void setup(){
 		.onCreate (new HCallback() {public void run(Object obj) {
 			HShape d = (HShape) obj;
 			d.enableStyle(false).size(20).noStroke().anchorAt(H.CENTER);
+			// reduce size of hexagon ↑ 
 			cp2.applyColor(d);
+			// using colors from ColorPool instead PixelColorist
 		}}).requestAll();
 
 	H.drawStage();

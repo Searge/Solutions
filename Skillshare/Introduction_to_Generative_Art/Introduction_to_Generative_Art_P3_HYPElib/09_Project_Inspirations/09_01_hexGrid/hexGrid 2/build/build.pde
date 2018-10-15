@@ -8,7 +8,7 @@ color clrBG = #FFFFFF;
 
 HDrawablePool dp1, dp2;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -30,6 +30,7 @@ void setup(){
 	dp2.autoAddToStage()
 		.add (new HShape("hexagon.svg"))
 		.layout (new HGridLayout().startX(66).startY(65).spacing(78,51).cols(7))
+		// NOTICE: we have a different start X & Y ↑
 		.onCreate (new HCallback() {public void run(Object obj) {
 			HShape d = (HShape) obj;
 			d.enableStyle(false).noStroke().fill(#FF3300).anchorAt(H.CENTER);
