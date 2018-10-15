@@ -10,7 +10,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -32,7 +32,10 @@ void setup(){
 
 		.layout(
 			new HShapeLayout()
+			// you have to pass an argument of `.target()`
+			// `HShapeLayout` wants to know, what am I using as Shape
 			.target(
+				// shape target is new HImage
 				new HImage("shapeMap.png")
 			)
 		)
