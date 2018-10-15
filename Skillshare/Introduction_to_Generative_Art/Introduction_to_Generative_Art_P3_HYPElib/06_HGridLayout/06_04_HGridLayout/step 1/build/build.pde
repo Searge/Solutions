@@ -10,7 +10,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -23,19 +23,24 @@ void setup(){
 
 	pool = new HDrawablePool(121);
 	pool.autoAddToStage()
-		.add(new HShape("svg1.svg"))
+		.add(new HShape("svg1.svg"), 11)
 		.add(new HShape("svg2.svg"))
 		.add(new HShape("svg3.svg"))
 		.add(new HShape("svg4.svg"))
 		.add(new HShape("svg5.svg"))
-		.add(new HShape("svg6.svg"))
+		.add(new HShape("svg6.svg"), 22)
 
 		.layout(
 			new HGridLayout()
-			.startX(25)
-			.startY(25)
-			.spacing(50,50)
-			.cols(11)
+			// where GridLayout start
+			.startX(25) // this is the starting position of the X & Y axis
+			.startY(25) // Starts on 25 without `.anchorAt(H.CENTER)`
+			 // because a grid made up of cells & rows & columns
+			.spacing(50,50) // spacing between each of cells
+			.cols(11) // the only reason why to specify columns
+			// is because HDrawablePool has a number of assets that are being drawn
+			// so… 121/11 would tell you how many rows the grid is going to have
+			// there's no need to specify rows
 		)
 
 		.onCreate(
@@ -49,6 +54,7 @@ void setup(){
 						.strokeWeight(1)
 						.stroke(#000000)
 						// .anchorAt(H.CENTER)
+						// .rotate((int)random(4) * 90);
 					;
 					d.randomColors(colors.fillOnly());
 				}
