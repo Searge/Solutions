@@ -64,7 +64,11 @@ void setup(){
 				;
 				d.randomColors(colors.strokeOnly());
 
-				// oscillation
+				//    ____            _ ____      __  _           
+				//   / __ \__________(_) / /___ _/ /_(_)___  ____ 
+				//  / / / / ___/ ___/ / / / __ `/ __/ / __ \/ __ \
+				// / /_/ (__  ) /__/ / / / /_/ / /_/ / /_/ / / / /
+				// \____/____/\___/_/_/_/\__,_/\__/_/\____/_/ /_/
 
 				int i = pool.currentIndex();
 
@@ -79,8 +83,8 @@ void setup(){
 
 				new HOscillator()
 					.target(d)
-					.property(H.SCALE)
-					.range(0.25, 1.5)
+					.property(H.SCALE) // CHANGING SCALE
+					.range(0.25, 1.5) // from 0.25 to 1.5
 					.speed(0.5)
 					.freq(4)
 					.currentStep(i)
