@@ -22,7 +22,7 @@ Through screen captured footage I will walk you through the process of creating 
 - **Wave Oscillation** (`HOscillator`). My favorite! How to use wave oscillation to animate things on screen using sine, square, triangle and saw waves.
 - **Finishing Touches and Output.** How to combine animations and classes and output our animations to video.
 
-![snakes](http://s3.amazonaws.com/skillshare/uploads/parentClasses/0064f599ed0adb5870a5b3ffe438e485/323aaf60)
+![snakes](http://s3.amazonaws.com/skillshare/uploads/session/tmp/1d4f1c77)
 
 ### What You'll Make
 

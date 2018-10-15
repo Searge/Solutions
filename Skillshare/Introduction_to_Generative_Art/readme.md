@@ -1,7 +1,6 @@
 # Programming Graphics I: Introduction to Generative Art
-
+> by [Joshua Davis](https://skl.sh/2E2Y8Uz)
 ## About This Class
-> of [Joshua Davis](https://skl.sh/2E2Y8Uz)
 
 ![Generative art is all about using programming](http://s3.amazonaws.com/skillshare/uploads/parentClasses/b22b257ad0519d4500539da3c8bcf4dd/9c3f8e54)
 
