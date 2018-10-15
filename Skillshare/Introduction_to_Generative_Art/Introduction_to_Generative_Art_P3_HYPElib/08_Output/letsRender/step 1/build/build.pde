@@ -10,7 +10,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -59,6 +59,6 @@ void setup(){
 
 	H.drawStage();
 
-	saveFrame("render.tga");
+	saveFrame("render.tga"); // .jpg; .png; .tif; .tga
 }
  

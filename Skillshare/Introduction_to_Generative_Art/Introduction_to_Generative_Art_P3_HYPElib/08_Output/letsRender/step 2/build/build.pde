@@ -10,14 +10,14 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
 }
 
 void setup(){
-	H.init(this).background(clrBG);
+	H.init(this).background(H.CLEAR);
 
 	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
 
@@ -57,16 +57,19 @@ void setup(){
 		.requestAll()
 	;
 
-	saveHiRes(2);
-	noLoop();
+	saveHiRes(2); // ← Calling function BEFORE `noLoop()` & pass it an integer
+	noLoop(); // RUN `draw()` Function ONCE & THEN SHUT IT DOWN
 }
  
 void draw() {
+	// copy `drawStage` to the draw loop
 	H.drawStage();
 }
 
 void saveHiRes(int scaleFactor) {
+	// int from previous call -> scaleFactor
 	PGraphics hires = createGraphics(width*scaleFactor, height*scaleFactor, JAVA2D);
+			// High Resolution	…  i.e. 600*2 = 1200×1200 px
 
 	beginRecord(hires);
 	hires.scale(scaleFactor);

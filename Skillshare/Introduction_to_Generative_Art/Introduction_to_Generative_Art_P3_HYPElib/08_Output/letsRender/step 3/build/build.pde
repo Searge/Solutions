@@ -11,7 +11,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -58,7 +58,7 @@ void setup(){
 		.requestAll()
 	;
 
-	saveVector();
+	saveVector(); // instead of `saveHiRes()`
 	noLoop();
 }
  
@@ -67,6 +67,7 @@ void draw() {
 }
 
 void saveVector() {
+	// doesn't need `scaleFactor` because it's VECTOR ツ
 	PGraphics tmp = null;
 	tmp = beginRecord(PDF, "render.pdf");
 
