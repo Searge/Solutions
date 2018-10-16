@@ -6,7 +6,7 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HFollow mf;
+HFollow mf; // mouse follow
 HRect r1;
 
 // ***************************************************************************************
