@@ -8,7 +8,7 @@ color clrBG = #202020;
 
 HRect r1, r2, r3;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -48,7 +48,8 @@ void setup(){
 
 void draw() {
 	H.drawStage();
-
+	// BECAUSE anchor @ CENTER
+	// Ellipses & Rotation are in Center
 	noFill(); strokeWeight(2); stroke(#0095a8);
 	ellipse(r1.x(), r1.y(), 4, 4);
 	ellipse(r2.x(), r2.y(), 4, 4);

@@ -8,7 +8,7 @@ color clrBG = #202020;
 
 HRect r1, r2, r3;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -19,7 +19,7 @@ void setup(){
 
 	r1 = new HRect(100).rounding(10);
 	H.add(r1)
-		.loc(myStageW/2 - 160,myStageH/2)
+		.loc(myStageW/2 - 160,myStageH/2) // - 160 px left
 		.noStroke()
 		.fill(#FF3300)
 	;
@@ -33,11 +33,14 @@ void setup(){
 
 	r3 = new HRect(100).rounding(10);
 	H.add(r3)
-		.loc(myStageW/2 + 160,myStageH/2)
+		.loc(myStageW/2 + 160,myStageH/2) // + 160 px right
 		.noStroke()
 		.fill(#FF9900)
 	;
-
+	// YOU CAN CALL
+	// ╔╦╗┬ ┬┬ ┌┬┐┬┌─┐┬  ┌─┐  ╦═╗┌─┐┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+	// ║║║│ ││  │ │├─┘│  ├┤   ╠╦╝│ │ │ ├─┤ │ ││ ││││└─┐
+	// ╩ ╩└─┘┴─┘┴ ┴┴  ┴─┘└─┘  ╩╚═└─┘ ┴ ┴ ┴ ┴ ┴└─┘┘└┘└─┘
 	new HRotate(r1, 0.5);
 	new HRotate(r2, 1);
 	new HRotate(r3, 1.5);

@@ -8,7 +8,7 @@ color clrBG = #202020;
 
 HRect r1, r2, r3;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -19,6 +19,7 @@ void setup(){
 
 	r1 = new HRect(100).rounding(10);
 	H.add(r1)
+		// Instead of using anchorAt() we're using anchor()
 		.anchor(50,25)
 		.loc(myStageW/2 - 160,myStageH/2)
 		.noStroke()
