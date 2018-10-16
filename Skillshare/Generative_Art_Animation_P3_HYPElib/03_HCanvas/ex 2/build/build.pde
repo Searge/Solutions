@@ -8,7 +8,7 @@ color clrBG = #202020;
 
 HRect r1;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -29,7 +29,8 @@ void setup(){
 }
 
 void draw() {
-	fill(#202020,10);
+	fill(#202020,10); // Opasity ツ
+	// instead of the alpha being 255, the alpha is only 10
 	rect(0,0,myStageW,myStageH);
 
 	H.drawStage();
