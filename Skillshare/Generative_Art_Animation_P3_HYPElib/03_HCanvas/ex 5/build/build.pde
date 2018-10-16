@@ -9,7 +9,7 @@ color clrBG = #202020;
 HCanvas c1, c2, c3;
 HRect r1, r2, r3;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -22,6 +22,7 @@ void setup(){
 	c2 = new HCanvas().autoClear(false).fade(8);
 	c3 = new HCanvas().autoClear(false).fade(2);
 
+	// each rectangle painting on separete Canvas
 	H.add(c1);
 	H.add(c2);
 	H.add(c3);
