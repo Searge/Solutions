@@ -11,7 +11,7 @@ HColorPool colors;
 HFollow mf;
 HRect r1;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -40,7 +40,7 @@ void setup(){
 }
 
 void draw() {
-	r1.stroke( colors.getColor() );
+	r1.stroke( colors.getColor() ); // get randomly color out of HColorPool
 
 	H.drawStage();
 }

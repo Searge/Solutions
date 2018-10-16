@@ -9,7 +9,7 @@ color clrBG = #202020;
 HFollow mf;
 HRect r1;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -33,6 +33,7 @@ void setup(){
 	mf = new HFollow()
 		.target(r1)
 		.ease(0.1)
+		// r1 is chasing the mouse, but it does have some easing to it
 	;
 }
 
