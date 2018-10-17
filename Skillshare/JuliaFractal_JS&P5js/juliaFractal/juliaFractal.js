@@ -21,6 +21,7 @@ function isInJuliaSet(x, y) {
   var maxTimes = 100;
   var sx = map(x, 0, width, -2, 2);
   var sy = map(y, 0, height, -2, 2);
+  var i = 0;
   while (i < maxTimes) {
     var real = sx * sx - sy * sy;
     var imag = 2 * sx * sy;
