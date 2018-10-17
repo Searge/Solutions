@@ -12,7 +12,7 @@ HTimer timer;
 HRect r1;
 HColorPool colors;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -29,11 +29,11 @@ void setup(){
 	r1 = new HRect(100).rounding(10);
 	c1.add(r1)
 		.anchorAt(H.CENTER)
-		.loc( (int)random(myStageW),(int)random(myStageH))
 		.noStroke()
-		.fill( colors.getColor() )
 		.rotation(45)
-		.size( 25+((int)random(4)*25) )
+		// .loc( (int)random(myStageW),(int)random(myStageH))
+		// .fill( colors.getColor() )
+		// .size( 25+((int)random(4)*25) )
 	;
 
 	timer = new HTimer()

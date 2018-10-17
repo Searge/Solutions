@@ -9,7 +9,7 @@ color clrBG = #202020;
 HTimer timer;
 HRect r1;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -20,7 +20,8 @@ void setup(){
 
 	r1 = new HRect(100).rounding(10);
 	H.add(r1)
-		.loc( (int)random(myStageW),(int)random(myStageH))
+		// .loc( (int)random(myStageW),(int)random(myStageH))
+		// All works w/o this piece ↑
 		.noStroke()
 		.fill(#FF3300)
 		.rotation(45)
@@ -32,6 +33,7 @@ void setup(){
 			new HCallback() { 
 				public void run(Object obj) {
 					r1.loc( (int)random(myStageW),(int)random(myStageH));
+					// reset location randomly
 				}
 			}
 		)
