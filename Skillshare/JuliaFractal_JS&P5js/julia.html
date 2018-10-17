@@ -25,7 +25,7 @@
         function draw() {
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < height; j++) {
-                    stroke(getJuliaColor(i, j) % 360, 100, 100);
+                    stroke(getJuliaColor(i, j) % 360, width, height);
                     point(i, j);
                 }
             }
