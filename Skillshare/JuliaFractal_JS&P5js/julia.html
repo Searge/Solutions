@@ -11,7 +11,7 @@
 <body>
     <script>
         function setup() {
-            createCanvas(500, 500);
+            createCanvas(800, 800);
             background(10, 10, 100);
             noLoop();
             colorMode(HSB);
@@ -32,8 +32,9 @@
         }
         function getJuliaColor(x, y) {
             var maxTimes = 500;
-            var sx = map(x, 0, width, -2, 2);
-            var sy = map(y, 0, height, -2, 2);
+            var zoomFactor = 0.5
+            var sx = map(x, 0, width, -2, 2) * zoomFactor;
+            var sy = map(y, 0, height, -2, 2) * zoomFactor;
             var i = 0;
             while (i < maxTimes) {
                 // calculate `z` square, because `z` is:
