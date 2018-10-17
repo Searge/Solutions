@@ -1,0 +1,40 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Julia Fractal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(500, 500);
+            background(10, 10, 100);
+            noLoop();
+            // math: 𝒇(z) = z² + c
+            // where: z = x + iy 
+            //        c = 0.2 + 0.3i
+            // f(z) -> f(f(z)) -> f(f(f(z))) ...
+            // is in Julia set only if
+            //                   |f(z)| < 2
+        }
+        function isInJuliaSet(x, y) {
+            var maxTimes = 100;
+            var sx = map(x, 0, width, -2, 2);
+            var sy = map(y, 0, height, -2, 2);
+            while (i < maxTimes) {
+                // calculate `z` square, because `z` is:
+                // (x + iy)² = x² - y² + 2ixy
+                var real = sx * sx - sy * sy;
+                var imag = 2 * sx * sy;
+
+                sx = real + 0.35;
+                sy = imag + 0.2;
+            }
+        }
+    </script>
+</body>
+</html>
