@@ -14,6 +14,7 @@
             createCanvas(500, 500);
             background(10, 10, 100);
             noLoop();
+            colorMode(HSB);
             // math: 𝒇(z) = z² + c
             // where: z = x + iy 
             //        c = 0.2 + 0.3i
@@ -24,7 +25,7 @@
         function draw() {
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < height; j++) {
-                    stroke(getJuliaColor(i, j) % 255, 0, 0);
+                    stroke(getJuliaColor(i, j) % 360, 100, 100);
                     point(i, j);
                 }
             }
