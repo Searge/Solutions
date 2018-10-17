@@ -13,7 +13,7 @@ HColorPool colors;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -25,10 +25,14 @@ void setup(){
 	c1 = new HCanvas().autoClear(false).fade(5);
 	H.add(c1);
 
-	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
+	colors = new HColorPool(#FFFFFF, #F7F7F7, 
+							#ECECEC, #333333, 
+							#0095a8, #00616f, 
+							#FF3300, #FF6600);
 
 	pool = new HDrawablePool(100);
-	pool.autoParent(c1)
+	pool.autoParent(c1) // because «HTimer 6» actually has an HCanvas...
+		// I say: 'Hey, pool, autoParent into c1'
 		.add (
 			new HRect()
 			.rounding(40)
@@ -43,10 +47,12 @@ void setup(){
 						.fill(colors.getColor(), 200)
 						.loc( (int)random(myStageW), (int)random(myStageH) )
 						.size( 25+((int)random(4)*25) )
-						.anchor( 0, -25 )
+						.anchor( 0, -25 ) // ALSO CHANGED
 					;
 
-					new HRotate(d, random(-2,2) );
+					new HRotate(d, random(-2,2) ); 
+					// as the onCreate is creating 100 unique HRectangles,
+					// HRotate creates a unique HRotate with each individual assets
 				}
 			}
 		)

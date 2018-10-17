@@ -14,7 +14,7 @@ HColorPool colors;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -26,9 +26,12 @@ void setup(){
 	c1 = new HCanvas().autoClear(false).fade(5);
 	H.add(c1);
 
-	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
+	colors = new HColorPool(#FFFFFF, #F7F7F7, 
+							#ECECEC, #333333, 
+							#0095a8, #00616f, 
+							#FF3300, #FF6600);
 
-	pool = new HDrawablePool(50);
+	pool = new HDrawablePool(50); // only 50 items attached, instead of 100
 	pool.autoParent(c1)
 		.add (
 			new HRect()
@@ -49,6 +52,7 @@ void setup(){
 
 					new HRotate(d, random(-2,2) );
 					new HOscillator().target(d).property(H.SCALE).range(-1, 1).speed(0.5).freq(5).currentStep(pool.currentIndex());
+					// a uniquw HOscilator
 
 				}
 			}
