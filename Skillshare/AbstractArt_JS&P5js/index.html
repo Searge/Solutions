@@ -5,10 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Creating Abstract Art With JavaScript And P5.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://raw.githubusercontent.com/lmccart/p5.js/master/lib/addons/p5.dom.js"></script>
 </head>
 <body>
-    
+    <script>
+        /*
+            x_{n+1} =  sin(ay_n) - cos(bx_n)
+            y_{n+1} = sin(cx_n) - cos(dy_n)
+        */
+        var a = 1.4, b = -2.1, c = 2.8, d = -2.5;
+        // make sure they all falls in range from -3 to +3
+        var x = 1, y = 1;
+
+        function setup() {
+            createCanvas(500, 500);
+            stroke(150, 50, 20, 50);
+        }
+
+        function draw() {
+            for(var i=0; i<1000; i++) {
+                var oldX = x;
+                var oldY = y;
+                x = sin(a * oldY) - cos(b * oldX);
+                y = sin(c * oldX) - cos(d * oldX);
+                var scaledX = map(x, -2, 2, 0, width);
+                var scaledY = map(y, -2, 2, 0, height);
+                point(scaledX, scaledY);
+            }
+        }
+    </script>
 </body>
 </html>
