@@ -12,7 +12,7 @@ HTween t1;
 int startX = 160;
 int endX   = 480;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -36,7 +36,7 @@ void setup(){
 		.start( startX, myStageH/2 )
 		.end( endX, myStageH/2 )
 		.ease(0.05)
-		.spring(0.95)
+		.spring(0.95) // BOUNCING || ELASTICITY
 	;
 }
 

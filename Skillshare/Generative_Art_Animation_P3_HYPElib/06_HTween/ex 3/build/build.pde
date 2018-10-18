@@ -9,11 +9,17 @@ color clrBG = #202020;
 HRect r1;
 HTween t1;
 HCallback tweenDone1, tweenDone2;
+/*
+		 Going to use HTween in conjunction with callbacks 
+		to move our asset from position A to B & then, when 
+		it has arrived @ B, I want to move it back to A again
+		& then, start this loop ➿.
+*/
 
 PVector pt1 = new PVector(160,320); // left
 PVector pt2 = new PVector(480,320); // right
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -48,6 +54,7 @@ void setup(){
 				.start( pt2.x, pt2.y )
 				.end( pt1.x, pt1.y )
 				.register().callback(tweenDone2)
+				// ↑ Creating link
 			;
 		}
 	};
@@ -65,6 +72,7 @@ void setup(){
 	};
 
 	t1.register().callback(tweenDone1);
+	// after setup this 2 scenario: tell tween 1 it shold register & call back
 
 }
 
