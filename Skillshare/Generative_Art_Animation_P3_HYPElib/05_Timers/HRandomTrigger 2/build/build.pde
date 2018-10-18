@@ -15,7 +15,7 @@ HDrawablePool pool;
 HColorPool colors;
 HRect r1;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -29,7 +29,10 @@ void setup(){
 	c1 = new HCanvas().autoClear(false).fade(5);
 	H.add(c1);
 
-	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
+	colors = new HColorPool(#FFFFFF, #F7F7F7, 
+							#ECECEC, #333333, 
+							#0095a8, #00616f, 
+							#FF3300, #FF6600);
 
 	pool = new HDrawablePool(50);
 	pool.autoParent(c1)
@@ -57,6 +60,7 @@ void setup(){
 		)
 	;
 
+	// it ↓ has 1 in 30th chance of actually doing a pool back request
 	randomTimer.callback(
 		new HCallback() {
 			public void run(Object obj) {
