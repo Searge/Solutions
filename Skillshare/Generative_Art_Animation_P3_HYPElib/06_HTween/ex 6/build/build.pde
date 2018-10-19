@@ -6,8 +6,8 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HRect r1;
-HTween t1, t2;
+HRect r1; // still only 1 rectangle
+HTween t1, t2; // T1 — location tween; T2 — rotation tween
 HCallback tweenDone1, tweenDone2;
 HCallback rotateDone1, rotateDone2;
 

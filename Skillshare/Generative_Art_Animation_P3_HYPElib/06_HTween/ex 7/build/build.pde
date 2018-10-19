@@ -6,7 +6,7 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HRect r1, r2, r3;
+HRect r1, r2, r3; // THREE Rectangles
 HTween t1, t2;
 HCallback tweenDone1, tweenDone2;
 HCallback rotateDone1, rotateDone2;
@@ -26,11 +26,13 @@ void setup(){
 	r1 = new HRect(100).rounding(10);
 	H.add(r1).anchorAt(H.CENTER).loc(pt1.x, pt1.y).noStroke().fill(#FF3300);
 
-	r2 = new HRect(50).rounding(5);
+	r2 = new HRect(50).rounding(5); // size is 1/2 of previous
 	r1.add(r2).anchorAt(H.CENTER).noStroke().fill(#FF6600);
+	// nested in r1 | doesn't specify location, coz it 0,0
 
-	r3 = new HRect(25);
+	r3 = new HRect(25); // size is 1/2 of previous
 	r1.add(r3).anchorAt(H.CENTER).noStroke().fill(#00616f);
+	// nested in r1 | doesn't specify location, coz it 0,0
 
 	// LEFT to RIGHT loop
 
