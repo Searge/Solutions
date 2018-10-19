@@ -7,7 +7,7 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HPixelColorist colors;
+HPixelColorist colors; // HPixelColorist
 
 HRect r1;
 HTween t1;
@@ -19,14 +19,14 @@ PVector pt4 = new PVector(160,480); // bottom, left
 
 HCallback cb1, cb2, cb3, cb4;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
 }
 
 void setup(){
-	H.init(this).background(clrBG);
+	H.init(this).background(clrBG).autoClear(false);
 
 	colors = new HPixelColorist("color.jpg").fillOnly();
 
