@@ -20,7 +20,7 @@ PVector pt4 = new PVector(160,480); // bottom, left
 
 HCallback cb1, cb2, cb3, cb4;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -38,6 +38,7 @@ void setup(){
 		.fill(#FFFFFF)
 	;
 	r1.depth(500).width(50).height(100).anchorAt(H.CENTER);
+	// DISTORTING ↑
 
 	new HOscillator()
 		.target(r1)
@@ -86,9 +87,9 @@ void setup(){
 }
 
 void draw() {
-	pointLight(204, 204, 204,  0, myStageH/2, -50);
-	pointLight(204, 204, 204,  myStageW, myStageH/2, -100);
-	pointLight(255, 255, 255,  myStageW/2, 100, 150);
+	pointLight(204, 204, 204,  0, myStageH/2, -50);	// 𝙻𝚒𝚐𝚑𝚝𝙶𝚛𝚊𝚢
+	pointLight(204, 204, 204,  myStageW, myStageH/2, -100);	// 𝙻𝚒𝚐𝚑𝚝𝙶𝚛𝚊𝚢
+	pointLight(255, 255, 255,  myStageW/2, 100, 150); // 𝘞𝘩𝘪𝘵𝘦
 
 	colors.applyColor(r1);
 	H.drawStage();

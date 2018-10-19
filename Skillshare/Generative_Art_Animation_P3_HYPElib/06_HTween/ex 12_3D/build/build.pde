@@ -10,7 +10,7 @@ color clrBG = #000000;
 
 HPixelColorist colors;
 
-HBox r1;
+HBox r1; // B⃣O⃣X⃣
 HTween t1;
 
 PVector pt1 = new PVector(160,160); // top, left
@@ -20,7 +20,7 @@ PVector pt4 = new PVector(160,480); // bottom, left
 
 HCallback cb1, cb2, cb3, cb4;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -50,8 +50,8 @@ void setup(){
 
 	new HOscillator()
 		.target(r1)
-		.property(H.Z)
-		.range(-400, 100)
+		.property(H.Z) // Z-axis
+		.range(-400, 100) // away from you, towards you
 		.speed(0.5)
 		.freq(15)
 	;
@@ -90,6 +90,7 @@ void draw() {
 	pointLight(255, 51, 0,  0, myStageH/2, -100);     // orange
 	pointLight(0, 149, 168,  myStageW, myStageH/2, -50); // teal
 	pointLight(255, 255, 255,  myStageW/2, 100, 150);  // white
+			// 		𝘾𝙊𝙇𝙊𝙍		𝙓  		𝙔 		𝐙
 
 	colors.applyColor(r1);
 	H.drawStage();
