@@ -28,7 +28,7 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).autoClear(false);
 
-	colors = new HPixelColorist("color.jpg").fillOnly();
+	colors = new HPixelColorist("color.jpg").fillOnly(); // C⃣O⃣L⃣O⃣R⃣S⃣
 
 	r1 = new HRect(100).rounding(10);
 	H.add(r1).anchorAt(H.CENTER).loc(pt1.x, pt1.y).stroke(#000000, 100).fill(#FF3300).rotation(45);
