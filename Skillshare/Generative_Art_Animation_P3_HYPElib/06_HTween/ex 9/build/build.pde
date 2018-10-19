@@ -13,11 +13,23 @@ PVector pt1 = new PVector(160,160); // top, left
 PVector pt2 = new PVector(480,160); // top, right
 PVector pt3 = new PVector(480,480); // bottom, right
 PVector pt4 = new PVector(160,480); // bottom, left
-PVector pt5 = new PVector(320,320); // center, center
+PVector pt5 = new PVector(320,320); // center, center | 5TH Vector  
 
 HCallback cb1, cb2, cb3, cb4, cbCenter, cbScale;
 
-// *************************************************************************************************************
+/*
+                                                     
+				 _|      _|    _|_|    _|_|_|_|_|        _|_|        
+				 _|_|    _|  _|    _|      _|          _|    _|      
+				 _|  _|  _|  _|    _|      _|          _|_|_|_|      
+				 _|    _|_|  _|    _|      _|          _|    _|      
+				 _|      _|    _|_|        _|          _|    _|      
+				 _|          _|_|      _|_|    _|_|_|                
+				 _|        _|    _|  _|    _|  _|    _|              
+				 _|        _|    _|  _|    _|  _|_|_|                
+				 _|        _|    _|  _|    _|  _|                    
+				 _|_|_|_|    _|_|      _|_|    _|     
+*/
 
 void settings() {
 	size(myStageW,myStageH);
