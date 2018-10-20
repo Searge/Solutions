@@ -36,12 +36,14 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG);
 
-	swarm = new HSwarm()
+	swarm = new HSwarm() // SWARM BEHAVIOR SETUP
 		.addGoal(myStageW/2,myStageH/2)
 		.speed(4)
-		.turnEase(0.025f)
-		.twitch(0)
-	;
+		.turnEase(0.025f) // how many degrees of rotation
+		// does it make to try to get to the center of the screen
+		.twitch(0) // not applying any twitch at all
+		// сіпання
+	; // NOW ↓ 
 
 	pool = new HDrawablePool(40);
 	pool.autoAddToStage()
@@ -67,13 +69,17 @@ void setup(){
 					;
 
 					swarm.addTarget(d);
+					// → we need to do is REGISTER THE OBJECTS INTO THE SYSTEMX
 				}
 			}
 		)
 	;
 
 	timer = new HTimer()
-		.numCycles( pool.numActive() )
+		// Because we want to stagger when these things get presented on screen
+		// So, instead of doing a request all, we're using a timer to generate our rects
+		.numCycles( pool.numActive() ) // this particular timer is only going to 
+		// run 40 times and then shut down.
 		.interval(250)
 		.callback(
 			new HCallback() { 

@@ -44,13 +44,13 @@ void setup(){
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
-					float rotation = random(TWO_PI);
+					float rotation = random(TWO_PI); // ← NOTICE THAT
 					HDrawable d = (HDrawable) obj;
 					d
 						.noStroke()
 						.loc( myStageW/2, 100 )
-						.rotationRad(rotation)
-						.move(cos(rotation)*10, sin(rotation)*10)
+						.rotationRad(rotation) // ROTATION RADIUS is random(TWO_PI)
+						.move(cos(rotation)*10, sin(rotation)*10) 
 						.anchorAt( H.CENTER )
 					;
 
