@@ -9,7 +9,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -52,6 +52,6 @@ void draw() {
 	H.drawStage();
 
 	noFill(); strokeWeight(2); stroke(#CCCCCC);
-	line(0, myStageH/2, myStageW, myStageH/2);
+	line(0, myStageH/2, myStageW, myStageH/2); // Horisontal line
 }
 

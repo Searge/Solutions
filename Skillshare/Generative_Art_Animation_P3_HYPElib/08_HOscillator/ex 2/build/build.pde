@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -45,7 +45,8 @@ void setup(){
 					new HOscillator()
 						.target(d)
 						.property(H.Y)
-						.range(10, 50)
+						.range(myStageH / 2 - 100, myStageH / 2 +100) 
+						// previous was: `.range(10, 50)`; (10, 640)
 						.speed(1)
 						.freq(2)
 					;

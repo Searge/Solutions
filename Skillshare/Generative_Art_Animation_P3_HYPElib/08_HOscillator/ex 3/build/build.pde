@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// *******************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -33,6 +33,8 @@ void setup(){
 		.layout(
 			new HGridLayout()
 				.startLoc(9, myStageH/2)
+				// ↑ attaching the artwork in `height / 2`
+				// on that center horizon line
 				.spacing(7, 0)
 				.cols(90)
 		)
@@ -44,8 +46,10 @@ void setup(){
 
 					new HOscillator()
 						.target(d)
-						.property(H.Y)
+						.property(H.Y) // oscillate Y axis
 						.relativeVal( d.y() ) // use range() off of this base value
+						// in the mind where that artwork was initially created
+						// in this case, the relative value is d.y(which is `height / 2`)
 						.range(-100, 100)
 						.speed(1)
 						.freq(2)

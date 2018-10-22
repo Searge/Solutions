@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// ***********************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -49,7 +49,7 @@ void setup(){
 						.range(-100, 100)
 						.speed(1)
 						.freq(2)
-						.currentStep( pool.currentIndex() )
+						.currentStep( pool.currentIndex() ) // ←
 					;
 				}
 			}
