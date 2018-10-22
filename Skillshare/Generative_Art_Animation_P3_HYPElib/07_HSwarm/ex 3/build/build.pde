@@ -12,7 +12,7 @@ HSwarm swarm;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -25,7 +25,8 @@ void setup(){
 		.addGoal(myStageW/2,myStageH/2)
 		.speed(5)
 		.turnEase(0.05f)
-		.twitch(20)
+		.twitch(20) // TWITCH added || додали смикання
+		// twitch is knock it off course
 	;
 
 	pool = new HDrawablePool(40);
@@ -36,7 +37,10 @@ void setup(){
 			.size(18,6)
 		)
 
-		.colorist(new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600).fillOnly())
+		.colorist(new HColorPool(	#FFFFFF, #F7F7F7, 
+									#ECECEC, #333333, 
+									#0095a8, #00616f, 
+									#FF3300, #FF6600).fillOnly())
 
 		.onCreate (
 			new HCallback() {
