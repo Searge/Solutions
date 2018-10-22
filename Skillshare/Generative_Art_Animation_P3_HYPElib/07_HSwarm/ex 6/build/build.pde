@@ -13,7 +13,7 @@ HSwarm swarm;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -76,8 +76,11 @@ void setup(){
 }
 
 void draw() {
+	// loop over all of the assets in the pool
+	// & update their color
 	for(HDrawable d : pool) {
-		colors.applyColor(d.alpha(50));
+		colors.applyColor(d.alpha(50)); // ALPHA: changing transparency of the HRectangles 
+		// inside of the swarm system
 	}
 
 	H.drawStage();

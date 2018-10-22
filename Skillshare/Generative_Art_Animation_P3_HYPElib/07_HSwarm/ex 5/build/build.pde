@@ -13,7 +13,7 @@ HSwarm swarm;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -52,7 +52,9 @@ void setup(){
 						.size((int)random(10,20), (int)random(2,6) )
 						.strokeWeight(2)
 						.stroke(#000000, 100)
-						.fill( #000000 )
+						.fill( #000000 ) // set it black for full saturated color
+						// U HAVE TO SET A FILL w/color field
+						//& u can think of color field is like being a tint
 						.loc( myStageW/2, myStageH/2 )
 						.anchorAt( H.CENTER )
 					;

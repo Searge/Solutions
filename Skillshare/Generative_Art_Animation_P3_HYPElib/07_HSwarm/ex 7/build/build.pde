@@ -8,13 +8,13 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HCanvas c1;
+HCanvas c1; // ← NEW SECTION
 HPixelColorist colors;
 HSwarm swarm;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
