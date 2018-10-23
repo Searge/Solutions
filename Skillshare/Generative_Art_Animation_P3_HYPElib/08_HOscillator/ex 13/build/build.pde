@@ -13,7 +13,7 @@ HRect r1;
 int startScale = 450;
 int scaleOffset = 10;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -58,8 +58,8 @@ void setup(){
 
 		new HOscillator()
 			.target(r1)
-			.property(H.Y)
-			.relativeVal( r1.y() )
+			.property(H.Y) // move the Y-position of HRect with oscillation range off
+			.relativeVal( r1.y() ) // of the Y-axis | fetch the number in location ↑
 			.range(-50, 50)
 			.speed(0.4)
 			.freq(8)

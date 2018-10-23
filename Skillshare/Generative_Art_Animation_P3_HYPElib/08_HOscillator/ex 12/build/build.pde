@@ -13,7 +13,7 @@ HRect r1;
 int startScale = 450;
 int scaleOffset = 10;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -49,8 +49,8 @@ void setup(){
 
 		new HOscillator()
 			.target(r1)
-			.property(H.SCALE)
-			.range(0.5, 1.5)
+			.property(H.SCALE) // REMEMBER that scale is based off of the artwork's original size
+			.range(0.5, 1.5) // scalling from 50% it's original size to 150%
 			.speed(0.4)
 			.freq(8)
 			.currentStep(i)

@@ -13,7 +13,7 @@ HRect r1;
 int startScale = 450;
 int scaleOffset = 10;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -41,9 +41,9 @@ void setup(){
 			.target(r1)
 			.property(H.ROTATION)
 			.relativeVal( 45 )
-			.range(-45, 45)
+			.range(-45, 45) // ROTATION is GREATER for 25 pt
 			.speed(0.4)
-			.freq(10)
+			.freq(10) // BIGGER on 2 pt
 			.currentStep(i)
 		;
 
@@ -51,17 +51,17 @@ void setup(){
 			.target(r1)
 			.property(H.SCALE)
 			.range(0.5, 1.5)
-			.speed(0.2)
+			.speed(0.2) // LESS on 2 pt
 			.freq(8)
-			.currentStep(i*2)
+			.currentStep(i*2) // SCALE is happening more erratic the previously
 		;
 
 		new HOscillator()
 			.target(r1)
 			.property(H.Y)
 			.relativeVal( r1.y() )
-			.range(-75, 75)
-			.speed(0.5)
+			.range(-75, 75) // BIGGER
+			.speed(0.5) // Increasing speed
 			.freq(5)
 			.currentStep(i)
 		;
@@ -73,7 +73,7 @@ void setup(){
 			.range(-50, 50)
 			.speed(0.5)
 			.freq(8)
-			.currentStep(i*2)
+			.currentStep(i*2) // <-- disrupting
 		;
 
 		startScale -= scaleOffset;

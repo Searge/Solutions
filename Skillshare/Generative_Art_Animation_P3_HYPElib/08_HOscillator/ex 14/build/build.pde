@@ -13,7 +13,7 @@ HRect r1;
 int startScale = 450;
 int scaleOffset = 10;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -68,7 +68,7 @@ void setup(){
 
 		new HOscillator()
 			.target(r1)
-			.property(H.X)
+			.property(H.X) // COPIED from `H.Y`
 			.relativeVal( r1.x() )
 			.range(-50, 50)
 			.speed(0.4)

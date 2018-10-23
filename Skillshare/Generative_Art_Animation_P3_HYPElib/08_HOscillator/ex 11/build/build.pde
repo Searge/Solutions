@@ -13,7 +13,7 @@ HRect r1;
 int startScale = 450;
 int scaleOffset = 10;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -28,26 +28,30 @@ void setup(){
 
 		r1 = new HRect().rounding(20);
 		r1
-			.size(startScale)
+			.size(startScale) // Start Scale -- 450
 			.noStroke()
 			.fill( colors.getColor() )
 			.loc(myStageW/2,myStageH/2)
-			.anchorAt(H.CENTER)
+			.anchorAt(H.CENTER) // SUPERIMPORTANT
 			.rotation(45)
 		;
 		H.add(r1);
-
-		new HOscillator()
+		
+		// w/o Oscillator that for-loop just attached 40 things
+		// & randomly grabbed a color in the color pool
+		new HOscillator() 
 			.target(r1)
 			.property(H.ROTATION)
-			.relativeVal( 45 )
-			.range(-20, 20)
+			.relativeVal( 45 ) // which is that initial rotation that we set in `r1`
+			.range(-20, 20) // <- right/left
 			.speed(0.4)
 			.freq(8)
-			.currentStep(i)
+			.currentStep(i) // Stepping by 1 each time
 		;
 
-		startScale -= scaleOffset;
+		startScale -= scaleOffset; // 10 -= 450
+		// after it runs for the first time & attaches the 1st HRect @450 for the size
+		// `startScale` starts to decrease in size down BY TEN: 450 -> 440 -> 430 ...
 	}
 }
 
