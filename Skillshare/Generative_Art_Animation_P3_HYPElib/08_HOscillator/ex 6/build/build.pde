@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -48,8 +48,13 @@ void setup(){
 						.relativeVal( d.y() )
 						.range(-100, 100)
 						.speed(1)
-						.freq(2)
+						.freq(2) // dropped back down to 2
 						.currentStep( pool.currentIndex()*6 )
+						// I just wanted more waves in the movement,
+						// but not necessarily changing the speed of set wave
+						// multiplying a number onto the current index
+						// SO, that way the steps between each of the assets
+						// is not a single jump each time
 					;
 				}
 			}

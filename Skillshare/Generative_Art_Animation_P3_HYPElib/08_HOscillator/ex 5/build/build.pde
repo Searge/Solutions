@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -49,6 +49,9 @@ void setup(){
 						.range(-100, 100)
 						.speed(1)
 						.freq(5)
+						// since the frequency was lower it was a nice
+						// soft undulating wave. If I change the frequency to 5
+						// that would mean that this is going to be a lot more disruptive
 						.currentStep( pool.currentIndex() )
 					;
 				}
