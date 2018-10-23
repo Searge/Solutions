@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -49,6 +49,8 @@ void setup(){
 						.speed(1)
 						.freq(3)
 						.waveform(H.SAW)
+						// saw wave builds up until it gets to it maximum range & then
+						// drops all the way down to it minimum range
 						.currentStep( pool.currentIndex()*3 )
 					;
 				}

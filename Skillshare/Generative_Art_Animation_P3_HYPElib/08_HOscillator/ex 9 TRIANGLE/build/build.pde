@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -49,6 +49,7 @@ void setup(){
 						.speed(1)
 						.freq(3)
 						.waveform(H.TRIANGLE)
+						// we are using triangle up & triangle down
 						.currentStep( pool.currentIndex()*3 )
 					;
 				}

@@ -10,7 +10,7 @@ color clrBG = #202020;
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -44,8 +44,13 @@ void setup(){
 
 					new HOscillator()
 						.target(d)
-						.property(H.HEIGHT)
-						.range(6, 200)
+						.property(H.HEIGHT) // ← CHANGE to H.HEIGHT
+						// when we attach the artwork across this grid,
+						// each one of the HRects is 6×6 px & what
+						// I'm oscilating in these files is 
+						// I'm stretching only the height of the property
+						.range(6, 200) // here i non't need to use relative value
+						// because just going to tell it what numbers I want to go to
 						.speed(1)
 						.freq(3)
 						.currentStep( pool.currentIndex()*3 )
