@@ -11,7 +11,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 HColorPool colors;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -22,7 +22,7 @@ void setup(){
 
 	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #333333, #0095a8, #00616f, #FF3300, #FF6600);
 
-	pool = new HDrawablePool(144);
+	pool = new HDrawablePool(144); // 144 svgs
 	pool.autoAddToStage()
 		// .add(new HShape("svg1.svg"))
 		.add(new HShape("svg2.svg"))
@@ -55,7 +55,7 @@ void setup(){
 						.target(d)
 						.property(H.ROTATION)
 						.range(-180, 180)
-						.speed(0.05)
+						.speed(0.05) // really nice and slow
 						.freq(5)
 						.currentStep(pool.currentIndex())
 					;
