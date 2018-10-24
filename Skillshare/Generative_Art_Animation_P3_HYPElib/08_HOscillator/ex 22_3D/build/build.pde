@@ -10,7 +10,7 @@ color clrBG = #202020;
 HDrawablePool pool;
 int boxSize = 500;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -27,9 +27,10 @@ void setup(){
 
 		.layout (
 			new HGridLayout()
-			.startX(myStageW/2)
-			.startY(myStageH/2)
-			.spacing(0,0)
+			// 50 boxes all in the same location
+			.startX(myStageW/2) // width divided by 2
+			.startY(myStageH/2) // and height / 2
+			.spacing(0,0) // spasing on 0
 			.cols(10)
 		)
 
