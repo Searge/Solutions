@@ -19,7 +19,7 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true).autoClear(true);
 
-	pool = new HDrawablePool(49);
+	pool = new HDrawablePool(49); // attaching 49 things
 	pool.autoAddToStage()
 		.add (
 			new HPath()
