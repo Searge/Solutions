@@ -28,7 +28,7 @@ void setup(){
 
 		HPath d = new HPath();
 		d
-			.star(5, 0.4, -90)
+			.star(5, 0.4, -90) // STAR ⭐️
 			.size(200)
 
 			.stroke( colors.getColor( i*250 ) )
@@ -50,7 +50,7 @@ void setup(){
 		new HOscillator()
 			.target(d)
 			.property(H.SCALE)
-			.range(0.25, 1)
+			.range(0.25, 1) // from 25% to 100%
 			.speed(2)
 			.freq(4)
 			.currentStep(i)
