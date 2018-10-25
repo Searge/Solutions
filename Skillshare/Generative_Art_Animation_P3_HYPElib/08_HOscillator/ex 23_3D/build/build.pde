@@ -14,7 +14,7 @@ HDrawablePool pool;
 float ringScale = 600;
 int   ringSteps = 5;
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -23,7 +23,10 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true).autoClear(true);
 
-	colors = new HColorPool(#FFFFFF, #F7F7F7, #ECECEC, #ff3300, #ff3300, #242424, #333333, #666666);
+	colors = new HColorPool(#FFFFFF, #F7F7F7, 
+							#ECECEC, #ff3300, 
+							#ff3300, #242424, 
+							#333333, #666666);
 
 	pool = new HDrawablePool(150);
 	pool.autoAddToStage()
