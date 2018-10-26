@@ -23,10 +23,10 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true).autoClear(true);
 
-	colors = new HColorPool(#FFFFFF, #F7F7F7, 
-							#ECECEC, #ff3300, 
-							#ff3300, #242424, 
-							#333333, #666666);
+	colors = new HColorPool(#112F41, #068587, 
+							#4FB99F, #ECECEC, 
+							#F2B134, #ED553B, 
+							#ff3300, #242424);
 
 	pool = new HDrawablePool(150);
 	pool.autoAddToStage()
