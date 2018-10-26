@@ -51,12 +51,12 @@ void setup(){
 						.enableStyle(false)
 						.noStroke()
 						.fill( colors.getColor(i*250) )
-						.size( ringScale )
+						.size( ringScale ) // 1st ring going to be: 600×600
 						.anchorAt(H.CENTER)
 						.z(0)
 					;
 
-					ringScale = ringScale - ringSteps;
+					ringScale = ringScale - ringSteps; // decrease in size
 
 					new HOscillator()
 						.target(d)
@@ -88,7 +88,7 @@ void setup(){
 					new HOscillator()
 						.target(d)
 						.property(H.SCALE)
-						.range(0.5, 1.0)
+						.range(0.5, 1.0) // 50% & 100%
 						.speed(0.3)
 						.freq(5)
 						.currentStep(i)
