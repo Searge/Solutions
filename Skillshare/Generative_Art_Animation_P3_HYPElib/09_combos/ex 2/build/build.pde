@@ -6,11 +6,11 @@ int myStageH = 640;
 
 color clrBG = #202020;
 
-HOscillator rX,rY,rZ;
+HOscillator rX,rY,rZ; // <-- Rotating the Cube
 
 int boxSize = 100;
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
