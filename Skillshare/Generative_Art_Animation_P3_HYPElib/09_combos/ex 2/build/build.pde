@@ -19,6 +19,7 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true);
 
+	// Random Oscillating
 	rX = new HOscillator()
 		.range(-360,360)
 		.speed(0.1)
@@ -41,14 +42,14 @@ void setup(){
 void draw() {
 	H.drawStage();
 
-	rX.nextRaw();
+	rX.nextRaw(); // get next raw values out of rX
 	rY.nextRaw();
 	rZ.nextRaw();
 
 	pushMatrix();
 		translate(width/2, height/2, 0);
 
-		rotateX( radians(rX.curr()) );
+		rotateX( radians(rX.curr()) ); // current value of rX, rY, rZ...
 		rotateY( radians(rY.curr()) );
 		rotateZ( radians(rZ.curr()) );
 
