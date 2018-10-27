@@ -9,9 +9,9 @@ color clrBG = #202020;
 HOscillator rX,rY,rZ;
 
 int boxSize = 100;
-PImage tex;
+PImage tex; // USING PImage as a TEXTURE
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -20,7 +20,7 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true);
 
-	tex = loadImage("tex5.jpg");
+	tex = loadImage("tex5.jpg"); // LOADING TEXTURE
 	textureMode(NORMAL);
 
 	rX = new HOscillator()
@@ -61,7 +61,7 @@ void draw() {
 }
 
 void buildCube() {
-	strokeWeight(4); stroke(#000000);
+	strokeWeight(4); stroke(#000000); // SETTING STROKE
 
 	beginShape(QUADS);
 		texture(tex);
