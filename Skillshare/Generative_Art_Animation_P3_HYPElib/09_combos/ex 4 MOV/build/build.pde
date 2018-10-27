@@ -1,6 +1,6 @@
 import hype.*;
 import hype.extended.behavior.HOscillator;
-import processing.video.*;
+import processing.video.*; // <<- ABILITY TO LOAD A MOVIE
 
 int myStageW = 640;
 int myStageH = 640;
@@ -10,9 +10,9 @@ color clrBG = #202020;
 HOscillator rX,rY,rZ;
 
 int boxSize = 100;
-Movie tex;
+Movie tex; // <- MOVIE TO TEXTURE
 
-// *************************************************************************************************************
+// ************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -21,8 +21,8 @@ void settings() {
 void setup(){
 	H.init(this).background(clrBG).use3D(true);
 
-	tex = new Movie(this, "burst.mp4");
-	tex.loop();
+	tex = new Movie(this, "burst.mp4"); // rendered MOVIE
+	tex.loop();							// <- - - - LOOP
 	textureMode(NORMAL);
 
 	rX = new HOscillator()
@@ -108,5 +108,19 @@ void buildCube() {
 }
 
 void movieEvent(Movie m) {
-  m.read();
+  m.read();						// <<= START PLAYING OUR MOVIE
 }
+
+/*
+ ███▄    █  ▒█████  ▄▄▄█████▓ ██▓ ▄████▄  ▓█████ 
+ ██ ▀█   █ ▒██▒  ██▒▓  ██▒ ▓▒▓██▒▒██▀ ▀█  ▓█   ▀ 
+▓██  ▀█ ██▒▒██░  ██▒▒ ▓██░ ▒░▒██▒▒▓█    ▄ ▒███   
+▓██▒  ▐▌██▒▒██   ██░░ ▓██▓ ░ ░██░▒▓▓▄ ▄██▒▒▓█  ▄ 
+▒██░   ▓██░░ ████▓▒░  ▒██▒ ░ ░██░▒ ▓███▀ ░░▒████▒
+░ ▒░   ▒ ▒ ░ ▒░▒░▒░   ▒ ░░   ░▓  ░ ░▒ ▒  ░░░ ▒░ ░
+░ ░░   ░ ▒░  ░ ▒ ▒░     ░     ▒ ░  ░  ▒    ░ ░  ░
+   ░   ░ ░ ░ ░ ░ ▒    ░       ▒ ░░           ░   
+         ░     ░ ░            ░  ░ ░         ░  ░
+                                 ░               
+
+*/
