@@ -10,9 +10,9 @@ HOscillator rX,rY,rZ;
 
 int boxSize = 100;
 ArrayList texList;
-PImage[] pickedTex = new PImage[6];
+PImage[] pickedTex = new PImage[6]; // NEW ARRAY OF PImages
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -27,13 +27,15 @@ void setup(){
 	PImage t4 = loadImage("tex4.jpg");
 	PImage t5 = loadImage("tex5.jpg");
 
-	texList = new ArrayList();
+	texList = new ArrayList(); // TEXTURE LIST
 	texList.add(t1);
 	texList.add(t2);
 	texList.add(t3);
 	texList.add(t4);
 	texList.add(t5);
 
+	// Random PREPICK from `texList` 
+	// will run 6 times (coz length of `pickedTex` is 6)
 	for (int i = 0; i < pickedTex.length; ++i) {
 		pickedTex[i] = (PImage)texList.get((int)random(texList.size()));
 	}
