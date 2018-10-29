@@ -22,7 +22,7 @@ float[] boxSize = new float[numCubes];
 
 color[] pickedColor = new color[numCubes];
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -63,6 +63,7 @@ void setup(){
 
 		// picked color
 		pickedColor[i] = colors.getColor(pt.x,pt.y);
+						// from HPixelColorist with loc from PVector as arguments
 	}
 
 	rX = new HOscillator()

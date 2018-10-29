@@ -18,7 +18,7 @@ float minScale = 40;
 float maxScale = 100;
 float[] boxSize = new float[numCubes];
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -26,7 +26,7 @@ void settings() {
 
 void setup(){
 	H.init(this).background(clrBG).use3D(true);
-
+	// Transparent texture
 	PImage t1 = loadImage("tex1.png");
 	PImage t2 = loadImage("tex2.png");
 	PImage t3 = loadImage("tex3.png");

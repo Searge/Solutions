@@ -22,7 +22,7 @@ float[] boxSize = new float[numCubes];
 
 color[] pickedColor = new color[6];
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -46,7 +46,8 @@ void setup(){
 
 	for (int i = 0; i < pickedTex.length; ++i) {
 		// picked texture / PNG
-		pickedTex[i] = (PImage)texList.get((int)random(texList.size()));
+		pickedTex[i] = (PImage)texList.get((int)random(texList.size())); 
+		// ↑ Sit on top of that ↓ color
 
 		// picked color
 		pickedColor[i] = colors.getColor();
@@ -108,9 +109,9 @@ void buildCube(int i) {
 	strokeWeight(4); stroke(#000000); noStroke();
 	
 	// +Z "front" face
-	fill(pickedColor[0]);
+	fill(pickedColor[0]); // COLOR
 	beginShape(QUADS);vertex(-boxSize[i], -boxSize[i],  boxSize[i], 0, 0);vertex( boxSize[i], -boxSize[i],  boxSize[i], 1, 0);vertex( boxSize[i],  boxSize[i],  boxSize[i], 1, 1);vertex(-boxSize[i],  boxSize[i],  boxSize[i], 0, 1);endShape();
-	noFill();
+	noFill(); // NO FILL FOR TEXTURE here ↓
 	beginShape(QUADS);texture( pickedTex[0] );vertex(-boxSize[i], -boxSize[i],  boxSize[i], 0, 0);vertex( boxSize[i], -boxSize[i],  boxSize[i], 1, 0);vertex( boxSize[i],  boxSize[i],  boxSize[i], 1, 1);vertex(-boxSize[i],  boxSize[i],  boxSize[i], 0, 1);endShape();
 
 	// -Z "back" face
