@@ -11,14 +11,14 @@ HOscillator rX,rY,rZ;
 ArrayList texList;
 PImage[] pickedTex = new PImage[6];
 
-int numCubes = 20;
+int numCubes = 20; // <<= Twenty cubes
 PVector[] pickedLoc = new PVector[numCubes];
 
 float minScale = 40;
 float maxScale = 120;
 float[] boxSize = new float[numCubes];
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -48,7 +48,7 @@ void setup(){
 	for (int i = 0; i < numCubes; ++i) {
 		// picked location
 		PVector pt = new PVector();
-		pt.x = (int)random(-300,300);
+		pt.x = (int)random(-300,300); // LARGER RANDOMIZATION
 		pt.y = (int)random(-300,300);
 		pt.z = (int)random(-300,300);
 		pickedLoc[i] = pt;
@@ -83,14 +83,14 @@ void draw() {
 	rY.nextRaw();
 	rZ.nextRaw();
 
-	pushMatrix();
+	pushMatrix(); // FOR WHOLE STAGE (mass)
 		translate(width/2, height/2);
 		rotateX( radians(rX.curr()) );
 		rotateY( radians(rY.curr()) );
 		rotateZ( radians(rZ.curr()) );
 
 		for (int i = 0; i < numCubes; ++i) {
-			pushMatrix();
+			pushMatrix(); // NESTED MATRIX for 1 cube
 				translate( pickedLoc[i].x, pickedLoc[i].y, pickedLoc[i].z );
 				buildCube(i);
 			popMatrix();
