@@ -99,8 +99,8 @@ void draw() {
 			pushMatrix();
 				translate( pickedLoc[i].x, pickedLoc[i].y, pickedLoc[i].z );
 
-				rotateX( radians(pickedRotation[i].x - frameCount) );
-				rotateY( radians(pickedRotation[i].y + frameCount) );
+				rotateX( radians(pickedRotation[i].x - frameCount) ); // TRICK
+				rotateY( radians(pickedRotation[i].y + frameCount) ); // <<=
 				rotateZ( radians(pickedRotation[i].z) );
 
 				buildCube(i);
