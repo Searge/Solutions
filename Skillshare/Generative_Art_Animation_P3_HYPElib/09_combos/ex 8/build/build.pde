@@ -14,11 +14,13 @@ PImage[] pickedTex = new PImage[6];
 int numCubes = 10;
 PVector[] pickedLoc = new PVector[numCubes];
 
+// for randomly picking a scale
 float minScale = 40;
 float maxScale = 100;
-float[] boxSize = new float[numCubes];
+// Array of randomly chosen scales
+float[] boxSize = new float[numCubes]; // for 10 sizes
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);

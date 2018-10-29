@@ -12,8 +12,8 @@ int boxSize = 100;
 ArrayList texList;
 PImage[] pickedTex = new PImage[6];
 
-int numCubes = 10;
-PVector[] pickedLoc = new PVector[numCubes];
+int numCubes = 10; // <-- randomly pick a location
+PVector[] pickedLoc = new PVector[numCubes]; // Coordinate System
 
 // **************************************************************************************
 
@@ -42,13 +42,14 @@ void setup(){
 	}
 	textureMode(NORMAL);
 
+	// RANDOMAZING POSITIONS
 	for (int i = 0; i < numCubes; ++i) {
 		// picked location
-		PVector pt = new PVector();
-		pt.x = (width/2)  + (int)random(-200,200);
+		PVector pt = new PVector(); // Temporary PVector set up (pt == Point)
+		pt.x = (width/2)  + (int)random(-200,200); // location == CENTER ± 200 px
 		pt.y = (height/2) + (int)random(-200,200);
 		pt.z = (int)random(-100,100);
-		pickedLoc[i] = pt;
+		pickedLoc[i] = pt; // creating link to previous variable
 	}
 
 	rX = new HOscillator()
@@ -80,12 +81,13 @@ void draw() {
 	for (int i = 0; i < numCubes; ++i) {
 		pushMatrix();
 			translate( pickedLoc[i].x, pickedLoc[i].y, pickedLoc[i].z );
-
+			// Translate to that random location
+			// FOR ONE THE CUBES
 			rotateX( radians(rX.curr()) );
 			rotateY( radians(rY.curr()) );
 			rotateZ( radians(rZ.curr()) );
 
-			buildCube();
+			buildCube(); // firing Ten times
 		popMatrix();
 	}
 }
