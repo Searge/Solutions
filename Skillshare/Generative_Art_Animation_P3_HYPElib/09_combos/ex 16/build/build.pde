@@ -26,10 +26,10 @@ float[] boxSize = new float[numCubes];
 
 PVector[] pickedRotation = new PVector[numCubes];
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
-	size(myStageW,myStageH,P3D);
+	size(myStageW,myStageH,P3D); //3D
 }
 
 void setup(){
@@ -162,7 +162,7 @@ void buildCube(int i) {
 
 	// +Z "front" face
 	beginShape(QUADS);
-		texture( c1.graphics() );
+		texture( c1.graphics() ); // grab the graphics from the Canvas
 		vertex(-boxSize[i], -boxSize[i],  boxSize[i], 0, 0);
 		vertex( boxSize[i], -boxSize[i],  boxSize[i], 1, 0);
 		vertex( boxSize[i],  boxSize[i],  boxSize[i], 1, 1);

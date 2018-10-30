@@ -26,7 +26,7 @@ float[] boxSize = new float[numCubes];
 
 PVector[] pickedRotation = new PVector[numCubes];
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -38,7 +38,8 @@ void setup(){
 	colors = new HPixelColorist("color.jpg").fillAndStroke();
 
 	c1 = new HCanvas(640,640).autoClear(false).fade(1);
-	c1.x(-10000);
+	c1.x(-10000); // move Canvas for -10,000 px @ X-axis
+	// Get it the Hell Away From Me
 	H.add(c1);
 	textureMode(NORMAL);
 
