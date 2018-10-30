@@ -26,7 +26,7 @@ float[] boxSize = new float[numCubes];
 
 PVector[] pickedRotation = new PVector[numCubes];
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -125,6 +125,7 @@ void setup(){
 void draw() {
 	pointLight(255, 255, 255,  0, height/2, 100);
 	pointLight(255, 255, 255,  width, height/2, 100);
+	// SHINING from the SIDES
 
 	for(HDrawable d : pool) {
 		if ( colors.getColor( d.x(),d.y() ) != 0 ) {
@@ -149,7 +150,7 @@ void draw() {
 			pushMatrix();
 				translate( pickedLoc[i].x, pickedLoc[i].y, pickedLoc[i].z );
 
-				rotateX( radians(pickedRotation[i].x - frameCount) );
+				rotateX( radians(pickedRotation[i].x - frameCount) ); // slowdown
 				rotateY( radians(pickedRotation[i].y + frameCount) );
 				rotateZ( radians(pickedRotation[i].z) );
 
