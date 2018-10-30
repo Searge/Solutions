@@ -14,7 +14,7 @@ HSwarm swarm;
 HDrawablePool pool;
 HTimer timer;
 
-// *************************************************************************************************************
+// ***************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH);
@@ -38,18 +38,18 @@ void setup(){
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
-					float rotation = random(TWO_PI);
+					float rotation = random(TWO_PI); // shot out in different positions
 					HDrawable d = (HDrawable) obj;
 					d
 						.size( 100,2 )
 						.noStroke()
 						.loc( 320, 320 )
 						.rotationRad(rotation)
-						.move(cos(rotation)*10, sin(rotation)*10)
+						.move(cos(rotation)*10, sin(rotation)*10) // MOVE
 						.anchorAt( H.CENTER )
 					;
-					colors.applyColor(d);
-
+					colors.applyColor(d); // COLORS
+					// Wicked
 					new HSwarm()
 						.addTarget(d)
 						.addGoal(320,320)
