@@ -26,7 +26,7 @@ float[] boxSize = new float[numCubes];
 
 PVector[] pickedRotation = new PVector[numCubes];
 
-// *************************************************************************************************************
+// *************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
@@ -89,8 +89,8 @@ void setup(){
 	for (int i = 0; i < numCubes; ++i) {
 		// picked location
 		PVector pt = new PVector();
-		pt.x = (int)random(-400,400);
-		pt.y = (int)random(-400,400);
+		pt.y = (int)random(-400,400); // CUBES
+		pt.x = (int)random(-400,400); // MOVE little bit more
 		pt.z = (int)random(-300,300);
 		pickedLoc[i] = pt;
 
@@ -123,6 +123,7 @@ void setup(){
 
 void draw() {
 	pointLight(255, 255, 255,  width/2, height/2, 100);
+	// WHITE LIGHT in the exact center & pulled up to 100 of Z axis
 
 	for(HDrawable d : pool) {
 		if ( colors.getColor( d.x(),d.y() ) != 0 ) {
