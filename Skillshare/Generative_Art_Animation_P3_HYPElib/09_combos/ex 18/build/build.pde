@@ -26,14 +26,14 @@ float[] boxSize = new float[numCubes];
 
 PVector[] pickedRotation = new PVector[numCubes];
 
-// *************************************************************************************************************
+// **************************************************************************************
 
 void settings() {
 	size(myStageW,myStageH,P3D);
 }
 
 void setup(){
-	H.init(this).background(clrBG).use3D(true).autoClear(false);
+	H.init(this).background(clrBG).use3D(true).autoClear(false); // Stop autoclear
 
 	colors = new HPixelColorist("color.jpg").fillAndStroke();
 
