@@ -122,7 +122,7 @@ void draw() {
  _/\/\__________/\/\________/\/\/\/\/\__/\/\______/\/\____/\/\/\/\__/\/\/\/\___    
 ______________________________________________________________________________                                                                 
 	*/
-	// saveFrame("../frames/#########.tif"); if (frameCount == 900) exit();
+	saveFrame("../frames/#########.tif"); if (frameCount == 900) exit();
 			// if reaches a frame count of 900, it's going to exit out of the program
 }
 
