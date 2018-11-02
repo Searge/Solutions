@@ -27,7 +27,7 @@ void draw() {
 	background(clrBG);
 
 	for (int i = 0; i < myAudioRange; ++i) {
-		stroke(0); fill(255);
+		stroke(0); fill(255); // color coding
 		rect( xStart + (i*xSpacing), yStart, rectSize, rectSize);
 	}
 
