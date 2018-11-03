@@ -1,7 +1,7 @@
 
 String      pathDATA     = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -15,7 +15,7 @@ int         myAudioMax   = 100;
 
 float       myAudioAmp   = 20.0;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 int         rectSize     = 2;
 
@@ -28,7 +28,7 @@ float       xStart       = stageMargin;
 float       yStart       = stageMargin;
 int         xSpacing     = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -54,6 +54,7 @@ void draw() {
 		stroke(0); fill(255);
 		float tempIndexAvg = myAudioFFT.getAvg(i) * myAudioAmp;
 		float tempIndexCon = constrain(tempIndexAvg, 0, myAudioMax);
+		// tem index constrain --> стримувати індекс від 0 до 100
 		rect( xStart + (i*xSpacing), yStart, rectSize, tempIndexCon);
 	}
 
