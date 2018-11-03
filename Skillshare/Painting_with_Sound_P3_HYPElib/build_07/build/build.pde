@@ -1,7 +1,7 @@
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -14,11 +14,11 @@ int         myAudioRange     = 256;
 int         myAudioMax       = 100;
 
 float       myAudioAmp       = 20.0;
-float       myAudioIndex     = 0.05;
-float       myAudioIndexAmp  = myAudioIndex;
+float       myAudioIndex     = 0.05; // Starting point
+float       myAudioIndexAmp  = myAudioIndex; // amplification == starting point
 float       myAudioIndexStep = 0.025;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 int         rectSize         = 2;
 
@@ -31,7 +31,7 @@ float       xStart           = stageMargin;
 float       yStart           = stageMargin;
 int         xSpacing         = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -46,6 +46,8 @@ void setup() {
 
 	myAudioFFT = new FFT(myAudio.bufferSize(), myAudio.sampleRate());
 	myAudioFFT.linAverages(myAudioRange);
+
+	// Window is filtering audio
 
 	/*
 
@@ -64,7 +66,7 @@ void setup() {
 	myAudioFFT.window(FFT.TRIANGULAR);
 
 	*/
-	myAudioFFT.window(FFT.NONE);
+	myAudioFFT.window(FFT.GAUSS);
 }
 
 void draw() {
@@ -93,11 +95,11 @@ void draw() {
 	// show window mode
 	noStroke(); fill(0);
 	rect(stageMargin, (stageMargin/2)-10, 200, 20);
-	fill(#0095a8); text("window : FFT.NONE", stageMargin+5, (stageMargin/2)+4);
+	fill(#0095a8); text("window : FFT.GAUSS", stageMargin+5, (stageMargin/2)+4);
 
 	// when song is done, let's save an image and exit the sketch
 	if (!myAudio.isPlaying()) {
-		saveFrame("../01_window_NONE.png");
+		saveFrame("../01_window_GAUSS.png");
 		exit();
 	}
 }
