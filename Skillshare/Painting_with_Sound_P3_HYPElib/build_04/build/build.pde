@@ -50,7 +50,7 @@ float       xStart       = stageMargin;
 float       yStart       = stageMargin;
 int         xSpacing     = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -63,8 +63,10 @@ void setup() {
 	myAudio = minim.loadFile(pathDATA + "HECQ_With_Angels_Trifonic_Remix.wav");
 	myAudio.loop();
 
-	myAudioFFT = new FFT(myAudio.bufferSize(), myAudio.sampleRate()); // bufferSize = 1024 / sampleRate = 44100.0
-	myAudioFFT.linAverages(myAudioRange); // calculate the averages by grouping frequency bands linearly. use 256 averages.
+	myAudioFFT = new FFT(myAudio.bufferSize(), myAudio.sampleRate()); 
+	// bufferSize = 1024 / sampleRate = 44100.0
+	myAudioFFT.linAverages(myAudioRange); 
+	// calculate the averages by grouping frequency bands linearly. use 256 averages.
 }
 
 void draw() {
