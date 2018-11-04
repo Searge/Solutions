@@ -86,7 +86,7 @@ void setup() {
 	minim   = new Minim(this);
 	myAudio = minim.getLineIn(Minim.MONO);
 
-	// myAudio = minim.loadFile(pathDATA + "HECQ_With_Angels_Trifonic_Remix.wav");
+	myAudio = minim.loadFile(pathDATA + "HECQ_With_Angels_Trifonic_Remix.wav");
 	// myAudio.loop();
 
 	myAudioFFT = new FFT(myAudio.bufferSize(), myAudio.sampleRate());
