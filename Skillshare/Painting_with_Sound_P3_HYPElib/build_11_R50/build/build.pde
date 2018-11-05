@@ -1,7 +1,7 @@
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -10,15 +10,15 @@ Minim       minim;
 AudioPlayer myAudio;
 FFT         myAudioFFT;
 
-int         myAudioRange     = 50;
+int         myAudioRange     = 50; // 100; // WAS 256
 int         myAudioMax       = 100;
 
-float       myAudioAmp       = 25.0;
-float       myAudioIndex     = 0.125;
+float       myAudioAmp       = 25.0; // 30.0; // was 20
+float       myAudioIndex     = 0.125; // 0.075; // <- ,05
 float       myAudioIndexAmp  = myAudioIndex;
-float       myAudioIndexStep = 0.175;
+float       myAudioIndexStep = 0.175; // 0.05; // <- ,025
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 int         rectSize         = 10;
 
@@ -31,7 +31,7 @@ float       xStart           = stageMargin;
 float       yStart           = stageMargin;
 int         xSpacing         = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
