@@ -1,7 +1,7 @@
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -10,15 +10,15 @@ Minim       minim;
 AudioPlayer myAudio;
 FFT         myAudioFFT;
 
-int         myAudioRange     = 100;
+int         myAudioRange     = 100; // WAS 256
 int         myAudioMax       = 100;
 
-float       myAudioAmp       = 30.0;
-float       myAudioIndex     = 0.075;
+float       myAudioAmp       = 30.0; // was 20
+float       myAudioIndex     = 0.075; // <- ,05
 float       myAudioIndexAmp  = myAudioIndex;
-float       myAudioIndexStep = 0.05;
+float       myAudioIndexStep = 0.05; // <- ,025
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 int         rectSize         = 5;
 
@@ -31,7 +31,7 @@ float       xStart           = stageMargin;
 float       yStart           = stageMargin;
 int         xSpacing         = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -47,7 +47,7 @@ void setup() {
 	myAudioFFT = new FFT(myAudio.bufferSize(), myAudio.sampleRate());
 	myAudioFFT.linAverages(myAudioRange);
 	// myAudioFFT.window(FFT.NONE);
-	myAudioFFT.window(FFT.HAMMING);
+	myAudioFFT.window(FFT.HAMMING); // <== HAMMING!
 }
 
 void draw() {
