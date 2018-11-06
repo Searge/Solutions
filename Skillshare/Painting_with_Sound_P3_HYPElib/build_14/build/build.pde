@@ -1,7 +1,7 @@
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -18,7 +18,7 @@ float       myAudioIndex     = 0.2;
 float       myAudioIndexAmp  = myAudioIndex;
 float       myAudioIndexStep = 0.35;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 int         rectSize         = 50;
 
@@ -31,7 +31,7 @@ float       xStart           = stageMargin;
 float       yStart           = stageMargin;
 int         xSpacing         = rectSize;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -50,12 +50,13 @@ void setup() {
 }
 
 void draw() {
-	background(clrBG);
+	background(clrBG); // Clearing the background
 
 	myAudioFFT.forward(myAudio.mix);
 
 	for (int i = 0; i < myAudioRange; ++i) {
 		stroke(0);
+		// COLOR CODING
 		if (i==0)     fill(#237D26); // base
 		else if(i==3) fill(#80C41C); // snare
 		else          fill(#CCCCCC); // others
@@ -64,8 +65,10 @@ void draw() {
 		float tempIndexCon = constrain(tempIndexAvg, 0, myAudioMax);
 		rect( xStart + (i*xSpacing), yStart, rectSize, tempIndexCon);
 
-		// visualize the number data for range item
-		fill(#0095a8); text(str((int)tempIndexCon), xStart + (i*xSpacing) + 10, stageMargin+myAudioMax+(stageMargin/2));
+		// visualize the NUMBERS of data for range item
+		fill(#0095a8); text(str((int)tempIndexCon), 
+							xStart + (i*xSpacing) + 10,
+							stageMargin+myAudioMax+(stageMargin/2));
 
 		myAudioIndexAmp+=myAudioIndexStep;
 	}
