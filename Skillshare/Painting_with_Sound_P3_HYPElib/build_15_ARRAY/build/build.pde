@@ -1,14 +1,14 @@
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
-int         myStageW         = 700;
-int         myStageH         = 700;
+int         myStageW         = 100;
+int         myStageH         = 100;
 
 color       clrBG            = #333333;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -25,9 +25,9 @@ float       myAudioIndex     = 0.2;
 float       myAudioIndexAmp  = myAudioIndex;
 float       myAudioIndexStep = 0.35;
 
-float[]     myAudioData      = new float[myAudioRange];
+float[]     myAudioData      = new float[myAudioRange]; // ARRAY of 11 numbers
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -49,7 +49,7 @@ void draw() {
 	background(clrBG);
 
 	myAudioFFT.forward(myAudio.mix);
-	myAudioDataUpdate();
+	myAudioDataUpdate(); // Updating the Array ↓
 }
 
 void myAudioDataUpdate() {
@@ -60,7 +60,16 @@ void myAudioDataUpdate() {
 		myAudioIndexAmp+=myAudioIndexStep;
 	}
 	myAudioIndexAmp = myAudioIndex;
-
+/*
+                                     
+	888~-_   888~-_   888 888b    | ~~~888~~~ 888          
+	888   \  888   \  888 |Y88b   |    888    888 888-~88e 
+	888    | 888    | 888 | Y88b  |    888    888 888  888 
+	888   /  888   /  888 |  Y88b |    888    888 888  888 
+	888_-~   888_-~   888 |   Y88b|    888    888 888  888 
+	888      888 ~-_  888 |    Y888    888    888 888  888 
+                                                       
+*/
 	println(myAudioData);
 }
 
