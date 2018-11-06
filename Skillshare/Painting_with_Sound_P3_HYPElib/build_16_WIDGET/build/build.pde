@@ -5,7 +5,7 @@ color       clrBG            = #333333;
 
 String      pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -14,7 +14,7 @@ Minim       minim;
 AudioPlayer myAudio;
 FFT         myAudioFFT;
 
-boolean     showVisualizer   = true;
+boolean     showVisualizer   = true; // <== show widget
 
 int         myAudioRange     = 11;
 int         myAudioMax       = 100;
@@ -26,7 +26,7 @@ float       myAudioIndexStep = 0.35;
 
 float[]     myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -51,7 +51,7 @@ void draw() {
 	myAudioDataUpdate();
 
 	// CALL TO WIDGET SHOULD ALWAYS BE LAST ITEM IN DRAW() SO IT ALWAYS APPEARS ABOVE ANY OTHER VISUAL ASSETS
-	if (showVisualizer) myAudioDataWidget();
+	if (showVisualizer) myAudioDataWidget(); // <==
 }
 
 void myAudioDataUpdate() {
