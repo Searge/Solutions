@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,11 +29,11 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -86,6 +86,7 @@ void draw() {
 		// MAP IS YOUR NEW BEST FRIEND, map a range of numbers to another range of numbers
 
 		int fftFillColor = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
+		// map(input data, min, max of data, min, max of mapping thing)
 		d.fill(fftFillColor, 225);
 		i++;
 	}
