@@ -7,7 +7,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -28,19 +28,19 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 100;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
 }
 
 void setup() {
-	H.init(this).background(clrBG).autoClear(false);
+	H.init(this).background(clrBG).autoClear(false); // Leave traces on screen
 
 	minim   = new Minim(this);
 	myAudio = minim.loadFile(pathDATA + "HECQ_With_Angels_Trifonic_Remix.wav");
@@ -84,7 +84,9 @@ void draw() {
 		HBundle tempExtra = d.extras();
 		int i = (int)tempExtra.num("i");
 
+		// Scale Color
 		int fftFillColor = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
+		// Scale Size
 		int fftSize      = (int)map(myAudioData[i], 0, myAudioMax, 0, 300);
 
 		d.fill(fftFillColor, 225).size(fftSize);
