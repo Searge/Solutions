@@ -7,7 +7,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -18,7 +18,7 @@ FFT           myAudioFFT;
 
 boolean       showVisualizer   = true;
 
-int           myAudioRange     = 256;
+int           myAudioRange     = 256; // AS @ 1st Example
 int           myAudioMax       = 100;
 
 float         myAudioAmp       = 20.0;
@@ -28,12 +28,12 @@ float         myAudioIndexStep = 0.025;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 100;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -85,6 +85,8 @@ void draw() {
 		int i = (int)tempExtra.num("i");
 		int fftFillColor = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
 		d.fill(fftFillColor, 225);
+
+		// Removed text
 	}
 
 	if (showVisualizer) myAudioDataWidget();
