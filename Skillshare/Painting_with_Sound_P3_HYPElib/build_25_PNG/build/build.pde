@@ -7,7 +7,7 @@ color         clrBG            = #000000;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -55,7 +55,7 @@ void setup() {
 
 	pool = new HDrawablePool(poolMax);
 	pool.autoAddToStage()
-		.add ( new HImage(pathDATA + "block.png") )
+		.add (new HImage(pathDATA + "block.png")) // LOAD PNG File
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
@@ -64,7 +64,7 @@ void setup() {
 					HDrawable d = (HDrawable) obj;
 					d
 						.noStroke()
-						.fill(palette[ranIndex])
+						.fill(palette[ranIndex]) // Appling a TINT on top of the White
 						.anchorAt(H.CENTER)
 						.loc( (int)random(width), (int)random(height) )
 						.extras( new HBundle().num("i", ranIndex) )
