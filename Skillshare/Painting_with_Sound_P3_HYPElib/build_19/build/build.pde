@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -19,7 +19,7 @@ FFT           myAudioFFT;
 
 boolean       showVisualizer   = true;
 
-int           myAudioRange     = 11;
+int           myAudioRange     = 11; // but we have only 11 items ツ
 int           myAudioMax       = 100;
 
 float         myAudioAmp       = 40.0;
@@ -29,12 +29,12 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
-int           poolMax          = 25;
+int           poolMax          = 25; // paint only 25 things
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -51,14 +51,14 @@ void setup() {
 	myAudioFFT.linAverages(myAudioRange);
 	myAudioFFT.window(FFT.GAUSS);
 
-	pool = new HDrawablePool(poolMax);
+	pool = new HDrawablePool(poolMax); // pick 25 things
 	pool.autoAddToStage()
 		.add ( new HRect(100).rounding(10) )
-		.layout (new HGridLayout().startX(50).startY(height/2).spacingX(25).cols(poolMax))
+		.layout (new HGridLayout().startX(50).startY(height/2).spacingX(25).cols(poolMax)) // <-
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
-					int ranIndex = (int)random(myAudioRange);
+					int ranIndex = (int)random(myAudioRange); // 🅡🅐🅝🅓🅞🅜
 
 					HDrawable d = (HDrawable) obj;
 					d
@@ -66,7 +66,8 @@ void setup() {
 						.fill(255, 225)
 						.anchorAt(H.CENTER)
 						.rotation(45)
-						.extras( new HBundle().num("i", ranIndex) )
+						.extras(new HBundle().num("i", ranIndex))
+						// ↑ Save information with visual assets
 					;
 				}
 			}
@@ -82,7 +83,7 @@ void draw() {
 	H.drawStage();
 
 	for (HDrawable d : pool) {
-		HBundle tempExtra = d.extras();
+		HBundle tempExtra = d.extras(); // <==
 		int i = (int)tempExtra.num("i");
 
 		int fftFillColor = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
@@ -91,6 +92,7 @@ void draw() {
 		// visualize under diamonds which random numbers got picked
 
 		fill(#FF3300); textSize(12); textAlign(CENTER); text(i, d.x(), height/2 + 100);
+		// 												🆃🅴🆇🆃
 	}
 
 	if (showVisualizer) myAudioDataWidget();
