@@ -7,7 +7,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -16,7 +16,7 @@ Minim         minim;
 AudioPlayer   myAudio;
 FFT           myAudioFFT;
 
-boolean       showVisualizer   = false;
+boolean       showVisualizer   = false; // FALSE -> Turn off Widget
 
 int           myAudioRange     = 11;
 int           myAudioMax       = 100;
@@ -28,12 +28,12 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
-int           poolMax          = 100;
+int           poolMax          = 100; // <- 25;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -53,6 +53,7 @@ void setup() {
 	pool = new HDrawablePool(poolMax);
 	pool.autoAddToStage()
 		.add ( new HRect(100).rounding(10) )
+		// .layout (new HGridLayout().. <- 𝙍𝙚𝙢𝙤𝙫𝙚𝙙
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
@@ -64,7 +65,7 @@ void setup() {
 						.fill(255, 225)
 						.anchorAt(H.CENTER)
 						.rotation(45)
-						.loc( (int)random(width), (int)random(height) )
+						.loc( (int)random(width), (int)random(height) ) // locαтιoɴ
 						.extras( new HBundle().num("i", ranIndex) )
 					;
 				}
@@ -94,6 +95,7 @@ void draw() {
 		else           fill(#FF3300); // all others
 
 		textSize(12); textAlign(CENTER); text(i, d.x(), d.y());
+		// textSize(12); textAlign(CENTER); text(i, d.x(), height/2 + 100);
 	}
 
 	if (showVisualizer) myAudioDataWidget();
