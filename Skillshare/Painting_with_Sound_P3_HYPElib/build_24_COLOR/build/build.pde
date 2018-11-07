@@ -7,7 +7,7 @@ color         clrBG            = #000000;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -28,7 +28,7 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 100;
@@ -36,14 +36,14 @@ int           poolMax          = 100;
 //                                v BASE = orange            v SNARE = blue
 color[]       palette          = {#FF3300,#FF620C,#FF9519,   #0095A8,   #FFC725,#F8EF33,#FFFF33,#CCEA4A,#9AD561,#64BE7A,#2EA893};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
 }
 
 void setup() {
-	H.init(this).background(clrBG).autoClear(true);
+	H.init(this).background(clrBG).autoClear(true); // <-
 
 	minim   = new Minim(this);
 	myAudio = minim.loadFile(pathDATA + "HECQ_With_Angels_Trifonic_Remix.wav");
@@ -64,7 +64,7 @@ void setup() {
 					HDrawable d = (HDrawable) obj;
 					d
 						.noStroke()
-						.fill(palette[ranIndex], 225)
+						.fill(palette[ranIndex], 225) // RANDOM Color from Pallete
 						.anchorAt(H.CENTER)
 						.rotation(45)
 						.loc( (int)random(width), (int)random(height) )
