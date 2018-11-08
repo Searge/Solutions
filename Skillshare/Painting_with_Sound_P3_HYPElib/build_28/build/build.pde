@@ -8,7 +8,7 @@ color         clrBG            = #000000;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,7 +29,7 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolCols         = 7;
@@ -38,7 +38,7 @@ int           poolRows         = 7;
 //                                v BASE = orange            v SNARE = blue
 color[]       palette          = {#FF3300,#FF620C,#FF9519,   #0095A8,   #FFC725,#F8EF33,#FFFF33,#CCEA4A,#9AD561,#64BE7A,#2EA893};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH);
@@ -88,7 +88,7 @@ void draw() {
 	for (HDrawable d : pool) {
 		HBundle tempExtra = d.extras();
 		int i = (int)tempExtra.num("i");
-
+		// MAPPING
 		int fftAlpha = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
 		d.alpha(fftAlpha);
 	}
