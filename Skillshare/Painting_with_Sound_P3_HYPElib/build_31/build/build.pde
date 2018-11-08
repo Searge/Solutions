@@ -8,7 +8,7 @@ color         clrBG            = #111111;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,13 +29,13 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolCols         = 7;
 int           poolRows         = 7;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -67,7 +67,7 @@ void setup() {
 						.width(50)
 						.height(50)
 						.noStroke()
-						.fill(255, 225)
+						.fill(255, 225) // 🅆🄷🄸🅃🄴
 						.extras( new HBundle().num("i", ranIndex) )
 					;
 				}
@@ -92,6 +92,7 @@ void draw() {
 		int i = (int)tempExtra.num("i");
 
 		int fftZ         = (int)map(myAudioData[i], 0, myAudioMax, -900, 100);
+		// control the saturation of light that hits on 3Ddrawable
 		int fftFillColor = (int)map(myAudioData[i], 0, myAudioMax, 0, 255);
 
 		d.z(fftZ).fill(fftFillColor, 225);
