@@ -8,7 +8,7 @@ color         clrBG            = #111111;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,7 +29,17 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+/*
+	 .----,                               _,---.               .=-.-.            
+	/ ``--`.-,    _,..---._           _.='.'-,  \  .-.,.---.  /==/_ /_,..---._   
+	'-._  -|==| /==/,   -  \         /==.'-     / /==/  `   \|==|, /==/,   -  \  
+	.-.'   |==| |==|   _   _\       /==/ -   .-' |==|-, .=., |==|  |==|   _   _\ 
+	\    , _\==\|==|  .=.   |       |==|_   /_,-.|==|   '='  /==|- |==|  .=.   | 
+	 `-.    |==||==|,|   | -|       |==|  , \_.' )==|- ,   .'|==| ,|==|,|   | -| 
+	_.-',  _|==||==|  '='   /       \==\-  ,    (|==|_  . ,'.|==|- |==|  '='   / 
+	\     , \==\|==|-,   _`/         /==/ _  ,  //==/  /\ ,  )==/. /==|-,   _`/  
+	 ``-----'--'`-.`.____.'          `--`------' `--`-`--`--'`--`-``-.`.____.'   
+*/
 
 HDrawablePool pool;
 int           poolCols         = 5;
@@ -39,7 +49,7 @@ int           poolDepth        = 5;
 //                                v BASE = orange            v SNARE = blue
 color[]       palette          = {#FF3300,#FF620C,#FF9519,   #0095A8,   #FFC725,#F8EF33,#FFFF33,#CCEA4A,#9AD561,#64BE7A,#2EA893};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -58,7 +68,7 @@ void setup() {
 
 	pool = new HDrawablePool(poolCols*poolRows*poolDepth);
 	pool.autoAddToStage()
-		.add ( new HSphere() )
+		.add ( new HSphere() ) // ROTATING the CUBE
 		.layout (new HGridLayout().startX(-300).startY(-300).startZ(-300).spacing(150, 150, 150).rows(poolRows).cols(poolCols))
 		.onCreate (
 			new HCallback() {
@@ -68,7 +78,7 @@ void setup() {
 					HSphere d = (HSphere) obj;
 					d
 						.size(10)
-						.strokeWeight(0)
+						.strokeWeight(0) // 🅩🅔🅡🅞 imp. for Sphere
 						.noStroke()
 						.fill(palette[ranIndex], 225)
 						.anchorAt(H.CENTER)
