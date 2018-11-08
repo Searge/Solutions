@@ -8,7 +8,7 @@ color         clrBG            = #000000;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,7 +29,7 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolCols         = 7;
@@ -38,12 +38,25 @@ int           poolRows         = 7;
 //                                v BASE = orange            v SNARE = blue
 color[]       palette          = {#FF3300,#FF620C,#FF9519,   #0095A8,   #FFC725,#F8EF33,#FFFF33,#CCEA4A,#9AD561,#64BE7A,#2EA893};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
 }
+/*
+					      _               _         
+					    /\ \             /\ \       
+					   /  \ \           /  \ \____  
+					  / /\ \ \         / /\ \_____\ 
+					 / / /\ \ \       / / /\/___  / 
+					 \/_//_\ \ \     / / /   / / /  
+					   __\___ \ \   / / /   / / /   
+					  / /\   \ \ \ / / /   / / /    
+					 / /_/____\ \ \\ \ \__/ / /     
+					/__________\ \ \\ \___\/ /      
+					\_____________\/ \/_____/ 
 
+*/
 void setup() {
 	H.init(this).background(clrBG).use3D(true).autoClear(true);
 
@@ -70,6 +83,7 @@ void setup() {
 						.fill(palette[ranIndex], 225)
 						.anchorAt(H.CENTER)
 						.rotation(45)
+						// .z(-600) <-- USELESS
 						.extras( new HBundle().num("i", ranIndex) )
 					;
 				}
@@ -88,8 +102,8 @@ void draw() {
 	for (HDrawable d : pool) {
 		HBundle tempExtra = d.extras();
 		int i = (int)tempExtra.num("i");
-
-		int fftZ       = (int)map(myAudioData[i], 0, myAudioMax, -600, 100);
+		// moving from -600 to +100 on Z axis
+		int fftZ = (int)map(myAudioData[i], 0, myAudioMax, -600, 100);
 
 		d.z(fftZ);
 	}
