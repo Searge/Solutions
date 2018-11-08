@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,14 +29,14 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
-int           poolMax          = 6;
+int           poolMax          = 6; // things for colors
 //                                 red      green    blue     cyan     yellow   magenta
 color[]       palette          = {#FF0000, #00FF00, #0000FF, #00FFFF, #FFFF00, #FF00FF};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -55,7 +55,7 @@ void setup() {
 
 	pool = new HDrawablePool(poolMax);
 	pool.autoAddToStage()
-		.add ( new HEllipse(10) )
+		.add ( new HEllipse(10) ) // 10 ellipses
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
@@ -68,11 +68,12 @@ void setup() {
 						.anchorAt(H.CENTER)
 					;
 
-					HOrbiter3D orb = new HOrbiter3D(width/2, height/2, 0)
+					HOrbiter3D orb = new HOrbiter3D(width/2, height/2, 0) 
+													// POINT for Start
 						.target(d)
 						.zSpeed( random(-2, 2)+0.1 )
 						.ySpeed( random(-1, 1)+0.1 )
-						.radius(250)
+						.radius(250) // FOR ORBITING
 						.zAngle( (int)random(360) )
 						.yAngle( (int)random(360) )
 					;
