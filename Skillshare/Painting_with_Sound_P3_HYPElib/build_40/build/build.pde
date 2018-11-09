@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,7 +29,7 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 6;
@@ -49,7 +49,7 @@ int           rotateNumX       = 0;
 int           rotateNumY       = 0;
 int           rotateNumZ       = 0;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -83,7 +83,8 @@ void setup() {
 						.anchorAt(H.CENTER)
 					;
 
-					HOrbiter3D orb = new HOrbiter3D(0, 0, 0)
+					HOrbiter3D orb = new HOrbiter3D(0, 0, 0) 
+									// HOrbiter3D(width/2, height/2, 0)
 						.target(d)
 						.zSpeed(oSpeedZmin)
 						.ySpeed(oSpeedYmin)
