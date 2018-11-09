@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,17 +29,17 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 6;
 //                                 red      green    blue     cyan     yellow   magenta
 color[]       palette          = {#FF0000, #00FF00, #0000FF, #00FFFF, #FFFF00, #FF00FF};
 
-int           oRadiusMin       = 125;
-int           oRadiusMax       = 250;
+int           oRadiusMin       = 125; // CONTROL ORBITS POSSITION
+int           oRadiusMax       = 250; // CONTROL ORBITS POSSITION
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -58,7 +58,7 @@ void setup() {
 
 	pool = new HDrawablePool(poolMax);
 	pool.autoAddToStage()
-		.add ( new HSphere() )
+		.add ( new HSphere() ) // <- .add ( new HEllipse(10) )
 		.onCreate (
 			new HCallback() {
 				public void run(Object obj) {
@@ -66,7 +66,7 @@ void setup() {
 
 					HDrawable d = (HDrawable) obj;
 					d
-						.size(10)
+						.size(10) // ADDED
 						.noStroke()
 						.fill(palette[i])
 						.anchorAt(H.CENTER)
@@ -94,10 +94,10 @@ void draw() {
 	myAudioDataUpdate();
 
 	noLights();
-	lights();
+	lights(); // White Ambient light turn on for little orbits
 	sphereDetail(10);
 	H.drawStage();
-	noLights();
+	noLights(); // & then turn off
 
 	for (HDrawable d : pool) {
 		HBundle tempExtra = d.extras();
