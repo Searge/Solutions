@@ -8,7 +8,7 @@ color         clrBG            = #202020;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,14 +29,14 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 6;
 //                                 red      green    blue     cyan     yellow   magenta
 color[]       palette          = {#FF0000, #00FF00, #0000FF, #00FFFF, #FFFF00, #FF00FF};
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -78,6 +78,7 @@ void setup() {
 					;
 
 					d.extras( new HBundle().num("i", i).obj("o", orb) );
+					// add extras to the drawable
 				}
 			}
 		)
@@ -96,9 +97,10 @@ void draw() {
 		HBundle tempExtra = d.extras();
 		int i = (int)tempExtra.num("i");
 		HOrbiter3D o = (HOrbiter3D) tempExtra.obj("o");
-
+		// temp instanse that link with «o» for 6 Orbiters
 		// create lights MAPPED to 3D orbits for sphere in the center
 
+		// SWITCH (!)
 		switch (i) {
 			case 0 :
 				pointLight(255, 0, 0,   o.x(), o.y(), o.z()); // RED
