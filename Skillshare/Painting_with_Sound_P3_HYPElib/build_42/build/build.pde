@@ -13,6 +13,7 @@ String        pathDATA         = "../../data/";
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
+
 Minim         minim;
 AudioInput    myAudio;
 // AudioPlayer   myAudio; // <== chenged to Audio Input above ↑
