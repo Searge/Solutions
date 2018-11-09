@@ -8,7 +8,7 @@ color         clrBG            = #111111;
 
 String        pathDATA         = "../../data/";
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -29,7 +29,7 @@ float         myAudioIndexStep = 0.35;
 
 float[]       myAudioData      = new float[myAudioRange];
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 HDrawablePool pool;
 int           poolMax          = 6;
@@ -49,7 +49,9 @@ int           rotateNumX       = 0;
 int           rotateNumY       = 0;
 int           rotateNumZ       = 0;
 
-// *************************************************************************************************************
+// ****************************************************************************************
+
+// 			COPIED FROM Processing.org
 
 PImage        planetTexture;
 
@@ -63,7 +65,7 @@ float[]       coorY;
 float[]       coorZ;
 float[]       multXZ;
 
-// *************************************************************************************************************
+// ****************************************************************************************
 
 void settings() {
 	size(myStageW, myStageH, P3D);
@@ -72,7 +74,7 @@ void settings() {
 void setup() {
 	H.init(this).background(clrBG).use3D(true).autoClear(true);
 
-	planetTexture = loadImage(pathDATA + "texture.png");
+	planetTexture = loadImage(pathDATA + "texture.png"); // TEXTURE
 	planetW = planetH = 50;
 	initializeSphere(planetW, planetH);
 
