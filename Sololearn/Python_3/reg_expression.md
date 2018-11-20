@@ -49,3 +49,31 @@ if re.match(pattern, "spamspamspam"):
 else:
    print("No match")
 ```
+
+В примере выше программа проверяет совпадает ли строка с набором символов «spam» и выводит слово «Match», если это так.
+
+
+Для поиска совпадений используются и другие функции, такие как re.search и re.findall. 
+Функция re.search используется для поиска набора символов в любом месте строки.
+Функция re.findall возвращает список всех подстрок, которые совпадают с искомым набором символов.
+
+Пример:
+
+```python
+pattern = r"spam"
+
+if re.match(pattern, "eggspamsausagespam"):
+   print("Match")
+else:
+   print("No match")
+
+if re.search(pattern, "eggspamsausagespam"):
+   print("Match")
+else:
+   print("No match")
+    
+print(re.findall(pattern, "eggspamsausagespam"))
+```
+
+В примере выше функция match не нашла совпадений, так как она искала в начале строки.
+Функция search нашла совпадение в строке.
