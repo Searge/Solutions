@@ -4,6 +4,7 @@ from pyspark import SparkConf, SparkContext
 from numpy import array
 
 # Boilerplate Spark stuff:
+# Set configuration to local
 conf = SparkConf().setMaster("local").setAppName("SparkDecisionTree")
 sc = SparkContext(conf = conf)
 
@@ -40,7 +41,7 @@ def createLabeledPoints(fields):
         previousEmployers, educationLevel, topTier, interned]))
 
 #Load up our CSV file, and filter out the header line with the column names
-rawData = sc.textFile("e:/sundog-consult/udemy/datascience/PastHires.csv")
+rawData = sc.textFile("/Users/searge/Code/Solutions/Skillshare/DataScience/exercise/PastHires.csv")
 header = rawData.first()
 rawData = rawData.filter(lambda x:x != header)
 
@@ -54,7 +55,7 @@ trainingData = csvData.map(createLabeledPoints)
 # 3 previous employers, a BS degree, but from a non-top-tier school where
 # he or she did not do an internship. You could of course load up a whole
 # huge RDD of test candidates from disk, too.
-testCandidates = [ array([10, 1, 3, 1, 0, 0])]
+testCandidates = [array([10, 1, 3, 1, 0, 0])]
 testData = sc.parallelize(testCandidates)
 
 # Train our DecisionTree classifier using our data set
