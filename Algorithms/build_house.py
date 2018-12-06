@@ -1,4 +1,5 @@
 import graphics as gr
+# Конспект урока http://judge.mipt.ru/mipt_cs_on_python3/labs/lab4.html
 
 
 def build_house():
@@ -6,7 +7,7 @@ def build_house():
     pass
 
 
-window = gr.GaphWin("Russian game", 100, 100)
+window = gr.GraphWin("Russian game", 100, 100)
 build_house()
 
 print("Ура! Дом построен!")
