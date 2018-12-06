@@ -11,3 +11,6 @@ window = gr.GraphWin("Brand new house", 300, 300)
 build_house(window, gr.Point(100, 100), 100)
 
 print("Ура! Дом построен!")
+
+# Закрытие окна после завершения работы с графикой
+window.close()
