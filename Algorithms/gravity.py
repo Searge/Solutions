@@ -20,13 +20,13 @@ def add(point_1, point_2):
     """ Функция, которая возвращает сумму двух векторов
         X k+1 = X k + V*t
     """
-    new_point = Point(point_1.x + point_2.x,
-                      point_1.y + point_2.y)
+    new_point = gr.Point(point_1.x + point_2.x,
+                         point_1.y + point_2.y)
 
     return new_point
 
 
-def draw_circle(coords):
+def draw_ball(coords):
     """ Процесс отрисовки шарика также лучше вынести на отдельный
         уровень абстракции и оформить в функцию.
     """
@@ -40,6 +40,20 @@ def draw_circle(coords):
 # прервать этот процесс закрытием окна.
 
 
+def clear_window():
+    rectangle = gr.Rectangle(gr.Point(0, 0),
+                             gr.Point(size_x, size_y))
+    rectangle.setFill('green')
+    rectangle.draw(window)
+
+
 while True:
-    draw_circle(coords)
+    clear_window()
+
+    draw_ball(coords)
     coords = add(coords, velocity)
+
+    gr.time.sleep(0.02)
+
+# window.getMouse()
+# window.close()
