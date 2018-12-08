@@ -26,6 +26,27 @@ def add(point_1, point_2):
     return new_point
 
 
+def sub(point_1, point_2):
+    new_point = gr.Point(point_1.x - point_2.x,
+                         point_1.y - point_2.y)
+
+    return new_point
+
+
+def clear_window():
+    """ Ф-ция, которая очищает экран, рисуя зеленный квадрат
+        на весь экран.
+    """
+    rectangle = gr.Rectangle(gr.Point(0, 0),
+                             gr.Point(size_x, size_y))
+    rectangle.setFill('green')
+    rectangle.draw(window)
+
+    sun = gr.Circle(gr.Point(400, 400), 50)
+    sun.setFill('yellow')
+    sun.draw(window)
+
+
 def draw_ball(coords):
     """ Процесс отрисовки шарика также лучше вынести на отдельный
         уровень абстракции и оформить в функцию.
@@ -40,18 +61,54 @@ def draw_ball(coords):
 # прервать этот процесс закрытием окна.
 
 
-def clear_window():
-    rectangle = gr.Rectangle(gr.Point(0, 0),
-                             gr.Point(size_x, size_y))
-    rectangle.setFill('green')
-    rectangle.draw(window)
+def check_coords(coords, velocity):
+    """ Добавим упругое отражение шарика
+        от стенок экрана. Это делается очень простым образом.
+        В теле основного цикла добавим функцию, которая будет
+        проверять столкновение, и, в случае такого события,
+        инвертировать скорость шарика по нужной оси.
+    """
+    if coords.x < 0 or coords.x > size_x:
+        velocity.x = -velocity.x
+
+    if coords.y < 0 or coords.y > size_y:
+        velocity.y = -velocity.y
+
+
+def update_coords(coords, velocity):
+    return add(coords, velocity)
+
+
+def update_velocity(velocity, acceleration):
+    """ Давайте ещё немного разнообразим модель,
+        добавив в наш 2D мирок силу гравитации.
+    """
+    return add(velocity, acceleration)
+
+
+def update_acceleration(ball_coords, center_coords):
+    """ движение материальной точки в поле центральных сил
+    """
+    diff = sub(ball_coords, center_coords)
+    distance_2 = (diff.x ** 2 + diff.y ** 2) ** (3/2)
+
+    # Данная константа установлена методом научного подгона
+    G = 2000
+    # Теперь ускорение будет меняться в каждый момент времени
+    # в соответствии с законом гравитационного притяжения.
+    return gr.Point(-diff.x*G/distance_2, -diff.y*G/distance_2)
 
 
 while True:
     clear_window()
 
     draw_ball(coords)
-    coords = add(coords, velocity)
+
+    acceleration = update_acceleration(coords, gr.Point(400, 400))
+
+    coords = update_coords(coords, velocity)
+    velocity = update_velocity(velocity, acceleration)
+    check_coords(coords, velocity)
 
     gr.time.sleep(0.02)
 
