@@ -1,4 +1,5 @@
 import turtle
+import numpy as np
 
 turtle.shape('turtle')
 
@@ -20,9 +21,10 @@ def flower():
         turtle.right(55)
     random_color()
 
+
 def strange_spiral():
-    for radius in range(0, 55, 1):
-        theta = (2 * 3.14) * radius
+    for radius in np.arange(0, 55, 0.314):
+        theta = (2 * np.pi) * radius
         turtle.forward(radius)
         turtle.right(theta)
 
