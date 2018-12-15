@@ -12,11 +12,13 @@ def drawCenteredSquare(center, side):
         t.forward(side)
         t.right(90)
 
+
 def drawNestedSquares(center, side):
     if side < 1:
         return
 
     drawCenteredSquare(center, side)
     drawNestedSquares(center, side + 10)
+
 
 drawNestedSquares([0, 0], 20)
