@@ -5,6 +5,7 @@ t.width(3)
 t.speed('fastest')
 screen = t.Screen()
 
+
 def random_color():
     """ Random colour for turtle
         No special statement needed for border
