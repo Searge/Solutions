@@ -14,7 +14,7 @@ def downRange(start, stop, step):
         start -= abs(step)
 
 
-"""Describe this function...
+""" Will write later
 """
 
 
