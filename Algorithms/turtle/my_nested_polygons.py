@@ -21,6 +21,7 @@ for i in range(3, sides):
         t.left(angle)
 
     t.right(angle)
+    t.right(angle/2)
     # t.right(-180)
     t.penup()
     # t.goto(xP, yP)
