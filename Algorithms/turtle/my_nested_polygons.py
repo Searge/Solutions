@@ -13,16 +13,20 @@ for i in range(3, sides):
 
     position = length / 2
     xP = center[0] - position
-    yP = center[1] - position
+    yP = center[1] + position
 
-    t.penup()
-    t.goto(xP, yP)
-    t.pendown()
 
     for j in range(i):
         t.forward(length)
-        t.right(angle)
+        t.left(angle)
 
-    length += length % 80
+    t.right(angle)
+    # t.right(-180)
+    t.penup()
+    # t.goto(xP, yP)
+    t.forward(10)
+    t.pendown()
+
+    # length += length % 80
 
 screen.exitonclick()
