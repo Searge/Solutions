@@ -19,14 +19,15 @@ def more_agles(sides, length):
 while sides < 13:
     # считаем размер стороны многоугольника (a=2Rsin (360/2n))
     length = 2 * R * math.sin(math.pi / sides)
-    x = (180 - 360 / sides) / 2
-    turtle.left(x)
+    Angle = (180 - 360 / sides) / 2
+    turtle.left(Angle)
 
     more_agles(sides, length)
-    turtle.right(x)
+    turtle.right(Angle)
+
     turtle.penup()
     turtle.forward(10)  # задаем расстояние м/у окружностями
-
     turtle.pendown()
+
     sides += 1
     R += 10  # раз расстояние м/у окружностями 10, увеличиваем радиус на 10
