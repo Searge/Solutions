@@ -1,3 +1,8 @@
+// Coding Challenge 129: Koch Snowflake
+// Daniel Shiffman
+// https://thecodingtrain.com/CodingChallenges/129-koch-snowflake.html
+// https://youtu.be/X8bXDKqMsXE
+// https://editor.p5js.org/codingtrain/sketches/SJHcVCAgN
 class Segment {
   PVector a;
   PVector b;
