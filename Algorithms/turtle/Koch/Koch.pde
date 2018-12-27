@@ -10,10 +10,14 @@ void setup() {
   size(700, 800);
   segments = new ArrayList<Segment>();
 
-  PVector a = new PVector(50, 200);
-  PVector b = new PVector(650, 200);
-  PVector c = new PVector(350, 700);
+  PVector a = new PVector(0, 100);
+  PVector b = new PVector(600, 100);
   Segment s1 = new Segment(a, b);
+  
+  float len = PVector.dist(a, b);
+  float h = len * sqrt(3) / 2;
+  PVector c = new PVector(300, 100+h);
+  
   Segment s2 = new Segment(b, c);
   Segment s3 = new Segment(c, a);
   segments.add(s1);
@@ -36,6 +40,7 @@ void mousePressed() {
 
 void draw() {
   background(0);
+  translate(50, 100);
 
   stroke(255);
   for (Segment s : segments) {
