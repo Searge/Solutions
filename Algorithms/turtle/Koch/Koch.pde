@@ -14,6 +14,7 @@ void setup() {
   PVector b = new PVector(600, 100);
   Segment s1 = new Segment(a, b);
   
+  //Equal rectangles
   float len = PVector.dist(a, b);
   float h = len * sqrt(3) / 2;
   PVector c = new PVector(300, 100+h);
