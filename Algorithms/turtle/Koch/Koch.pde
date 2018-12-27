@@ -13,11 +13,20 @@ void setup() {
   PVector a = new PVector(0, 300);
   PVector b = new PVector(600, 300);
   Segment start = new Segment(a, b);
-  //segments.add(start);
+  segments.add(start);
 
-  Segment[] children = start.generate();
-  addAll(children, segments);
-  println(children);
+  //Segment[] children = start.generate();
+  //addAll(children, segments);
+  //println(children);
+}
+
+void mousePressed() {
+  ArrayList<Segment> nextGeneration = new ArrayList<Segment>();
+  for (Segment s : segments) {
+    Segment[] children = s.generate();
+    addAll(children, nextGeneration);
+  }
+  segments = nextGeneration;
 }
 
 void draw() {
