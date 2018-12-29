@@ -19,6 +19,7 @@ a, b, c, d = (int(input()) for _ in range(4))
 for up in range(c, d+1):
     print('\t'+str(up), end='')
 print()
+
 for x in range(a, b+1):
     print(x, end='\t')
     for y in range(c, d+1):
