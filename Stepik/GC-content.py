@@ -11,5 +11,17 @@
     а 10 -- это длина строки.
 """
 
-genome = input()
+genome = input().upper()
 
+GC_content = 0
+
+for x in genome:
+    if x == 'G' or x == 'C':
+        GC_content += 1
+
+
+
+print(GC_content / 10 * 100)
+
+# genome = input().upper().replace('C', '1').replace('G', '1').count('1')
+# print(genome / 10 * 100)
