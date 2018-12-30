@@ -13,15 +13,14 @@
 
 genome = input().upper()
 
-GC_content = 0
-
-for x in genome:
-    if x == 'G' or x == 'C':
-        GC_content += 1
+print(genome.replace('C', '1').replace('G', '1').count('1') / len(genome) * 100)
 
 
+# Ищем не GC в строке, а символы строки в gcGC :)
+# s = input()
+# c = 0
 
-print(GC_content / 10 * 100)
-
-# genome = input().upper().replace('C', '1').replace('G', '1').count('1')
-# print(genome / 10 * 100)
+# for ch in s:
+#     if ("gcGC".find(ch) != -1):
+#         c += 1
+# print(c / len(s) * 100)
