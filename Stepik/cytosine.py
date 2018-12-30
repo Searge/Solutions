@@ -1,8 +1,12 @@
 genome = input()
-count = 0
+# count_ = 0
 
-for nucleotide in genome:
-    if nucleotide == 'C':
-        count += 1
+# for nucleotide in genome:
+#     if nucleotide == 'C':
+#         count_ += 1
 
-print(count)
+# print(count_)
+
+# Швидше і простіше порахувати через вбудованний метод:
+
+print(genome.count('C'))
