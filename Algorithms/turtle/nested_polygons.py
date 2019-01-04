@@ -1,7 +1,6 @@
 import turtle as t
-from math import pi, tan
-from random import *
-
+# from math import pi, tan
+import random
 t.width(3)
 t.speed('fastest')
 screen = t.Screen()

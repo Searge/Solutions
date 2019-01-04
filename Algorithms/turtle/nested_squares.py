@@ -1,11 +1,11 @@
 import turtle
-import random
+# import random
 
 
 def drawCentSq(t, center, side):
     # calculate top left corner
-    xPt = center[0] - side/2
-    yPt = center[1] + side/2
+    xPt = center[0] - side / 2
+    yPt = center[1] + side / 2
     t.up()
     t.goto(xPt, yPt)
     t.down()
@@ -19,7 +19,7 @@ def drawNestSqCent(t, center, side):
         return
     # else: not necessary as long as the return comes first
     drawCentSq(t, center, side)
-    drawNestSqCent(t, center, side-10)
+    drawNestSqCent(t, center, side - 10)
 
 
 mad = turtle.Turtle()

@@ -1,6 +1,6 @@
 import random
 import turtle
-from math import pi, tan
+# from math import pi, tan
 
 
 def upRange(start, stop, step):
@@ -23,7 +23,7 @@ def nestedPolygons(center, length):
     global i, sides, position, xP, yP, angle
     i_start = float(3)
     i_end = float(sides)
-    i_inc = float(1)
+    # i_inc = float(1)
     for i in (i_start <= i_end) and upRange(i_start, i_end, 1) or downRange(i_start, i_end, 1):
         position = length / 2
         xP = center[0] - position

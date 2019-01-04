@@ -12,7 +12,6 @@ def t_square():
         turtle.left(90)
 
 
-
 def t3n_squares():
     PosX = 0
     PosY = 0
@@ -21,9 +20,9 @@ def t3n_squares():
             turtle.forward(x)
             turtle.left(90)
         turtle.penup()
-        PosX = PosX - 20/tan(pi/4)
-        PosY = PosY - 20/tan(pi/4)
-        turtle.goto(PosX,PosY)
+        PosX = PosX - 20 / tan(pi / 4)
+        PosY = PosY - 20 / tan(pi / 4)
+        turtle.goto(PosX, PosY)
         turtle.pendown()
 
 

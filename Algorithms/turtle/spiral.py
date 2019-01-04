@@ -1,5 +1,6 @@
 import turtle
 import numpy as np
+import random
 
 turtle.shape('turtle')
 
