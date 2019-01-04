@@ -1,5 +1,5 @@
 import turtle as t
-from random import *
+import random
 
 t.width(3)
 t.speed('fastest')
