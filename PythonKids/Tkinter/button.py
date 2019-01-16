@@ -1,5 +1,11 @@
-from tkinter import *
+import tkinter as tk
 
-tk = Tk()
-btn = Button(tk, text='Click me!')
+
+def здоров():
+    print('Здоровенькі були')
+
+
+root = tk.Tk()
+btn = tk.Button(root, text='Click me!', command=здоров)
 btn.pack()
+btn.mainloop()
