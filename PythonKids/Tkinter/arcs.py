@@ -12,16 +12,19 @@ canvas = tk.Canvas(root, width=size, height=size)
 canvas.pack()
 
 canvas.create_arc(one_sixtieth, one_sixtieth,
-                  half_size, half_size,
+                  half_size - 10, half_size - 10,
+                  extent=359, style='arc')
+
+canvas.create_arc(one_sixtieth, half_size + 10,
+                  half_size - 10, size - 10,
                   extent=270, style='arc')
+
+canvas.create_arc(half_size + 10, one_sixtieth,
+                  size - 10, half_size - 10,
+                  extent=180, style='arc')
 
 canvas.create_arc(half_size + 10, half_size + 10,
                   size - 10, size - 10,
-                  extent=270, style='arc')
-
-canvas.create_arc(one_sixtieth, one_sixtieth,
-                  half_size, half_size,
-                  extent=270, style='arc')
-
+                  extent=90, style='arc')
 
 canvas.mainloop()
