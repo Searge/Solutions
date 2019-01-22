@@ -18,8 +18,15 @@ canvas.create_polygon(one_sixtieth, one_sixtieth,
                       one_tenth - 10, 35)
 
 for i in range(int(one_tenth)):
-    canvas.move(1, 5, 0)
-    #         id1, 5px → (-5 ←), 0px ↑/↓
+    canvas.move(1, 5, 5)
+    #         id1, 5px → (-5 ←), 5px ↓
+    root.update()
+    #   оновлюємо екран
+    time.sleep(0.05)
+
+for i in range(int(one_tenth)):
+    canvas.move(1, 5, -5)
+    #         id1, 5px → (-5 ←), -5px ↑
     root.update()
     #   оновлюємо екран
     time.sleep(0.05)
