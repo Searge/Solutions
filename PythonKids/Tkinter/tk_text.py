@@ -13,4 +13,10 @@ canvas.pack()
 
 canvas.create_text(half_size, half_size, text='Random text')
 
+canvas.create_text(half_size, one_fourth, text='Red text',
+                   fill='red')
+
+canvas.create_text(half_size, three_fourth, text='Fira Code Bold, 34',
+                   font=('Fira Code Bold', 34))
+
 canvas.mainloop()
