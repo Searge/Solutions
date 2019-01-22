@@ -19,7 +19,9 @@ canvas.create_polygon(one_sixtieth, one_sixtieth,
 
 for i in range(int(one_tenth)):
     canvas.move(1, 5, 0)
+    #         id1, 5px → (-5 ←), 0px ↑/↓
     root.update()
+    #   оновлюємо екран
     time.sleep(0.05)
 
 canvas.mainloop()
