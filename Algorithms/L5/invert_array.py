@@ -3,7 +3,7 @@ def invert_array(A: list, N: int):
         в рамках індексів від 0 до N-1
     """
     for k in range(N):
-        A[k] = A[N-k-1]
+        A[k], A[N - k - 1] = A[N - k - 1], A[k]
 
 
 def test_invert_search():
@@ -14,7 +14,7 @@ def test_invert_search():
     if A1 == [5, 4, 3, 2, 1]:
         print('test #1 - ok')
     else:
-        print('test #1 - ok')
+        print('test #1 - Fail')
 
     A2 = [0, 0, 0, 0, 0, 0, 0, 10]
     print(A2)
@@ -23,7 +23,7 @@ def test_invert_search():
     if A2 == [10, 0, 0, 0, 0, 0, 0, 0]:
         print('test #1 - ok')
     else:
-        print('test #1 - ok')
+        print('test #1 - Fail')
 
 
 test_invert_search()
