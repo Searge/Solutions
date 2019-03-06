@@ -2,7 +2,7 @@ def invert_array(A: list, N: int):
     """ Розвертаємо масив задом-наперед
         в рамках індексів від 0 до N-1
     """
-    for k in range(N):
+    for k in range(N // 2):
         A[k], A[N - k - 1] = A[N - k - 1], A[k]
 
 
