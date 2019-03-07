@@ -12,3 +12,4 @@ print(B)
 C = [x ** 2 for x in A if x % 2 == 0]
 
 print(C)
+print([0 if x < 0 else x ** 2 for x in A if x % 2 == 0])
