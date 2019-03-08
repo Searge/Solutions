@@ -1,6 +1,11 @@
 def insert_sort(A):
     """Сортировка списка А вставками"""
-    pass
+    N = len(A)
+    for top in range(1, N):
+        k = top
+        while k > 0 and A[k - 1] > A[k]:
+            A[k], A[k - 1] = A[k - 1], A[k]
+            k -= 1
 
 
 def choise_sort(A):
@@ -14,6 +19,7 @@ def bubble_sort(A):
 
 
 def test_sort(sort_algorithm):
+    print('Тестируем:', sort_algorithm.__doc__)
     print('testcase #1', end='')
     A = [4, 2, 5, 1, 3]
     A_sorted = [1, 2, 3, 4, 5]
@@ -34,4 +40,7 @@ def test_sort(sort_algorithm):
 
 
 if __name__ == '__main__':
-    test_sort()
+    test_sort(insert_sort)
+    test_sort(choise_sort)
+    test_sort(bubble_sort)
+
