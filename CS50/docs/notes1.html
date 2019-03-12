@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- https://useiconic.com/open -->
+        <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" rel="stylesheet">
+
+        <link href="https://cs50.harvard.edu/college/assets/css/style.css?1549745557" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/4.2/getting-started/introduction/ -->
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+        <title>Лекція 1 - Це CS50</title>
+
+        <style type="text/css">
+          main {
+                margin-left: 0; 
+          }
+        </style>
+
+    </head>
+
+    <body>
+<main class="markdown-body container">
+
+    <h2 class="no_toc" id="lecture-1">Лекція 1</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#last-week" id="markdown-toc-last-week">Минулого тижня</a></li>
+  <li><a href="#c" id="markdown-toc-c">C</a></li>
+  <li><a href="#cs50-sandbox" id="markdown-toc-cs50-sandbox">CS50 Sandbox</a></li>
+  <li><a href="#more-examples" id="markdown-toc-more-examples">Додаткові приклади</a></li>
+  <li><a href="#more-problems" id="markdown-toc-more-problems">Додаткові задачі</a></li>
+</ul>
+
+<h2 id="last-week">Минулого тижня</h2>
+
+<ul>
+  <li>Ми вже дізналися, що завдяки безлічі рівнів абстрагування та тим, хто до нас займався цією темою, ми можемо легко писати програми, які в остаточному підсумку будуть просто двійковими, 0 і 1.</li>
+  <li>Розв’язання задачі можна описати як прийом вхідних даних (задачі) та використання алгоритму для пошуку вихідних даних (розв’язку).</li>
+  <li>Комп'ютери представляють вхідні та вихідні дані за допомогою значної кількості бітів, двійкових цифр, 0 та 1, що увімкнені або вимкнекні. Із достатньою кількістю бітів ми можемо представляти не тільки великі числа, а й текст, зображення та відео.</li>
+  <li>Можна використати різні алгоритми, які будуть розв’язувати одну і ту саму задачу, але з різним часом виконання.</li>
+  <li>Ми можемо запусувати алгоритми точніше за допомогою псевдокоду, а також використовувати концепції функцій, циклів та умов.
+    <ul>
+      <li>За допомогою добровольців в аудиторії ми зробили бутерброди з арахісовим маслом та желе, хоча кожен з нас інтерпретував інструкції по-різному!</li>
+    </ul>
+  </li>
+  <li>Виявляється, ми (люди), природно, робимо припущення та абстракції під час виконання інструкцій або навіть псевдокоду. Але, як ми бачили в мові програмування Scratch, а також побачимо в мові програмування С, тепер так робити не вдасться, і нам доведеться думати уважніше про кроки та випадки, з якими доведеться працювати нашим програмам.
+    <ul>
+      <li>Завдяки Scratch ми скористались напрацюваннями хлопців з MIT, які створили блоки та спрайти для створення власних програм. І ми також зробили власні блоки, такі як функція <code class="highlighter-rouge">cough</code> («кашель»), це була наша власна абстракція.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="c">C</h2>
+
+<ul>
+  <li>Ми будемо використовувати нову мову C – це повністю текстова мова, яка містить складні службові слова та пунктуацію:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Це еквівалентно блоку «коли натиснуто зелений прапорець» та «сказати «Привіт, світ!»:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/when_green_flag.png" alt="block labeled 'when green flag clicked', block labeled 'say (hello, world)'" /></li>
+    </ul>
+  </li>
+  <li>Ми можемо порівняти багато конструкцій в мові програмування C з блоками, які ми вже бачили та використовували у Scratch. Синтаксис тут грає значно меншу роль, ніж принципи, з якими ми вже ознайомилися.</li>
+  <li>Блок «Сказати «Привіт, світ!» - це функція, вона відповідає <code class="highlighter-rouge">printf("hello, world\n");</code>. У C функція виводу на екран виглядає як <code class="highlighter-rouge">printf</code>, де <code class="highlighter-rouge">f</code> означає «форматування», тобто ми можемо форматувати рядок різними способами. Потім ми використовуємо круглі дужки, щоб передати те, що ми хочемо вивести. Використовуються подвійні лапки, щоб виокремити текст або рядок і додати <code class="highlighter-rouge">\n</code> що означає новий рядок на екрані. (Наступного разу, коли ми використаємо функцію <code class="highlighter-rouge">printf</code>, наш текст буде розташований у новому рядку). Нарешті, ми додаємо крапку з комою <code class="highlighter-rouge">;</code> щоб закінчити цей рядок коду в C.</li>
+  <li>Блок «встановити [counter] у (0)» створює змінну, а в C ми б сказали <code class="highlighter-rouge">int counter = 0;</code>, де <code class="highlighter-rouge">int</code> вказує, що тип нашої змінної є цілим числом:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/set_counter_to_0.png" alt="block labeled 'set counter to (0)'" /></li>
+  <li>«Змінити [counter] на (1)» — це <code class="highlighter-rouge">counter = counter + 1;</code> в C. (У C <code class="highlighter-rouge">=</code> не є знаком «дорівнює», де ми стверджуємо, що <code class="highlighter-rouge">counter</code> це те ж, що і <code class="highlighter-rouge">counter + 1</code>. На відміну від цього, <code class="highlighter-rouge">=</code> означає «скопіювати значення праворуч у значення ліворуч».) Можна також сказати <code class="highlighter-rouge">counter += 1;</code> або <code class="highlighter-rouge">counter++;</code> обидва з яких — «синтаксичний цукор», скорочення, що дозволяє писати менше слів чи знаків, але виконувати ті самі речі.<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/change_counter_by_1.png" alt="block labeled 'change counter by (1)'" /></li>
+  <li>Умова буде відповідна до:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/if_x_y.png" alt="block labeled 'if &lt; (x) &lt; (y)&gt; then', inside which there is a block labeled 'say (x is less than y)'" />
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is less than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, що в C ми використовуємо фігурні дужки <code class="highlighter-rouge">{</code> і <code class="highlighter-rouge">}</code> (а також відступи) щоб вказати, як мають бути вкладені рядки коду.</li>
+    </ul>
+  </li>
+  <li>Також можливі умови «if-else» (якщо-інакше):<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/if_else.png" alt="block labeled 'if &lt; (x) &lt; (y)&gt; then', inside which there is a block labeled 'say (x is less than y)', parent block also has an 'else', inside which there is a block labeled 'say (x is not less than y)'" />
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is less than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is not less than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>З іншого боку, пробіли, нові рядки та відступи, як правило, не є синтаксично важливими в C, тобто вони не впливають на те, як наша програма в кінцевому підсумку працює, але для нашого коду дуже важливо дотримуватися домовленостей і мати гарний «стиль», аби код був читабельним для людей.</li>
+    </ul>
+  </li>
+  <li>І навіть <code class="highlighter-rouge">else if</code>:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/if_else_if.png" alt="block labeled 'if &lt; (x) &lt; (y)&gt; then', inside which there is a block labeled 'say (x is less than y)', parent block also has an 'else', inside which is a nesting of a block labeled 'if &lt; (x) &gt; (y) &gt; then', inside which there is a block labeled 'say (x is greater than y)', parent block also has an 'else', inside which there is a block labeled 'if &lt; (x) = (y) &gt; then', inside which there is a block labeled 'say (x is equal to y)'" />
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is less than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is greater than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x is equal to y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, для порівняння двох значень у мові програмування C ми використовуємо <code class="highlighter-rouge">==</code>, два знаки дорівнює.</li>
+      <li>Отже, за логікою, нам не потрібно <code class="highlighter-rouge">if (x == y)</code> в останній умові, оскільки це єдиний випадок, що лишився, і ми можемо просто використати <code class="highlighter-rouge">else</code>.</li>
+    </ul>
+  </li>
+  <li>Цикли можна задавати ось так:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/forever.png" alt="block labeled 'forever', inside which there is a block labeled 'say (hello, world)'" />
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Ключове слово <code class="highlighter-rouge">while</code> (поки) також вимагає певної умови, тому ми використовуємо <code class="highlighter-rouge">true</code> (істина) як булевий вираз, аби переконатися, що наш цикл буде працювати постійно. Наша програма перевірить, чи значення виразу вираховується як <code class="highlighter-rouge">true</code> (в цьому випадку це завжди істина), а потім запустить рядки всередині фігурних дужок. А потім буде повторюватися доти, поки вираз не перестане бути істинним (в цьому випадку він не зміниться).<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/repeat.png" alt="block labeled 'repeat (50)', inside which there is a block labeled 'say (hello, world)'" />
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Щоб написати цикл, який буде працювати визначену кількість разів, ми використовуємо ключове слово <code class="highlighter-rouge">for</code> і спочатку ми створюємо змінну <code class="highlighter-rouge">i</code> та присвоюємо їй значення 0. <code class="highlighter-rouge">i</code> традиційна назва для змінної, яка відстежує, скільки ітерацій циклів ми вже пройшли. Далі, ми перевіряємо, чи <code class="highlighter-rouge">i &lt; 50</code>, щоразу, коли ми повертаємося вгору циклу, перш ніж запускати код усередині. Якщо цей вираз — true, ми запускаємо код всередині. Нарешті, після виконання коду, ми використовуємо <code class="highlighter-rouge">i++</code> щоб додати одиницю до <code class="highlighter-rouge">i</code>, і цикл повторюється.</li>
+    </ul>
+  </li>
+  <li>Ми також можемо отримати вхідні дані від користувача:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/ask_say.png" alt="block labeled 'ask (What's your name?) and wait', block labeled 'say (answer)'" />
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"What's your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">answer</span><span class="p">);</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>У Scratch, відповідь буде збережена у змінній, яка називається «answer», але в C ми можемо вказувати назву змінної. Ми також оберемо «answer», і тип цієї змінної <code class="highlighter-rouge">string</code>– це рядок, який представляє лише послідовність символів.</li>
+      <li>І ми будемо використовувати <code class="highlighter-rouge">printf</code> для виводу рядка, але нам потрібно вказати, як саме це робити. Спочатку ми передаємо <code class="highlighter-rouge">"%s</code>, рядок, який ми хочемо вивести, це і є <code class="highlighter-rouge">%s</code>. <code class="highlighter-rouge">%s</code> місцезаповнювач, який <code class="highlighter-rouge">printf</code> замінює значенням рядка, який ми передаємо далі і визначаємо як <code class="highlighter-rouge">answer</code>.</li>
+      <li>Також, нам знадобиться це, оскільки ми можемо тепер це конвертувати:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/ask_say_join.png" alt="block labeled 'ask (What's your name?) and wait', block labeled 'say (join (hello, ) (answer))'" />
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"What's your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">answer</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cs50-sandbox">CS50 Sandbox</h2>
+
+<ul>
+  <li><a href="https://sandbox.cs50.io/">CS50 Sandbox</a> – це хмарне віртуальне середовище, де встановлено відповідні бібліотеки та налаштування для того, аби ми всі могли розпочати писати та запускати програми однаково. Зверху є простий редактор коду, де ми можемо вводити текст. Нижче вікно терміналу, в яке ми можемо вводити команди:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/cs50_sandbox.png" alt="two panels, top labeled hello.c, bottom labeled Terminal" /></li>
+  <li>Вводимо наш код вгорі:<br />
+<img src="https://cs50.harvard.edu/college/weeks/1/notes/editor.png" alt="hello, world in editor" />
+    <ul>
+      <li>o Зауважте, що наш код позначений кольором, це використовується для виділення тих чи інших речей у коді.</li>
+      <li>o Ми пишемо код та зберігаємо його у файл, щось на зразок <code class="highlighter-rouge">hello.c</code>, щоб вказати, що це написано мовою програмування C.</li>
+    </ul>
+  </li>
+  <li>Після збереження написаного нами коду, який називається  <em>вихідним кодом</em>, ми повинні перетворити його на <em>машинний код</em>, тобто двійкові інструкції, які комп'ютеру легше зрозуміти.
+    <ul>
+      <li>Ми використовуємо програму під назвою <em>компілятор</em>, аби перетворити наш вихідний код у машинний код.</li>
+    </ul>
+  </li>
+  <li>Для цього ми використовуємо панель терміналу. Значок <code class="highlighter-rouge">$</code> зліва – це запит командного рядка, куди ми можемо вводити команди.</li>
+  <li>Ми набираємо <code class="highlighter-rouge">clang hello.c</code> (де <code class="highlighter-rouge">clang</code> означає «C languages») і … нічого не відбувається. Ми бачимо ще одну позначку <code class="highlighter-rouge">$</code>, очікуючи іншу команду. Ми можемо натиснути на значок теки у верхньому лівому кутку панелі CS50 Sandbox, і побачимо, що зараз ми маємо інший файл, який називається <code class="highlighter-rouge">a.out</code>. Тепер ми можемо набрати <code class="highlighter-rouge">./a.out</code> у вікні терміналу та побачити <code class="highlighter-rouge">hello, world</code>. Щойно ми написали, скомпілювали та запустили нашу першу програму!</li>
+  <li>Ми можемо змінити назву нашої програми з <code class="highlighter-rouge">a.out</code> на будь-яку іншу. Ми можемо передавати <em>параметри командного рядка</em> програмам в терміналі, якщо вони приймають їх. Наприклад, ми можемо набрати <code class="highlighter-rouge">clang -o hello hello.c</code>, і <code class="highlighter-rouge">-o hello</code> каже програмі <code class="highlighter-rouge">clang</code> зберегти вивід компілятора як файл <code class="highlighter-rouge">hello</code>. Тоді ми можемо просто запустити <code class="highlighter-rouge">./hello</code>. (<code class="highlighter-rouge">.</code> означає поточну теку.)</li>
+  <li>Ми можемо навіть абстрагуватись від цього, просто набравши <code class="highlighter-rouge">make hello</code>. Ми бачимо, що за замовчуванням (у CS50 Sandbox), <code class="highlighter-rouge">make</code> використовує <code class="highlighter-rouge">clang</code> для компіляції нашого коду з <code class="highlighter-rouge">hello.c</code> до <code class="highlighter-rouge">hello</code>, з іншими спеціальними переметрами.</li>
+  <li>Тепер спробуємо отримати дані від користувача.
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"What is your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, name</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Якщо під час запуску <code class="highlighter-rouge">make hello</code>, ми отримуємо багато помилок, варто піднятися вгору та подивитися, яка помилка трапилася першою, оскільки вона могла призвести до усіх наступних.</li>
+      <li>Ми бачимо, що першою помилкою є <code class="highlighter-rouge">hello.c:5:5: error: use of undeclared identifier 'string' ...</code>. Це свідчить про те, що на рядку 5, символ 5, файла <code class="highlighter-rouge">hello.c</code>, компілятор виявив щось, що називається <code class="highlighter-rouge">string</code> і він це не розпізнав. Насправді мова програмування C не має типу, що називається <code class="highlighter-rouge">string</code>.</li>
+    </ul>
+  </li>
+  <li>Щоб спростити речі (принаймні, для початку), ми будемо включати бібліотеку або набір коду з CS50. Бібліотека надає нам тип змінної <code class="highlighter-rouge">string</code>, функцію <code class="highlighter-rouge">get_string</code> і багато іншого. Нам просто потрібно написати рядок у верхній частині, щоб <code class="highlighter-rouge">включити</code> файл <code class="highlighter-rouge">cs50.h</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"What is your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, name</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">stdio.h</code> – це бібліотека, яка розповсюджується разом з C, що означає «стандартний ввід/вивід», вона містить функцію <code class="highlighter-rouge">printf</code> яка виводить дані на екран.</li>
+    </ul>
+  </li>
+  <li>Тепер, якщо ми спробуємо скомпілювати цей код, наша перша помилка буде <code class="highlighter-rouge">hello.c:6:12: error: unused variable 'name' ...</code>. Виявляється, ми не зробили нічого зі змінною <code class="highlighter-rouge">name</code> після її оголошення. Для цього нам потрібно змінити наступний рядок:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"What is your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Ми передаємо два аргументи, або параметри, до  <code class="highlighter-rouge">printf</code>. Перший – це рядок, який ми хочемо вивести, з нашим місцезаповнювачем <code class="highlighter-rouge">%s</code> placeholder, and the second is the variable <code class="highlighter-rouge">name</code>, а другий – це ім'я змінної, яку ми хочемо передати до нього.</li>
+    </ul>
+  </li>
+  <li>Якщо ми змінюємо наш код, потрібно зберегти файл і запустити <code class="highlighter-rouge">make hello</code> ще раз. І якщо ми хочемо зупинити нашу програму до її завершення, нам просто потрібно натиснути control-C.</li>
+  <li>Функції, такі як  <code class="highlighter-rouge">get_string</code> або <code class="highlighter-rouge">printf</code>, можуть приймати аргументи. Вони також можуть повертати значення, а <code class="highlighter-rouge">get_string</code> повертає щось із типом <code class="highlighter-rouge">string</code>.</li>
+</ul>
+
+<h2 id="more-examples">Додаткові приклади</h2>
+
+<ul>
+  <li>Бібліотека CS50 має інші функції для отримання вхідних даних різних типів:
+    <ul>
+      <li><code class="highlighter-rouge">get_char</code></li>
+      <li><code class="highlighter-rouge">get_double</code></li>
+      <li><code class="highlighter-rouge">get_float</code></li>
+      <li><code class="highlighter-rouge">get_int</code></li>
+      <li><code class="highlighter-rouge">get_long</code></li>
+      <li><code class="highlighter-rouge">get_string</code></li>
+      <li>…</li>
+    </ul>
+  </li>
+  <li>Існують відповідні типи в C і способи їх виводу за допомогою <code class="highlighter-rouge">printf</code>:
+    <ul>
+      <li><code class="highlighter-rouge">bool</code></li>
+      <li><code class="highlighter-rouge">char</code>, <code class="highlighter-rouge">%c</code></li>
+      <li><code class="highlighter-rouge">double</code></li>
+      <li><code class="highlighter-rouge">float</code>, <code class="highlighter-rouge">%f</code></li>
+      <li><code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">%i</code></li>
+      <li><code class="highlighter-rouge">long</code>, <code class="highlighter-rouge">%li</code></li>
+      <li><code class="highlighter-rouge">string</code>, <code class="highlighter-rouge">%s</code></li>
+    </ul>
+  </li>
+  <li>CS50 Sandbox підтримує різноманітні мови, серед них ми можемо обрати, а ще можемо обрати назву файлу, з яким ми почнемо працювати.</li>
+  <li>Насправді, ви можете натиснути на посилання до кожного із цих прикладів на <a href="https://cs50.harvard.edu/2018/fall/weeks/1/">сторінці завдань тижня</a> для запуску та редагування своїх копій.</li>
+  <li>У <code class="highlighter-rouge">int.c</code>ми отримуємо та виводимо на екран ціле число:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Integer: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, що ми використовуємо <code class="highlighter-rouge">%i</code> для виводу цілого числа.</li>
+      <li><code class="highlighter-rouge">int main(void)</code> є еквівалентом «натиснуто зелений прапорець». Про це ми дізнаємося більше в найближчих лекціях.</li>
+      <li>Тепер ми можемо запустити <code class="highlighter-rouge">make int</code> і запустити нашу програму командою <code class="highlighter-rouge">./int</code>.</li>
+    </ul>
+  </li>
+  <li>У <code class="highlighter-rouge">float.c</code> ми отримуємо десяткове число (які називаються числа з рухомою комою, тому що десяткова кома може «рухатись» між цифрами, залежно від числа):
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="n">get_float</span><span class="p">(</span><span class="s">"Float: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Тепер, якщо ми компілюємо та запускаємо нашу програму, бачимо щось на зразок <code class="highlighter-rouge">hello, 42.000000</code>, навіть якщо ми просто набрали <code class="highlighter-rouge">42</code> у запиті командного рядка.</li>
+    </ul>
+  </li>
+  <li>З <code class="highlighter-rouge">ints.c</code> ми можемо трохи побавитись в математику:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt user for x
+</span>    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"x: "</span><span class="p">);</span>
+
+    <span class="c1">// Prompt user for y
+</span>    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"y: "</span><span class="p">);</span>
+
+    <span class="c1">// Perform arithmetic
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"x + y = %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x - y = %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x * y = %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x / y = %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"x mod y = %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Спочатку, ми отримуємо два цілих числа, <code class="highlighter-rouge">x</code> та <code class="highlighter-rouge">y</code>. Потім ми виводимо дію, яку хочемо виконати: <code class="highlighter-rouge">x + y = %i\n</code>, та передаємо туди значення, яке нам потрібно <code class="highlighter-rouge">x + y</code>. <code class="highlighter-rouge">*</code> використовується для множення, а <code class="highlighter-rouge">/</code> для ділення. <code class="highlighter-rouge">%</code> між двома змінними - це <a href="https://en.wikipedia.org/wiki/Modulo_operation">остача від ділення</a>.</li>
+      <li>o Цікаво, що коли ми використовуємо <code class="highlighter-rouge">2</code> для <code class="highlighter-rouge">x</code> і <code class="highlighter-rouge">10</code> для <code class="highlighter-rouge">y</code>, то в результаті отримуємо … <code class="highlighter-rouge">x / y = 0</code>. Виявляється, оскільки обидві змінні – це цілі числа, результат – це ціле число, і оскільки 2 розділений на 10 менше за 1, все, що залишається, — це 0.</li>
+    </ul>
+  </li>
+  <li>З <code class="highlighter-rouge">floats.c</code> ми бачимо, що відбувається, коли використовуємо числа з рухомою комою:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt user for x
+</span>    <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">get_float</span><span class="p">(</span><span class="s">"x: "</span><span class="p">);</span>
+
+    <span class="c1">// Prompt user for y
+</span>    <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">get_float</span><span class="p">(</span><span class="s">"y: "</span><span class="p">);</span>
+
+    <span class="c1">// Perform division
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"x / y = %.50f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>За допомогою <code class="highlighter-rouge">%50f</code> ми можемо вказати кількість десяткових знаків, які виводяться на екран.</li>
+      <li>Хм, і тепер ми отримуємо …
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x: 2
+y: 10
+x / y = 0.20000000298023223876953125000000000000000000000000
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Комп'ютер має пам'ять, яка знаходиться в апаратних чіпах, це оперативна пам’ять. Наші програми використовують цю пам’ять для зберігання даних під час їх виконання, але ця пам'ять обмежена. Тому з обмеженим числом бітів ми не можемо представити всі можливі числа (яких є нескінченна кількість). Отже, на нашому комп'ютері є певна кількість бітів для кожного числа з рухомою комою, і має округлювати їх до найближчого десяткового значення в певний момент.</li>
+  <li>Ці неточності можуть стати реальною проблемою, коли йдеться про фінанси, ракети або в наукових програмах. Але ми можемо обійти цю проблему, вказавши кількість десяткових знаків для досягнення необхідної точності, і виділити необхідну кількість бітів для збереження саме цієї кількості десяткових знаків.</li>
+  <li>Для чисел з рухомою комою у C більшість комп'ютерів використовують 4 байти або 32 біти. Інший тип, який називається double, використовує в два рази більше бітів, тобто 8 байт.</li>
+  <li>Якщо ми запускаємо <code class="highlighter-rouge">doubles.c</code>, який є тим самим <code class="highlighter-rouge">floats.c</code> але з типом <code class="highlighter-rouge">double</code> для змінних, ми бачимо, що у нас набагато більше чисел після коми. І компроміс для додаткової точності полягає в тому, що тепер нам потрібно використати більше пам'яті.</li>
+  <li>Розглянемо <code class="highlighter-rouge">parity.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt user for integer
+</span>    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"n: "</span><span class="p">);</span>
+
+    <span class="c1">// Check parity of integer
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"even</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"odd</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Взявши остачу від ділення  <code class="highlighter-rouge">n</code> на 2, можна визначити, чи <code class="highlighter-rouge">n</code> є парним чи непарним числом.</li>
+    </ul>
+  </li>
+  <li>У <code class="highlighter-rouge">conditions.c</code>, ми перетворюємо попередній фрагмент коду на програму:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt user for x
+</span>    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"x: "</span><span class="p">);</span>
+
+    <span class="c1">// Prompt user for y
+</span>    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"y: "</span><span class="p">);</span>
+
+    <span class="c1">// Compare x and y
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"x is less than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"x is greater than y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"x is equal to y</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>У <code class="highlighter-rouge">answer.c</code>, ми отримуємо текст від користувача:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt user for answer
+</span>    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">get_char</span><span class="p">(</span><span class="s">"Answer: "</span><span class="p">);</span>
+
+    <span class="c1">// Check answer
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'Y'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'y'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"yes</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'N'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'n'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"no</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Тут ми використовуємо <code class="highlighter-rouge">get_char</code> та тип даних <code class="highlighter-rouge">char</code> щоб отримати один символ від користувача.</li>
+      <li>Зауважте, що ми використовуємо <code class="highlighter-rouge">||</code> щоб позначити «або» у нашому булевому виразі. (Логічне «і» буде позначатись <code class="highlighter-rouge">&amp;&amp;</code>.)</li>
+    </ul>
+  </li>
+  <li>У Scratch, ми створили власний блок, який ми назвали «cough» (кашель). Ми можемо зробити те ж саме в C, створивши власну функцію.</li>
+  <li>Якщо ми хочемо вивести «cough» 3 рази, ми використовуємо цикл <code class="highlighter-rouge">for</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"cough</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Ми можемо перемістити рядок з <code class="highlighter-rouge">printf</code> до власної функції:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="n">cough</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cough</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Cough once
+</span><span class="kt">void</span> <span class="nf">cough</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"cough</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, нам треба оголосити, що функція <code class="highlighter-rouge">cough</code> існує, тож нам потрібен її прототип, <code class="highlighter-rouge">void cough(void);</code> перед тим, як функція <code class="highlighter-rouge">main</code> буде її викликати. Компілятор C читає код згори до низу, тож нам треба сказати йому, що функція <code class="highlighter-rouge">cough</code> існує до того, як ми будемо її використовувати. Також, ми хочемо тримати нашу функцію <code class="highlighter-rouge">main</code> ближче до гори, тож фактична реалізація функції <code class="highlighter-rouge">cough</code> все одно буде внизу.</li>
+      <li>Фактично, <code class="highlighter-rouge">cs50.h</code> та <code class="highlighter-rouge">stdio.h</code>  - заголовочні файли, що містять прототипи таких функцій, як <code class="highlighter-rouge">get_string</code> та <code class="highlighter-rouge">printf</code>, щоб ми могли їх далі використовувати. Фактична реалізація цих функцій знаходиться у <code class="highlighter-rouge">cs50.c</code> та <code class="highlighter-rouge">stdio.c</code> у вигляді вихідного коду, і вони скомпільовані у файли в іншому місці у системі.</li>
+      <li>Наша функція <code class="highlighter-rouge">cough</code> не приймає аргументів, тож ми пишемо <code class="highlighter-rouge">cough(void)</code>, вона також нічого не повертає, тож маємо <code class="highlighter-rouge">void</code> перед <code class="highlighter-rouge">cough</code> також. (Наша фугкція <code class="highlighter-rouge">main</code> повертає <code class="highlighter-rouge">int</code>, і за замовчуванням вона поверне <code class="highlighter-rouge">0</code> якщо нічого поганого не трапиться.)</li>
+    </ul>
+  </li>
+  <li>Ми можемо абстрагувати <code class="highlighter-rouge">cough</code> ще більше:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="n">cough</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">cough</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Cough some number of times
+</span><span class="kt">void</span> <span class="nf">cough</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"cough</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Тепер, якщо ми хочемо вивести «cough» кілька разів, можна викликати ту саму функцію. Зверніть увагу, що за допомогою <code class="highlighter-rouge">cough(int n)</code>, ми вказуємо, що функція <code class="highlighter-rouge">cough</code> приймає вхідні дані типу <code class="highlighter-rouge">int</code>, до яких ми звертаємось як <code class="highlighter-rouge">n</code>. І всередині <code class="highlighter-rouge">cough</code> ми використовуємо <code class="highlighter-rouge">n</code> у нашому циклі <code class="highlighter-rouge">for</code> для того, щоб вивести «cough» стільки разів, скільки потрібно.</li>
+    </ul>
+  </li>
+  <li>Розглянемо <code class="highlighter-rouge">positive.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="n">get_positive_int</span><span class="p">(</span><span class="n">string</span> <span class="n">prompt</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">get_positive_int</span><span class="p">(</span><span class="s">"Positive integer: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Prompt user for positive integer
+</span><span class="kt">int</span> <span class="nf">get_positive_int</span><span class="p">(</span><span class="n">string</span> <span class="n">prompt</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">do</span>
+    <span class="p">{</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">prompt</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>У бібліотеці CS50 немає функції <code class="highlighter-rouge">get_positive_int</code>, але ми можемо її написати самостійно. У нашій функції ми ініціалізуємо змінну, <code class="highlighter-rouge">int n</code>, але не поки присвоюємо їй значення. Далі маємо нову конструкцію, <code class="highlighter-rouge">do ... while</code>, що робить щось <em>спочатку</em>, потім перевіряє умову і повторює дію, поки умова не стане <em>false</em>.</li>
+      <li>Далі, коли ми маємо  <code class="highlighter-rouge">n</code>, що не <code class="highlighter-rouge">&lt; 1</code>, ми можемо використати ключове слово <code class="highlighter-rouge">return</code> щоб повернути значення. І знову в нашій функції <code class="highlighter-rouge">main</code> function, ми можемо присвоїти <code class="highlighter-rouge">int i</code> це значення.</li>
+      <li>У C змінні також мають <em>область видимості</em>, що, як правило, означає, що вони існують лише між тими фігурними дужками, де вони були оголошені. Наприклад, якщо б ми мали <code class="highlighter-rouge">int n = get_int(...)</code> ми не змогли б повернути її за допомогою <code class="highlighter-rouge">return</code> оскільки цей рядок був би не в межах області видимості <code class="highlighter-rouge">n</code>. (Аналогічно, наша функція <code class="highlighter-rouge">main</code> не може безпосередньо бачити будь-які змінні всередині <code class="highlighter-rouge">get_positive_int</code>, sоскільки кожна функція має свій набір фігурних дужок і, таким чином, має різні області видимості для змінних, що знаходяться всередині них.)</li>
+    </ul>
+  </li>
+  <li>У Scratch, можливо, ви помітили, що можете зробити змінну, яка буде доступна одному спрайту або відразу всім. І в C ми маємо як <em>локальні</em>, так і <em>глобальні</em> змінні. Усі змінні, які ми досі бачили, — локальні, хоча зрештою ми побачимо і глобальні змінні, які ми зможемо використати будь-де у нашій програмі.</li>
+</ul>
+
+<h2 id="more-problems">Додаткові задачі</h2>
+
+<ul>
+  <li>Ми вже бачили приклад неточності з числами з рухомою комою, але можуть бути проблеми і з цілими числами.</li>
+  <li>Якщо б, наприклад, у нас було число 129, до якого ми додали 1, ми не мали б 1210, де остання цифра змінилася з 9 на 10. Замість цього ми переносимо 1, таким чином, щоб одержати 130. І якщо б ми мали число 999, ми б перенесли 1 стільки разів, скільки треба було, щоб отримати число 1000.</li>
+  <li>Але якщо у нас є місце для запису лише 3 цифр, вийшло б 000. Це називається переповненням, тобто число, яке ми намагаємося зберегти, занадто велике для обсягу пам’яті, який ми виділили.</li>
+  <li>У двійковій системі, якщо б ми мали число <code class="highlighter-rouge">111</code>, і додали 1, ми б переносили 1, поки не отримали <code class="highlighter-rouge">1000</code>. І так само, якщо б ми мали тільки 3 біти, у нас було б <code class="highlighter-rouge">000</code>.</li>
+  <li>У грі Lego Star Wars встановлено максимум 4 мільярди монет, які гравець може зібрати, оскільки, мабуть, використовується лише 32 біти для збереження цього числа (2 у степені 32 – це трохи більше 4 мільярдів).</li>
+  <li>Розглянемо це в <code class="highlighter-rouge">overflow.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Iteratively double i
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">;</span> <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, що тут є рядок, що починається з <code class="highlighter-rouge">//</code>, що означає коментар. Коментарі - це пояснення для себе або майбутніх читачів, які компілятор ігнорує.</li>
+      <li>У нашому циклі <code class="highlighter-rouge">for</code> ми встановили <code class="highlighter-rouge">i</code> до <code class="highlighter-rouge">1</code>, і подвоїли її за допомогою <code class="highlighter-rouge">*= 2</code>. (І ми будемо продовжувати робити це постійно, оскільки немає заданої умови.)</li>
+      <li>Ми також використовуємо функцію <code class="highlighter-rouge">sleep</code> з <code class="highlighter-rouge">unistd.h</code> щоб програма щоразу робила паузу.</li>
+      <li>Тепер, коли ми запускаємо нашу програму, ми бачимо, що число стає все більшим і більшим, поки не станеться:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1073741824
+overflow.c:9:31: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type 'int'
+-2147483648
+0
+0
+...
+</code></pre></div>        </div>
+      </li>
+      <li>Виявляється, наша програма розпізнала, що знакове ціле число (число зі знаком + чи -) не змогло зберегти наступне значення і видала помилку. Далі, оскільки вона намагалася подвоїти число все одно, <code class="highlighter-rouge">i</code> стала негативним числом, а потім 0.</li>
+    </ul>
+  </li>
+  <li>Проблема Y2K («Проблема 2000 року») виникла через те, що багато програм зберігали календарний рік лише за допомогою двох цифр, таких як 98 для 1998 року та 99 для 1999. Але коли прийшов 2000 рік, програми мали б зберігати 00, що призвело б до плутанини між 1900 і 2000 роками.</li>
+  <li>З літаком Boeing 787 також виникли труднощі, коли лічильник у генераторі переповнився через певну кількість днів безперервної роботи, оскільки кількість секунд, котрі він пропрацював, не могли більше зберігатися в цьому лічильнику.</li>
+  <li>У старій версії гри Civilization, цілочисельне переповнення призводило до того, що один із персонажів, Ґанді, ставав набагато агресивнішим, оскільки рівень його агресії, від початку низький, ставав великим, коли від нього віднімали забагато. Наприклад, якщо б ми мали <code class="highlighter-rouge">00000001</code> і відняли 1 від нього, ми будемо мати <code class="highlighter-rouge">00000000</code>. Але якщо нам доведеться відняти 2, ми фактично повертаємося назад на <code class="highlighter-rouge">11111111</code>, що є найбільшим позитивним значенням!</li>
+  <li>Отже, ми побачили труднощі, які можуть статися, але ми сподіваємося, що тепер також стало зрозуміло, чому та як їх уникати.</li>
+  <li>Для завдань цього тижня ми використаємо CS50 Lab, побудовану на CS50 Sandbox, і напишемо кілька програм, аби розібратись у всьому.</li>
+</ul>
+
+
+</main>
+</body>
+
+</html>
