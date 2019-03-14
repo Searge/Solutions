@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+// ПРОТОТИП для функції
 void cough(int n);
 
 int main(void)
