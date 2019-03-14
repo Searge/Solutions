@@ -12,5 +12,9 @@ int main(void)
     float y = get_float("y: ");
 
     // Perform division
+    printf("x + y = %f\n", x + y);
+    printf("x - y = %f\n", x - y);
+    printf("x * y = %f\n", x * y);
+    printf("x / y = %f\n", x / y);
     printf("x / y = %.50f\n", x / y);
 }
