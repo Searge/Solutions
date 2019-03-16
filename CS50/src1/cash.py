@@ -1,9 +1,14 @@
 def cash():
-    change = 0
-    try:
-        change = int(float(input('Change: ')) * 100)
-    except ValueError:
-        print('Please enter a valid number: ')
+    while True:
+        try:
+            change = int(float(input('Change: ')) * 100)
+            if change <= 0:
+                raise Exception()
+            break
+        except ValueError:
+            print('Please enter a valid number: ')
+        except Exception:
+            print('Please enter a positive real number')
 
     quarters = change // 25
     dimes = (change % 25) // 10
