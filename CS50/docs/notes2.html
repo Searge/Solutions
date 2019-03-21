@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- https://useiconic.com/open -->
+        <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" rel="stylesheet">
+
+        <link href="https://cs50.harvard.edu/college/assets/css/style.css?1549745557" rel="stylesheet">
+
+        <!-- http://getbootstrap.com/docs/4.2/getting-started/introduction/ -->
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+        <title>Лекція 2 - Це CS50</title>
+
+        <style type="text/css">
+          main {
+                margin-left: 0; 
+          }
+        </style>
+
+    </head>
+
+    <body>
+<main class="markdown-body container">
+
+    <h2 class="no_toc" id="lecture-2">Лекція 2</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#compiling" id="markdown-toc-compiling">Компіляція</a></li>
+  <li><a href="#debugging" id="markdown-toc-debugging">Дебаггінг</a></li>
+  <li><a href="#memory" id="markdown-toc-memory">Пам’ять</a></li>
+  <li><a href="#arrays" id="markdown-toc-arrays">Масиви</a></li>
+  <li><a href="#strings" id="markdown-toc-strings">Рядки</a></li>
+  <li><a href="#command-line-arguments" id="markdown-toc-command-line-arguments">Аргументи командного рядка</a></li>
+  <li><a href="#encryption" id="markdown-toc-encryption">Шифрування</a></li>
+  <li><a href="#exit-codes" id="markdown-toc-exit-codes">Коди виходу</a></li>
+  <li><a href="#sorting" id="markdown-toc-sorting">Сортування</a></li>
+</ul>
+
+<h2 id="compiling">Компіляція</h2>
+
+<ul>
+  <li>Ми почали курс з  вивчення Scratch, а потім перейшли на мову програмування С.</li>
+  <li>Нагадаємо, що ми пишемо вихідний код мовою програмування C, але ми маємо його спомпілювати на машинний код у двійковій системі, аби запустити на комп'ютері.
+    <ul>
+      <li><code class="highlighter-rouge">clang</code> це компілятор, з яким ми вже познайомилися, а <code class="highlighter-rouge">make</code> – це утіліта, яка допомагає нам запускати <code class="highlighter-rouge">clang</code> автоматично.</li>
+      <li>Якщо б ми захотіли використати бібліотеку CS50 за допомогою <code class="highlighter-rouge">#include &lt;cs50.h&gt;</code>, та застосувати <code class="highlighter-rouge">clang</code> замість <code class="highlighter-rouge">make</code>, потрібно додати прапорець: <code class="highlighter-rouge">clang hello.c -lcs50</code>. Прапорець <code class="highlighter-rouge">-l</code> <em>підключає</em> файл <code class="highlighter-rouge">cs50</code>, який було встановлено у CS50 Sandbox.</li>
+    </ul>
+  </li>
+  <li>Компіляція вихідного коду на машинний відбувається у такі кроки:
+    <ul>
+      <li>препроцессінг</li>
+      <li>компіляція</li>
+      <li>збирання</li>
+      <li>компонування</li>
+    </ul>
+  </li>
+  <li><em>Препроцессінг</em> складається з перегляду рядків, які починаються з <code class="highlighter-rouge">#</code>, як-от <code class="highlighter-rouge">#include</code>, перед тим, як виконувати все інше. Наприклад, <code class="highlighter-rouge">#include &lt;cs50.h&gt;</code> скаже <code class="highlighter-rouge">clang</code> знайти спочатку цей заголовковий файл, оскільки там міститься контент, який ми хочемо використати у нашій програмі. Потім, <code class="highlighter-rouge">clang</code> замінить вміст цих файлів в нашій програмі:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">string</span> <span class="n">get_string</span><span class="p">(</span><span class="n">string</span> <span class="n">prompt</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">printf</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+<span class="p">...</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Name: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><em>Компіляція</em> бере наш вихідний код на С та конвертує на код асемблера, який виглядає ось так:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+main:                 # @main
+    .cfi_startproc
+# BB#0:
+    pushq %rbp
+.Ltmp0:
+    .cfi_def_cfa_offset 16
+.Ltmp1:
+    .cfi_offset %rbp, -16
+    movq %rsp, %rbp
+.Ltmp2:
+    .cfi_def_cfa_register %rbp
+    subq $16, %rsp
+    xorl %eax, %eax
+    movl %eax, %edi
+    movabsq $.L.str, %rsi
+    movb $0, %al
+    callq get_string
+    movabsq $.L.str.1, %rdi
+    movq %rax, -8(%rbp)
+    movq -8(%rbp), %rsi
+    movb $0, %al
+    callq printf
+    ...
+</code></pre></div>    </div>
+    <ul>
+      <li>Це низькорівневі інструкції, тому краще зрозумілі центральному процессору, і вцілому працюють з байтами, а не з такими абстракціями, як назви змінних.</li>
+    </ul>
+  </li>
+  <li>Наступний крок – взяти код асемблера та перекласти його на інструкції у двійковій системі – це називається <em>збирання</em>.</li>
+  <li>І наостанок потрібно все <em>скомпонувати</em>, коли вміст пов'язаних бібліотек, як <code class="highlighter-rouge">cs50.c</code>, фактично включаються до нашої програми у двійковому вигляді.</li>
+</ul>
+
+<h2 id="debugging">Дебаггінг</h2>
+
+<ul>
+  <li>Уявімо, ми написали програму <code class="highlighter-rouge">buggy0</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Ми бачимо помилку, коли намагаємось скомпілювати цю програму за допомогою <code class="highlighter-rouge">make</code> про те, що ми не додали заголовковий файл.</li>
+      <li>Ми можемо запустити <code class="highlighter-rouge">help50 make buggy0</code>, що врешті-решт повідомить нам про необхідність додати <code class="highlighter-rouge">#include &lt;stdio.h&gt;</code>, який містить <code class="highlighter-rouge">printf</code>.</li>
+      <li>Ми все зробили, а тепер бачимо ще одну помилку та розуміємо, що ми забули поставити крапку з комою в кінці рядка.</li>
+    </ul>
+  </li>
+  <li>Давайте розглянемо іншу програму:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Хм, ми думали, що буде лише 10 символів <code class="highlighter-rouge">#</code>, але їх вийшло 11. Якби ми не знали, в чому полягає проблема (оскільки наша програма працює так, як ми її написали), то могли б додати ще один рядок print на допомогу:
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"i is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Тепер, ми бачимо, що <code class="highlighter-rouge">i</code> почалась з 0 і продовжувалась до 10, але ми повинні його зупинити на 9.</li>
+    </ul>
+  </li>
+  <li>Якби ми записали нашу програму без пробілів, як подано нижче, то вона все одно була б правильна:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"i is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"#</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Однак, читати в такому вигляді складно, це поганий дизайн. Набагато легше буде побачити вкладеність, якщо ми використаємо відступи для циклів.</li>
+      <li>Ми можемо запустити <code class="highlighter-rouge">style50 buggy2.c</code>, і побачити рекомендації, що нам слід змінити.</li>
+    </ul>
+  </li>
+  <li>Отже, нагадаємо, ми маємо три інструменти, які допоможуть нам покращити код:
+    <ul>
+      <li><code class="highlighter-rouge">help50</code></li>
+      <li><code class="highlighter-rouge">printf</code></li>
+      <li><code class="highlighter-rouge">style50</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="memory">Пам’ять</h2>
+
+<ul>
+  <li>В середині наших комп`ютерів містяться чіпи RAM, тобто оперативна пам'ять, що зберігає дані для короткочасного використання. Можна зберігати файли на жорсткому диску (або SSD) для довготривалого зберігання, але коли ми його відкриємо та будемо вносити зміни, все копіюється до RAM. Попри те, що обсяг RAM значно менший та вона є тимчасовою (поки не буде вимкнене живлення), вона значно швидша.</li>
+  <li>Можна розглядати байти, які зберігаються в RAM, у вигляді сітки:
+<img src="https://cs50.harvard.edu/college/weeks/2/notes/ram.png" alt="computer chip with grid overlaid" />
+    <ul>
+      <li>Насправді там розташовані мільйони або навіть мільярди байтів на кожному чіпі.</li>
+    </ul>
+  </li>
+  <li>У мові програмування С коли ми створюєму змінну типу <code class="highlighter-rouge">char</code> розміром в один байт, вона буде фізично збережена в одній із таких комірок у RAM. Ціле число на чотири байти займе чотири таких комірки.</li>
+</ul>
+
+<h2 id="arrays">Масиви</h2>
+
+<ul>
+  <li>У пам’яті ми можемо зберігати змінні послідовно, одна за одною. І в мові програмування С список збережених змінних, які розташовуються у суміжних комірках пам'яті, називається <em>масивом</em>.</li>
+  <li>Виявляється, що з самими тільки масивами можна робити дуже цікаві речі.</li>
+  <li>Розглянемо <code class="highlighter-rouge">scores0.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get scores from user
+</span>    <span class="kt">int</span> <span class="n">score1</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 1: "</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">score2</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 2: "</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">score3</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 3: "</span><span class="p">);</span>
+
+    <span class="c1">// Generate first bar
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 1: "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+    <span class="c1">// Generate second bar
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 2: "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+    <span class="c1">// Generate third bar
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 3: "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Ми отримуємо 3 результати (scores) від користувача та виводимо графічне позначення для кожного з них.</li>
+      <li>Наші 3 цілих числа, <code class="highlighter-rouge">score1</code>, <code class="highlighter-rouge">score2</code>, та <code class="highlighter-rouge">score3</code> будуть збережені десь у пам’яті.</li>
+    </ul>
+  </li>
+  <li>Ми можемо використати цикл, або почнемо розділяти на частини:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="n">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get scores from user
+</span>    <span class="kt">int</span> <span class="n">score1</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 1: "</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">score2</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 2: "</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">score3</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score 3: "</span><span class="p">);</span>
+
+    <span class="c1">// Chart first score
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 1: "</span><span class="p">);</span>
+    <span class="n">chart</span><span class="p">(</span><span class="n">score1</span><span class="p">);</span>
+
+    <span class="c1">// Chart second score
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 2: "</span><span class="p">);</span>
+    <span class="n">chart</span><span class="p">(</span><span class="n">score2</span><span class="p">);</span>
+
+    <span class="c1">// Chart third score
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"Score 3: "</span><span class="p">);</span>
+    <span class="n">chart</span><span class="p">(</span><span class="n">score3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Generate bar
+</span><span class="kt">void</span> <span class="nf">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Output one hash per point
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Тепер маємо функцію <code class="highlighter-rouge">chart</code> яка буде виводити кожен результат.</li>
+      <li>Пам'ятайте, що нам потрібно мати на початку прототип, <code class="highlighter-rouge">void chart(int score);</code>. Ми моглиб мати всю функцію <code class="highlighter-rouge">chart</code> вгорі перед її використанням, але врешті наша функція <code class="highlighter-rouge">main</code> буде спускатись все нижче і шукати її буде все складніше.</li>
+    </ul>
+  </li>
+  <li>За допомогою масивів ми можемо зібрати результати в циклі, а потім одержати до них доступ, також в циклі:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Generates a bar chart of three scores using an array
+</span>
+<span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="n">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get scores from user
+</span>    <span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score %i: "</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Chart scores
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Score %i: "</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">chart</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Generate bar
+</span><span class="kt">void</span> <span class="nf">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Output one hash per point
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зверніть увагу, що ми застосовуємо <code class="highlighter-rouge">int scores[3]</code> для ініціалізації масиву з трьома цілими числами. Потім ми використовуємо <code class="highlighter-rouge">scores[i] = ...</code>, щоб зберегти значення в цьому масиві, використовуючи для цього індекс <code class="highlighter-rouge">i</code> від <code class="highlighter-rouge">0</code> до <code class="highlighter-rouge">2</code> (оскільки в нас три елементи).</li>
+      <li>Після цього ми використовуємо <code class="highlighter-rouge">scores[i]</code> для доступу до усіх значень в масиві за кожним індексом.</li>
+    </ul>
+  </li>
+  <li>У нас повторюється число <code class="highlighter-rouge">3</code> кілька разів, тому ми можемо виокремити його у <em>константу</em>, тобто число, яке ми можемо один раз задати й використовувати глобально:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">COUNT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get scores from user
+</span>    <span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="n">COUNT</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score %i: "</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Chart scores
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Score %i: "</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">chart</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Generate bar
+</span><span class="kt">void</span> <span class="nf">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Output one hash per point
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>На початку ми використовуємо ключове слово <code class="highlighter-rouge">const</code> щоб визначити, що це незмінне значення. Його можна використовувати по всьому коду, і якщо ми захочемо щось змінити, достатньо змінити лише один раз. Врешті, назва <code class="highlighter-rouge">COUNT</code> написана великими літерами, щоб показати, що це константа (за домовленістю).</li>
+    </ul>
+  </li>
+  <li>Ми можемо за допомогою функції <code class="highlighter-rouge">chart</code> вивести всі результати, а не по одному стовпчику за раз:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">COUNT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="kt">int</span> <span class="n">scores</span><span class="p">[]);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Get scores from user
+</span>    <span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="n">COUNT</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"Score %i: "</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Chart scores
+</span>    <span class="n">chart</span><span class="p">(</span><span class="n">COUNT</span><span class="p">,</span> <span class="n">scores</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Generate bars
+</span><span class="kt">void</span> <span class="nf">chart</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="kt">int</span> <span class="n">scores</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="c1">// Output one hash per point
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"#"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Передавши весь масив <code class="highlighter-rouge">scores</code> та кількість результатів <code class="highlighter-rouge">count</code> які ми хочемо вивести, ми можемо використати функцію <code class="highlighter-rouge">chart</code> для ітерування крізь масив <code class="highlighter-rouge">scores</code>. Фактично, <code class="highlighter-rouge">chart</code> наскільки великим є масив <code class="highlighter-rouge">scores</code>, тож ми обов'язково маємо передавати й <code class="highlighter-rouge">count</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="strings">Рядки</h2>
+
+<ul>
+  <li>Рядки – це насправді просто масиви символів. Це можна побачити у <code class="highlighter-rouge">string0.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Input:  "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Output: "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Спочатку нам знадобиться нова бібліотека, <code class="highlighter-rouge">string.h</code>, для <code class="highlighter-rouge">strlen</code>, що показує нам довжину рядка. Далі ми використовуємо той же синтаксис для доступу до елементів масиву, <code class="highlighter-rouge">s[i]</code>, аби вести окремі символи рядка <code class="highlighter-rouge">s</code>.</li>
+    </ul>
+  </li>
+  <li>Ми можемо покращити дизайн нашої програми. <code class="highlighter-rouge">string0</code> була не надто ефективна, оскільки перевіряємо довжину рядка після введення кожного символу, в нашій умові. Проте оскільки довжина рядка не змінюється, то ми можемо перевіряти її лише один раз:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Input: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Output:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Зараз, на початку нашого циклу, ми ініціалізуємо дві змінні <code class="highlighter-rouge">i</code> та <code class="highlighter-rouge">n</code> та записуємо довжину рядка у <code class="highlighter-rouge">n</code>. Далі ми можемо щоразу перевіряти значення без вираховування довжини рядка.</li>
+      <li><code class="highlighter-rouge">n</code> буде доступна виключно в межах циклу <code class="highlighter-rouge">for</code> хоча ми можемо ініціалізувати її і поза ним, якщо нам потрібно буде її повторне використання.</li>
+    </ul>
+  </li>
+  <li>Коли рядок зберігається у пам’яті, кожен символ розміщується в одному байті в таблиці байтів. Десь, наприклад, слово <code class="highlighter-rouge">Zamyla</code> збережено у 6 байтах. Але нам потрібен ще один байт, для позначення кінця рядка:
+<img src="https://cs50.harvard.edu/college/weeks/2/notes/zamyla.png" alt="letters 'Zamyla' in grid, with first letter 'Z' labeled 's' and grid following 'a' filled with '0000000'" />
+    <ul>
+      <li>Байт пам'яті, де збережено перший символ рядка, <code class="highlighter-rouge">Z</code>, позначено як <code class="highlighter-rouge">s</code>, оскільки ми назвали наш рядок <code class="highlighter-rouge">s</code> у коді вище. Далі, після останнього символу, <code class="highlighter-rouge">a</code>, ми маємо один байт з усіма <code class="highlighter-rouge">0</code> для позначення кінця рядку. І ьайт з усіма <code class="highlighter-rouge">0</code> називається нульовим символом, який можна також позначати як <code class="highlighter-rouge">\0</code>.</li>
+    </ul>
+  </li>
+  <li>Якби ми хотіли написати власну версію  <code class="highlighter-rouge">strlen</code>, наприклад, то нам треба знати наступне:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Prompt for user's name
+</span>    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Name: "</span><span class="p">);</span>
+
+    <span class="c1">// Count number of characters up until '\0' (aka NUL)
+</span>    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Тут ми перебираємо кожен символ рядка <code class="highlighter-rouge">s</code>, використовуючи той же синтаксис, що й для доступу до елементів масивів, і ми інкрементуємо лічильник, <code class="highlighter-rouge">n</code>, поки символ не дорівнюватиме нульовому символу, <code class="highlighter-rouge">\0</code>. Якщо він дорівнює, значить, ми в кінці рядка й можемо вивести значення <code class="highlighter-rouge">n</code>.</li>
+    </ul>
+  </li>
+  <li>Оскільки ми знаємо, що кожен символ має числове, ASCII значення, то можна вивести й таке:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"String: "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>За допомогою <code class="highlighter-rouge">(int) s[i]</code>, wми беремо значення <code class="highlighter-rouge">s[i]</code> та перетворюємо символьний тип на цілочисельний. Після цього ми можемо вивести як символи, так і їхні числові значення.</li>
+      <li>Технічно ми навіть можемо зробити <code class="highlighter-rouge">printf("%c %i\n", s[i], s[i]);</code>, а <code class="highlighter-rouge">printf</code> розпізнає значення <code class="highlighter-rouge">s[i]</code> як ціле число.</li>
+    </ul>
+  </li>
+  <li>Тепер ми можемо поєднати те, що ми розглянули, аби створити програму, яка замінює маленькі літери на великі:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Before: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"After:  "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sc">'a'</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="sc">'a'</span> <span class="o">-</span> <span class="sc">'A'</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Спочатку ми отримуємо рядок <code class="highlighter-rouge">s</code>. Тоді, для кожного символу в рядку, якщо він в нижньому регістрі (його значення знаходиться між <code class="highlighter-rouge">a</code> та <code class="highlighter-rouge">z</code>), ми конвертуємо його на велику літеру. В іншому випадку, ми його просто виводимо.</li>
+      <li>Ми можемо перетворити малі літери у великі шляхом віднімання різниці між малою <code class="highlighter-rouge">a</code> та великою <code class="highlighter-rouge">A</code>. (Ми знаємо, що у малих літер більші значення, тому можна відняти різницю між ними та перетворити малі літери на великі.)</li>
+    </ul>
+  </li>
+  <li>Також є функції з бібліотек, які ми можемо використати для досягнення того ж ефекту:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"Before: "</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"After:  "</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">islower</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">toupper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Можна використати функції <code class="highlighter-rouge">islower()</code> та <code class="highlighter-rouge">toupper()</code> з бібліотеки <code class="highlighter-rouge">ctype</code>. (Про це можна довідатись виключно з документації до бібліотеки, яку інші люди написали задовго до нас.)</li>
+      <li>Ми можемо використовувати програму командного рядка, <code class="highlighter-rouge">man</code>, щоб прочитати інструкцію з використання інших програм, якщо така існує. Наприклад, ми можемо запустити <code class="highlighter-rouge">man toupper</code> для перегляду документації для цієї функції. Ми побачимо, що <code class="highlighter-rouge">toupper</code> повертає символ таким, яким він є, якщо він не написаний маленькими літерами, тож отримаємо:
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">toupper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="command-line-arguments">Аргументи командного рядка</h2>
+
+<ul>
+  <li>Ми використовували такі програми як <code class="highlighter-rouge">make</code> та <code class="highlighter-rouge">clang</code>, які приймають додаткові слова після своєї назви в командному рядку. Але насправді, наші програми також можуть приймати <em>аргументи командного рядка</em>.</li>
+  <li>У <code class="highlighter-rouge">argv0.c</code>, ми змінюємо вигляд нашої функції <code class="highlighter-rouge">main</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">argc</code> та <code class="highlighter-rouge">argv</code> - це дві змінні, які одержить функція <code class="highlighter-rouge">main</code> коли ми запустимо нашу програму з командного рядка. <code class="highlighter-rouge">argc</code>argc – це  лічильник аргументів, тобто їх кількість, а <code class="highlighter-rouge">argv</code> - масив рядків, що є аргументами. Найперший аргумент, <code class="highlighter-rouge">argv[0]</code>, буде назвою нашої програми (найперше надруковане слово, наприклад, <code class="highlighter-rouge">./hello</code>). У цьому прикладі ми перевіримо, чи маємо ми два аргументи, і, якщо так, виведемо  другий.</li>
+    </ul>
+  </li>
+  <li>Ми можемо вивести кожен аргумент, один за одним:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">argc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Ми також можемо вивести кожен символ кожного аргументу:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">argc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>За допомогою <code class="highlighter-rouge">argv[i]</code>, ми отримуємо поточний аргумент із масиву аргументів, а з <code class="highlighter-rouge">argv[i][j]</code>, символ з цього рядка.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="encryption">Шифрування</h2>
+
+<ul>
+  <li>Якби ми хотіли надіслати комусь повідомлення, ми б, можливо, захотіли його <em>зашифрувати</em>, тобто певним чином змінити повідомлення, щоб іншим було важко його прочитати. Оригінальний текст тоді ми назвемо <em>звичайний текст</em>, а текст після шифрування - <em>зашифрований текст</em>.</li>
+  <li>Таке повідомлення, як <code class="highlighter-rouge">HI!</code> може бути перетворене в ASCII, <code class="highlighter-rouge">72 73 33</code>. Проте, кожен може з легкістю виконати цю дію і в зворотному порядку.</li>
+  <li>Розглянемо приклади шифрів з історії, починаючи ще з Першої світової війни, до поеми про поїздку Пола Рівера.</li>
+  <li>Загалом <em>шифрування</em> потребує не тільки самого тексту на вхід, а й додаткової інформації. Потрібен <em>ключ</em>, іноді це просто секретне число. Відкритий текст може бути зашифрований та розшифрований за допомогою ключа за певним алгоритмом.</li>
+  <li>Наприклад, якщо ми хочемо надіслати текст <code class="highlighter-rouge">I  L O V E  Y O U</code>, ми спочатку можемо його перетворити на ASCII: <code class="highlighter-rouge">73  76 79 86 69  89 79 85</code>. Тоді, ми можемо зашифрувати його ключем <code class="highlighter-rouge">1</code> простим алгоритмом, де ми лише додаємо ключ до значення кожного елемента: <code class="highlighter-rouge">74  77 80 87 70  90 80 86</code>. Після цього, якщо хтось перетворить ASCII назад в текст, то отримає <code class="highlighter-rouge">J  M P W F  Z P V</code>. Для розшифровки потрібно буде здогадатися значення кожної букви, методом спроб та поразок, але напевне знати без ключа неможливо. Цей алгоритм відомий під назвою <a href="https://uk.wikipedia.org/wiki/%D0%A8%D0%B8%D1%84%D1%80_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8F">шифр Цезаря</a>.</li>
+</ul>
+
+<h2 id="exit-codes">Коди виходу</h2>
+
+<ul>
+  <li>Виявляється, що ми можемо вказувати на помилки в нашій програмі, повертаючи значення з функції <code class="highlighter-rouge">main</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"missing command-line argument</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Значення, що повертається <code class="highlighter-rouge">main</code> в нашій програмі, називається кодом виходу, і ми можемо це побачити в командному рядку. Якщо ми запустимо нашу програму через <code class="highlighter-rouge">./exit</code>, можемо потім набрати <code class="highlighter-rouge">echo $?</code>, яка виведе повернене останньою програмою значення.</li>
+      <li>Коли ми почнемо писати складніші прошрами, то такі коди виходу допоможуть нам вчасно зрозуміти, що пішло не так, навіть якщо вони невидимі або незрозумілі для користувача.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sorting">Сортування</h2>
+
+<ul>
+  <li>З масивами ми можемо розв’язувати значно цікавіші задачі. Наприклад, ми можемо розглядати масиви як шафки, за дверима кожної з яких знаходиться якесь значення – ціле число чи символ. До того ж, комп’ютер здатний розглядати одну шафку або значення за раз.</li>
+  <li>Якби ми мали список чисел та хотіли знайти в ньому певне число, найкраще що можна зробити, це переглянути його значення один за одним або в довільному порядку.</li>
+  <li>Проте якби ми знали, що список був відсортований, то спочатку могли б поглянути в його середину і, відповідно, потім рухались би вліво або вправо.</li>
+  <li>Разом з добровольцями ми розглянули, як можна відсортувати список.</li>
+  <li>Наші добровольці почали у такому довільному порядку:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6 5 1 3 7 8 4 2
+</code></pre></div>    </div>
+  </li>
+  <li>Ми поглянули на перші два числа та переставили їх, щоб вони були у правильному порядку:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 6 1 3 7 8 4 2
+</code></pre></div>    </div>
+  </li>
+  <li>• Потім ми розглянули наступну пару чисел, <code class="highlighter-rouge">6</code> та <code class="highlighter-rouge">1</code>, та переставили їх місцями:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 1 6 3 7 8 4 2
+</code></pre></div>    </div>
+  </li>
+  <li>Ми повторюємо цю дію, поки найбільше число після першого проходу не опиниться з правого боку в кінці рядка:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 1 6 3 7 4 2 8
+</code></pre></div>    </div>
+    <ul>
+      <li>(У лекції, цифра 1 була випадково поставлена занадто далеко!)</li>
+    </ul>
+  </li>
+  <li>Ми повторюємо і щоразу, коли ми робимо один прохід, наступне найбільше число стає справа в кінці:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 5 3 6 4 2 7 8
+</code></pre></div>    </div>
+  </li>
+  <li>Нарешті наш список повністю відсортований. Спочатку ми порівняли 7 пар чисел, потім – 6 пар.</li>
+  <li>Ми повторно перемішали числа:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 4 8 5 7 1 3 6
+</code></pre></div>    </div>
+  </li>
+  <li>І цього разу ми шукали найменше число в списку та переміщували його в лівий бік:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 4 8 5 7 2 3 6
+1 2 8 5 7 4 3 6
+1 2 3 5 7 4 8 6
+</code></pre></div>    </div>
+    <ul>
+      <li>Щоразу ми обирали найменше число і переставляли його з числом, яке знаходиться зліва у невідсортованій частині списку.</li>
+    </ul>
+  </li>
+  <li>За допомогою цього алгоритму ми все ще проглядаємо список <em>n - 1</em> разів, де <em>n</em> кількість людей, та нам потрібно порівняти кожне число, з найменшим.</li>
+  <li>Давайте спробуємо розв’язати це формальніше. Перший алгоритм, сортування бульбашкою, складається з порівнювання пар чисел, що знаходяться безпосередньо одна біля одної, поки найбільше число буде знаходитися справа в кінці. Ми можемо це записати в псевдокоді:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>повторити поки не залишиться пробілів
+    для i від 0 до n-2
+        якщо i-ий та i+1-ий елементи не відсортовані
+            поміняти їх місцями
+</code></pre></div>    </div>
+  </li>
+  <li>А сортування вибором може виглядати ось так:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>для i від 0 до n-1
+    знайти найменший елемент між i-им та n-1-им
+    поміняти місцями найменший та i-ий елементи
+</code></pre></div>    </div>
+  </li>
+  <li>Для першої перестановки нам потрібно зробити <code class="highlighter-rouge">n - 1</code> порівнянь, щоб знайти найменше число. В кожному наступному проході ми зробили меншу кількість порівнянь, оскільки ми вже перемістили деякі цифри ліворуч:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(n – 1) + (n – 2) + ... + 1
+n(n – 1)/2
+(n^2 – n)/2
+n^2 / 2 – n/2
+</code></pre></div>    </div>
+    <ul>
+      <li>Кожен наступний рядок стає простіше, і врешті ми отримуємо <code class="highlighter-rouge">n^2 / 2 – n/2</code> як кількість порівнянь, які треба виконати. В комп'ютерних науках ми використовуємо <em>O</em>, нотація велике <em>O</em> для більшого спрощення, щоб сказати, що наш алгоритм має <em>O</em>(<em>n</em>^2) кроків, “порядку <em>n</em> в квадраті”. Це через те, що з ростом <em>n</em> лише <em>n</em>^2 має значення.</li>
+      <li>Наприклад, якщо б <em>n</em> був 1,000,000, ми б отримали:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n^2 / 2 – n/2
+1,000,000^2 / 2 – 1,000,000/2
+500,000,000,000 – 500,000
+499,999,500,000
+</code></pre></div>        </div>
+        <ul>
+          <li>що є того ж порядку, що й <em>n</em><sup>2</sup>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>• Виявляється, що є інші поширені порядки величин складності:
+    <ul>
+      <li><em>O</em>(<em>n</em><sup>2</sup>)</li>
+      <li><em>O</em>(<em>n</em> log <em>n</em>)</li>
+      <li><em>O</em>(<em>n</em>)</li>
+      <li><em>O</em>(log <em>n</em>)</li>
+      <li><em>O</em>(1)</li>
+    </ul>
+  </li>
+  <li>Пошук в телефонній книзі по одній сторінці за раз має тривалість роботи <em>O</em>(<em>n</em>), оскільки для кожної сторінки потрібна одна дія. Використання бінарного пошуку могло б мати тривалість роботи <em>O</em>(log <em>n</em>), оскільки ми б розділяли задачу навпіл щоразу.</li>
+  <li>Давайте візьмемо інший масив чисел, але цього разу використаємо пустий масив такого ж розміру, як наш робочий:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 2 7 5 6 8 3 1
+_ _ _ _ _ _ _ _
+</code></pre></div>    </div>
+  </li>
+  <li>Оскільки у нас 8 чисел, давайте поглянемо на першу половину, тобто на перші 4. Відсортуємо це рекурсивно, подивимося на ліву половину. Маючи 2 числа, <code class="highlighter-rouge">4 2</code>, дивимося на ліву половину (відсортовану), та праву (відсортовану), та об'єднаємо їх, відсортувавши: <code class="highlighter-rouge">2 4</code>. Ми перенесемо їх у наш другий масив:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ _ 7 5 6 8 3 1
+2 4 _ _ _ _ _ _
+</code></pre></div>    </div>
+  </li>
+  <li>Повторимо це для правої частини першої половини:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ _ | _ _ 6 8 3 1
+2 4 | 5 7 _ _ _ _
+</code></pre></div>    </div>
+  </li>
+  <li>потім об'єднаємо ці половини, щоб отримати відсортовану ліву частину:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ _ _ _ 6 8 3 1
+_ _ _ _ _ _ _ _
+2 4 5 7 _ _ _ _
+</code></pre></div>    </div>
+  </li>
+  <li>Повторимо те саме для правої частини:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ _ _ _ | _ _ _ _
+_ _ _ _ | _ _ _ _
+2 4 5 7 | 1 3 6 8
+</code></pre></div>    </div>
+  </li>
+  <li>Тепер можемо об'єднати обидві половини:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _
+1 2 3 4 5 6 7 8
+</code></pre></div>    </div>
+  </li>
+  <li>Кожне число було переставлене тричі, через те що ми поділили 8 на 2 три рази, або log <em>n</em> раз. Тому цей алгоритм займає <em>O</em>(<em>n</em> log <em>n</em>) часу щоб відсортувати список.</li>
+  <li>Розгляньте приклад <a href="https://www.toptal.com/developers/sorting-algorithms">Sorting Algorithms Animations</a> та відео <a href="https://www.youtube.com/watch?v=t8g-iYGHpEA">What different sorting algorithms sound like</a>.</li>
+</ul>
+
+
+
+</main>
+</body>
+
+</html>
