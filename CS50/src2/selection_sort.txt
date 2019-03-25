@@ -1,3 +1,8 @@
 for i from 0 to n-1
     *find* _smallest_ element between `i`'th and `n-1`'th 
     *swap* _smallest_ with `i`'th element
+
+    `(n - 1) / 2` or `O(n^2)`
+    code::
+    	(n^2 – n)/2
+		n^2/2 – n/2
