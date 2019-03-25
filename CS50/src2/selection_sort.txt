@@ -1,0 +1,3 @@
+for i from 0 to n-1
+    *find* _smallest_ element between `i`'th and `n-1`'th 
+    *swap* _smallest_ with `i`'th element
