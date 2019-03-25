@@ -1,7 +1,7 @@
 // Capitalizes string using ctype library (and an unnecessary condition)
 
 #include <cs50.h>
-#include <ctype.h>
+#include <ctype.h> // Для конвертації та роботи з рядками
 #include <stdio.h>
 #include <string.h>
 
