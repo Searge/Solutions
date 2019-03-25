@@ -9,6 +9,7 @@ int main(void)
     string s = get_string("Name: ");
 
     // Count number of characters up until '\0' (aka NUL)
+    // \0 — усі нулі в байті
     int n = 0;
     while (s[n] != '\0')
     {
