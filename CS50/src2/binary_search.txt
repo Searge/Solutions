@@ -1,0 +1,14 @@
+Repeat until the (sub)array is of size 0:
+	Calculate the middle point of the current (sub)array
+	if the target is at the middle, 
+		stop
+
+	else, if the target < what's at the middle,
+		Repeat 
+		- changing the end point to be just 
+				to the left of the middle
+
+	else, if the target > what's at the middle,
+		Repeat
+		- changing the start point to be just 
+				to the right of the middle
