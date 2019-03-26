@@ -5,3 +5,11 @@ on input of n elements
         sort left half of elements
         sort right half of elements
         merge sorted halves
+
+на вході n елементів
+	якщо n < 2
+		повернутися
+	інше
+		відсортувати ліву половину елементів
+		відсортувати праву половину елементів
+		об'єднати відсортовані половини
