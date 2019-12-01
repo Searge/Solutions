@@ -1,0 +1,28 @@
+.important {
+    color: peru;
+    font-style: italic;
+}
+#box2 {
+  width: 100px;
+  height: 70px;
+
+  color: whitesmoke;
+  background-color: blue;
+  border: 20px solid teal;
+  margin: 5%;
+  padding: 5%;
+  position: relative;
+  z-index: 10;
+}
+#box2:after {
+    background-color: navy;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 5%;
+}
