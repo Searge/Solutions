@@ -1,0 +1,20 @@
+p {
+  padding-bottom: 12px;
+}
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  padding-bottom: 0;
+}
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 36px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 8px;
+}
+h3 {
+  font-size: 20px;
+}
