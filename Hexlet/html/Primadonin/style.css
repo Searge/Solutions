@@ -1,5 +1,21 @@
+body {
+  font-family: Georgia;
+  font-size: 16px;
+  line-height: 1.5;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+section {
+  margin-bottom: 24px;
+}
+article {
+  margin-bottom: 16px;
+}
 p {
   margin-bottom: 12px;
+}
+ul {
+  margin-top: 0;
 }
 h1,
 h2,
@@ -11,7 +27,7 @@ h1 {
   font-size: 36px;
 }
 h2 {
-  font-size: 36px;
+  font-size: 32px;
   border-bottom: 1px solid gray;
   margin-bottom: 8px;
 }
@@ -27,6 +43,6 @@ h3 {
   text-align: center;
 }
 #main {
-  margin-left: 10%;
-  margin-right: 10%;
+  max-width: 800px; /* limit width */
+  margin: 0 auto; /* center content */
 }
