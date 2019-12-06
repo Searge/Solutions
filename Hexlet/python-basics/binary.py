@@ -1,6 +1,8 @@
 def binary(number: int):
     """Transit decimal to binary."""
-    result: list = ['0']
+    result: list = []
+    if number == 0:
+        result = ['0']
     while number != 0:
         modulo: int = int(number) % 2
         result.append(str(modulo))
