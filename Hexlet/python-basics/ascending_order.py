@@ -1,8 +1,10 @@
 def sort_pair(pair: tuple) -> tuple:
     a, b = pair
-    return (a, b) if a <= b else (b, a)
+    return (b, a) if a > b else (a, b)
 
 
 if __name__ == "__main__":
-    pair = (int(input()) for _ in range(2))
-    print(sort_pair(pair))
+    print(
+        sort_pair(
+            (int(input()) for _ in range(2))
+        ))
