@@ -5,5 +5,11 @@ def binary_sum(a: str, b: str):
     pass
 
 
+def convertToBinary(n):
+   if n > 1:
+       convertToBinary(n//2)
+   return n % 2
+
+
 if __name__ == "__main__":
     print(bin_sum('1101', '101'))
