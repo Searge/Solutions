@@ -11,4 +11,5 @@ def is_pallindrome(word: str) -> bool:
 
 
 if __name__ == "__main__":
-    print(is_pallindrome(input('Is pallindrome? ')))
+    word = ''.join(input('Is pallindrome? ').lower().split())
+    print(is_pallindrome(word))
