@@ -1,10 +1,10 @@
 # Solutions
 
-![Created](https://img.shields.io/date/1530544441.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/Searge/Solutions.svg)
-![license](https://img.shields.io/github/license/Searge/Solutions.svg)
-![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Searge/Solutions.svg)
-![GitHub language count](https://img.shields.io/github/languages/count/Searge/Solutions.svg)
+![Created](https://img.shields.io/date/1530544441.svg?style=flat-square&logo=github)
+![GitHub last commit](https://img.shields.io/github/last-commit/Searge/Solutions.svg?style=flat-square)
+![license](https://img.shields.io/github/license/Searge/Solutions.svg?style=flat-square)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Searge/Solutions.svg?style=flat-square)
+![GitHub language count](https://img.shields.io/github/languages/count/Searge/Solutions.svg?style=flat-square)
 
 ## Free Books & Courses
 
