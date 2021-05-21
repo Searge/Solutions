@@ -1,10 +1,12 @@
-# Solutions 
-![Created](https://img.shields.io/date/1530544441.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/Searge/Solutions.svg?style=plastic) 
-![license](https://img.shields.io/github/license/Searge/Solutions.svg?style=plastic) 
-![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Searge/Solutions.svg?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/Searge/Solutions.svg?style=plastic)
+# Solutions
 
-## Free Books & Courses:
+![Created](https://img.shields.io/date/1530544441.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/Searge/Solutions.svg)
+![license](https://img.shields.io/github/license/Searge/Solutions.svg)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Searge/Solutions.svg)
+![GitHub language count](https://img.shields.io/github/languages/count/Searge/Solutions.svg)
+
+## Free Books & Courses
 
 - [**600 free online courses from 190 univesities**](https://qz.com/1437623/600-free-online-courses-you-can-take-from-universities-worldwide/?utm_source=reddit.com&utm_medium=social&utm_campaign=190-universitetov-zapustili-600-besplatn)
 - @EbookFoundation/[free-programming-books](https://github.com/EbookFoundation/free-programming-books) (multilanguages)
@@ -15,4 +17,3 @@
 - [Math ∩ Programming](https://jeremykun.com/main-content/)
 
 ![The Earth is my witness](https://upload.wikimedia.org/wikipedia/commons/8/86/FireLanceAndGrenade10thCenturyDunhuang.jpg)
-
