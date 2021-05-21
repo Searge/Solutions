@@ -1,3 +1,5 @@
+"""Different sorting solutions."""
+
 lst = [19, 2, 31, 45, 6, 11, 121, 27]
 
 
@@ -25,4 +27,5 @@ def bubble(array: list) -> list:
     return array
 
 
-print(bubble(lst))
+if __name__ == '__main__':
+    print(bubble(lst))
