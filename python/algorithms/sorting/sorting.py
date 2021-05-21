@@ -12,7 +12,7 @@ def bubble(array: list) -> list:
         for idx in range(0, length - bypass):
 
             if array[idx] > array[idx + 1]:
-                # Swap left values to right
+                # Swap right value to left
                 array[idx], array[idx + 1] = array[idx + 1], array[idx]
 
     return array
