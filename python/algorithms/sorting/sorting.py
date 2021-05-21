@@ -54,7 +54,26 @@ def merge(left_half, right_half):
     return merged
 
 
+def insertion_sort(array):
+
+    for i in range(1, len(array)):
+
+        cursor = array[i]
+        position = i - 1
+
+        while position >= 0 and array[position] > cursor:
+            # Swap the number down the list
+            array[position + 1] = array[position]
+            position -= 1
+
+        # The final swap
+        array[position + 1] = cursor
+
+    return array
+
+
 if __name__ == '__main__':
     lst = [19, 2, 31, 45, 6, 11, 121, 27]
     print(bubble(lst))
     print(merge_sort(lst))
+    print(insertion_sort(lst))
