@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "solutions"
+version = "0.1.0"
+description = "Algorithms and Computer Science Exercises"
+authors = ["Searge"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+
+autopep8 = "^1.5.7"
+mypy = "^0.812"
+wemake-python-styleguide = "^0.15.2"
+
+cyberbrain = "^0.1.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.nitpick]
+style = [
+  "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/flake8.toml",
+  "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/isort.toml"
+]
