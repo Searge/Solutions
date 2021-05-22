@@ -1,7 +1,7 @@
 # Sorting algorithms
 
 <a href="https://youtu.be/WaNLJf8xzC4">
- <img src="https://youtu.be/WaNLJf8xzC4" alt="What's the fastest way to alphabetize your bookshelf?" />
+ <img src="http://i3.ytimg.com/vi/WaNLJf8xzC4/maxresdefault.jpg" alt="What's the fastest way to alphabetize your bookshelf?" />
 </a>
 
 ## Bubble sort
