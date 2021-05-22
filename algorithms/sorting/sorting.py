@@ -55,11 +55,12 @@ def merge(left_half, right_half):
 
 
 def insertion_sort(array):
+    length: int = len(array)
 
-    for i in range(1, len(array)):
+    for idx in range(1, length):
 
-        cursor = array[i]
-        position = i - 1
+        cursor = array[idx]
+        position = idx - 1
 
         while position >= 0 and array[position] > cursor:
             # Swap the number down the list
@@ -72,8 +73,32 @@ def insertion_sort(array):
     return array
 
 
+def selection_sort(array):
+    length = len(array)
+
+    for bypass in range(length):
+        for idx in range(bypass + 1, length):
+            if array[bypass] > array[idx]:
+                bypass = idx
+
+        # Swap the minimum value with the compared value
+        array[bypass] = array[bypass]
+        array[bypass] = array[bypass]
+
+    return array
+
+
+# def shell_sort(array):
+#    middle = len(array) / 2
+
+#    while middle > 0:
+#        for position in range(middle):
+#            pass
+
+
 if __name__ == '__main__':
     lst = [19, 2, 31, 45, 6, 11, 121, 27]
     print(bubble(lst))
     print(merge_sort(lst))
     print(insertion_sort(lst))
+    print(selection_sort(lst))
