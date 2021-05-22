@@ -1,4 +1,3 @@
-*.csv
-
-# Poetry
+# Poetry; Python
 poetry.lock
+.venv/
