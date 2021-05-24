@@ -117,20 +117,40 @@ def quick_sort(array):
 
     return array
 
-# def shell_sort(array):
-#    middle = len(array) / 2
 
-#    while middle > 0:
-#        for position in range(middle):
-#            pass
+def shell_sort(array):
+    length: int = len(array)
+    gap: int = length // 2
+
+    while gap > 0:
+        for idx in range(gap, length):
+            current_value = array[idx]
+            position = idx
+
+            while position >= gap and array[position - gap] > current_value:
+                array[position] = array[position - gap]
+                position -= gap
+                array[position] = current_value
+
+        gap //= 2
+
+    return array
 
 
 if __name__ == '__main__':
-    ARRAY_LENGTH: int = 10000
+    # lst = [5, 6, 8, 1, 4, 9, 7, 2, 3, 0]
+    ARRAY_LENGTH: int = 10_000
     test_array: list[int] = [randint(0, 1000) for _ in range(ARRAY_LENGTH)]
+    line = 64
 
+    # print(shell_sort(lst))
+
+    print('\nQuick Sorts\n' + '_' * line)
     test_sorting_algorithm('quick_sort', test_array)
+    test_sorting_algorithm('shell_sort', test_array)
     test_sorting_algorithm('merge_sort', test_array)
-    test_sorting_algorithm('bubble', test_array)
+    print('\nInsertion and Selection Sorts\n' + '_' * line)
     test_sorting_algorithm('insertion_sort', test_array)
     test_sorting_algorithm('selection_sort', test_array)
+    print('\nBubble Sort\n' + '_' * line)
+    test_sorting_algorithm('bubble', test_array)
