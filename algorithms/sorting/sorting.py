@@ -1,6 +1,6 @@
 """Different sorting solutions."""
 # https://realpython.com/sorting-algorithms-python/#the-significance-of-time-complexity
-from random import randint
+from random import randint, choice
 from timeit import repeat
 
 
@@ -105,6 +105,18 @@ def selection_sort(array):
     return array
 
 
+def quick_sort(array):
+    if len(array) > 1:
+        pivot = array[choice(array)]
+
+        equal = [element for element in array if element == pivot]
+        less = [element for element in array if element < pivot]
+        greater = [element for element in array if element > pivot]
+
+        return quick_sort(less) + equal + quick_sort(greater)
+
+    return array
+
 # def shell_sort(array):
 #    middle = len(array) / 2
 
@@ -117,7 +129,8 @@ if __name__ == '__main__':
     ARRAY_LENGTH: int = 10000
     test_array: list[int] = [randint(0, 1000) for _ in range(ARRAY_LENGTH)]
 
-    test_sorting_algorithm('bubble', test_array)
+    test_sorting_algorithm('quick_sort', test_array)
     test_sorting_algorithm('merge_sort', test_array)
+    test_sorting_algorithm('bubble', test_array)
     test_sorting_algorithm('insertion_sort', test_array)
     test_sorting_algorithm('selection_sort', test_array)
