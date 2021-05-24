@@ -1,21 +1,6 @@
 """Different sorting solutions."""
 # https://realpython.com/sorting-algorithms-python/#the-significance-of-time-complexity
-from random import randint, choice
-from timeit import repeat
-
-
-def test_sorting_algorithm(algorithm, array):
-    """Execute the code ten different times.
-
-     and return the time in seconds that each execution took"""
-    setup_code: str = f'from __main__ import {algorithm}' \
-        if algorithm != 'sorted' else ''
-
-    statement = f'{algorithm}({array})'
-
-    times = repeat(setup=setup_code, stmt=statement, repeat=3, number=10)
-
-    print(f'Algorithm: {algorithm}. Minimum execution time: {min(times)}')
+from random import choice
 
 
 def bubble(array: list) -> list:
@@ -135,22 +120,3 @@ def shell_sort(array):
         gap //= 2
 
     return array
-
-
-if __name__ == '__main__':
-    # lst = [5, 6, 8, 1, 4, 9, 7, 2, 3, 0]
-    ARRAY_LENGTH: int = 10_000
-    test_array: list[int] = [randint(0, 1000) for _ in range(ARRAY_LENGTH)]
-    line = 64
-
-    # print(shell_sort(lst))
-
-    print('\nQuick Sorts\n' + '_' * line)
-    test_sorting_algorithm('quick_sort', test_array)
-    test_sorting_algorithm('shell_sort', test_array)
-    test_sorting_algorithm('merge_sort', test_array)
-    print('\nInsertion and Selection Sorts\n' + '_' * line)
-    test_sorting_algorithm('insertion_sort', test_array)
-    test_sorting_algorithm('selection_sort', test_array)
-    print('\nBubble Sort\n' + '_' * line)
-    test_sorting_algorithm('bubble', test_array)
