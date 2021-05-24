@@ -107,11 +107,11 @@ def selection_sort(array):
 
 def quick_sort(array):
     if len(array) > 1:
-        pivot = array[choice(array)]
 
-        equal = [element for element in array if element == pivot]
+        pivot = choice(array)
         less = [element for element in array if element < pivot]
         greater = [element for element in array if element > pivot]
+        equal = [element for element in array if element == pivot]
 
         return quick_sort(less) + equal + quick_sort(greater)
 
