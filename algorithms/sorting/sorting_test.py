@@ -1,4 +1,5 @@
 # Testing speed of every sorting algorithm
+import csv
 from collections import defaultdict
 from pprint import pprint
 from random import randint
@@ -41,8 +42,22 @@ if __name__ == '__main__':
     sorts = ['quick_sort', 'shell_sort', 'merge_sort',
              'insertion_sort', 'selection_sort', 'bubble']
 
-    tests = write_tests(sorts, 3)
+    tests = write_tests(sorts, 2)
+    fieldnames = [key for key, _ in tests.items()]
+
+    print(fieldnames)
+    for key, value in tests.items():
+
+        for idx, val in enumerate(value):
+            print(val, end=',')
+        print('')
 
     csv_file = 'Sorting.csv'
 
-    pprint(tests)
+    # with open(csv_file, mode='w') as csv_file:
+    #     fieldnames = [key for key, _ in tests.items()]
+    #     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    #     writer.writeheader()
+
+    #     writer.writerows(zip(*tests.values()))
+
