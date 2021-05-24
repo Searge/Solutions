@@ -1,5 +1,5 @@
 """Different sorting solutions."""
-
+from ..tests.sorting import test_array, test_sorting_algorithm
 
 def bubble(array: list) -> list:
     """Making multiple passes through a list, comparing elements one by one.
@@ -99,6 +99,7 @@ def selection_sort(array):
 if __name__ == '__main__':
     lst = [19, 2, 31, 45, 6, 11, 121, 27]
     print(bubble(lst))
+    test_sorting_algorithm('bubble', test_array)
     print(merge_sort(lst))
     print(insertion_sort(lst))
     print(selection_sort(lst))
