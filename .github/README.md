@@ -1,10 +1,14 @@
-# Solutions
+# The Solutions project
 
 ![Created](https://img.shields.io/date/1530544441.svg?style=flat-square&logo=github)
 ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Searge/Solutions.svg?style=flat-square)
 ![license](https://img.shields.io/github/license/Searge/Solutions.svg?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Searge/Solutions.svg?style=flat-square)
 ![GitHub language count](https://img.shields.io/github/languages/count/Searge/Solutions.svg?style=flat-square)
+
+This project actually created at 2021-05-21, but I kept the date for July 2018, when I created my first big repository with solutions to problems from various courses. Later, I realised that solutions for many problems could be systematised by creating more versatile snippets.
+
+So I deleted the previous one, which had grown to half a terabyte, and created a new one, starting with simple algorithms.
 
 ## Free Books & Courses
 
