@@ -1,3 +1,6 @@
 # Poetry; Python
 poetry.lock
 .venv/
+
+# Data
+docs/data/*
