@@ -42,7 +42,7 @@ def write_tests(sorts: list, exponent=6):
 if __name__ == '__main__':
     sorts = ['quick_sort', 'shell_sort', 'merge_sort',
              'insertion_sort', 'selection_sort', 'bubble']
-    WIDTH = 3
+    WIDTH = 5
 
     tests = write_tests(sorts, WIDTH)
     fieldnames = tests.keys()
