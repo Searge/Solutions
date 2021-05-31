@@ -1,13 +1,13 @@
 # Testing speed of every sorting algorithm
 # %%
 import csv
+import os
 from collections import defaultdict
 from random import randint
 from timeit import repeat
 
 from sorting import (bubble, insertion_sort, merge_sort, quick_sort,
                      selection_sort, shell_sort)
-
 
 
 def test_sorting_algorithm(algorithm, array):
@@ -42,14 +42,19 @@ def write_tests(sorts: list, exponent=6):
 if __name__ == '__main__':
     sorts = ['quick_sort', 'shell_sort', 'merge_sort',
              'insertion_sort', 'selection_sort', 'bubble']
-    WIDTH = 2
-    csv_file = 'docs/data/Sorting.csv'
+    WIDTH = 3
 
     tests = write_tests(sorts, WIDTH)
     fieldnames = tests.keys()
 
+    if not os.path.exists('docs/data'):
+        os.mkdir('docs/data')
+
+    csv_file = 'docs/data/Sorting.csv'
     with open(csv_file, 'w') as csvfile:
         writefile = csv.writer(csvfile)
         writefile.writerow(fieldnames)
 
         writefile.writerows(zip(*[tests[field] for field in fieldnames]))
+
+# %%
