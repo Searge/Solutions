@@ -10,6 +10,8 @@ python = "^3.9"
 pylint = "^2.8.2"
 pyexcel-pygal = "^0.0.2"
 matplotlib = "^3.4.2"
+pandas = "^1.2.4"
+
 
 
 [tool.poetry.dev-dependencies]
