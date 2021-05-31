@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 pylint = "^2.8.2"
 pyexcel-pygal = "^0.0.2"
+matplotlib = "^3.4.2"
 
 
 [tool.poetry.dev-dependencies]
