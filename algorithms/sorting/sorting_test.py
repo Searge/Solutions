@@ -42,9 +42,9 @@ def write_tests(sorts: list, exponent=6):
 if __name__ == '__main__':
     sorts = ['quick_sort', 'shell_sort', 'merge_sort',
              'insertion_sort', 'selection_sort', 'bubble']
-    WIDTH = 5
+    SIZE = 4
 
-    tests = write_tests(sorts, WIDTH)
+    tests = write_tests(sorts, SIZE)
     fieldnames = tests.keys()
 
     if not os.path.exists('docs/data'):
