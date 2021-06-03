@@ -42,7 +42,7 @@ def write_tests(sorts: list, exponent=6):
 if __name__ == '__main__':
     sorts = ['quick_sort', 'shell_sort', 'merge_sort',
              'insertion_sort', 'selection_sort', 'bubble']
-    SIZE = 4
+    SIZE = 5
 
     tests = write_tests(sorts, SIZE)
     fieldnames = tests.keys()
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     if not os.path.exists('docs/data'):
         os.mkdir('docs/data')
 
-    csv_file = 'docs/data/Sorting.csv'
+    csv_file = 'docs/data/Sorting5.csv'
     with open(csv_file, 'w') as csvfile:
         writefile = csv.writer(csvfile)
         writefile.writerow(fieldnames)
