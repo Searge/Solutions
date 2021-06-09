@@ -18,7 +18,7 @@ pandas = "^1.2.4"
 jupyter = "^1.0.0"
 
 autopep8 = "^1.5.7"
-mypy = "^0.812"
+mypy = "^0.901"
 wemake-python-styleguide = "^0.15.2"
 
 cyberbrain = "^0.2.0"
